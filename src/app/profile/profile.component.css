@@ -513,3 +513,121 @@ ul.summary-list > li:last-child  {
   opacity: 1;
 }
 
+/* footer componnet css */
+
+/* FOOTER */ /*Pes ediyorum*/
+.footer {
+  background-color: #f8f9fa;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+   justify-content: space-around; 
+   align-items: center ; 
+   padding: 50px 100px 50px 100px;
+}
+
+.footer h4 {
+  color: #333;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 0;
+}
+
+.footer p {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+  width: 80%;
+}
+
+.footer .row {
+  margin-bottom: 20px;
+}
+
+.footer .col-md-12 {
+  margin-top: 20px;
+}
+
+.footer .text-center {
+  text-align: center;
+  color: #888;
+  font-size: 12px;
+}
+
+
+
+.social-media li a {
+  text-decoration: none;
+} 
+.social-media {
+  list-style: none;  
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+  width: 90%;
+}
+
+
+
+.social-media img {
+  width: 30%;
+}
+
+.quick-links {
+  list-style: none;
+  padding: 15;
+  text-align: left;
+  width: 55%;
+  height: 50%;
+  float: left;
+  margin-left: auto;
+}
+
+.quick-links li {
+  display: inline;
+  margin: 0 10px;
+}
+
+.quick-links li a {
+  text-decoration: none;
+  color: #666;
+  font-size: 24px;
+  margin-left: left;
+}
+
+.quick-links li a:hover {
+  color: #333;
+}
+.list{
+  display: flex;   
+  list-style: none;  
+  justify-content: space-between;
+}
+
+.list li a {
+  text-decoration: none;
+  color: #333;
+}
+
+
+/* up button */
+.to-top {
+  position: fixed;
+  bottom: 2px;
+  right: 2px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.show-scrolltop {
+  opacity: 1;
+}
