@@ -25,9 +25,18 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeicons/primeicons.css"
             ],
-            "scripts": []
+              
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/lottie-web/build/player/lottie.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -94,5 +103,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "dd6102a1-cbec-4a2d-94ee-01142c960fbf"
   }
 }

@@ -1,0 +1,7 @@
+.navbar-nav .nav-link {
+    font-size: 14px; /* Yazı boyutunu istediğiniz değere ayarlayın */
+    color: white; /* Yazı rengini beyaz yapmak için */
+    margin-right: 60px; /* Yazılar arasındaki boşluğu ayarlamak için */
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
