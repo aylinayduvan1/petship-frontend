@@ -1,3 +1,4 @@
+<div class="lottie-container" #lottieContainer></div>
 <div class="section">
     <div class="container">
         <div class="row full-height justify-content-center">
@@ -21,8 +22,10 @@
                                                 <input type="password" [(ngModel)]="password" name="password" placeholder="Şifre" class="form-style">
                                                 <i class="input-icon uil uil-lock-alt"></i>
                                             </div>
-                                            <button type="submit" class="btn mt-4">Giriş</button>
+
+                                            <button type="submit" pButton pRipple (click)="showSuccess()" label="Success" class="btn mt-4">Giriş yap</button>
                                         </form>
+
                                         <p class="mb-0 mt-4 text-center"><a href="#0" class="link">Forgot your password?</a></p>
                                     </div>
                                 </div>
@@ -54,3 +57,4 @@
         </div>
     </div>
 </div>
+<p-toast></p-toast>
