@@ -45,30 +45,32 @@
 }
 
 .social-media img {
-  width: 55%;
-  height: 100%;
+  width: 35%;
+  height: 60%;
   float: left;
+  margin-left: 5%;
 }
 
 .quick-links {
   list-style: none;
-  padding: 0;
-  text-align: center;
-  width: 44%;
-  height: 100%;
+  padding: 15;
+  text-align: left;
+  width: 55%;
+  height: 50%;
   float: left;
+  margin-left: auto;
 }
 
 .quick-links li {
-  display: inline-block;
+  display: inline;
   margin: 0 10px;
 }
 
 .quick-links li a {
   text-decoration: none;
   color: #666;
-  font-size: 20px;
-  margin-left: auto;
+  font-size: 24px;
+  margin-left: left;
 }
 
 .quick-links li a:hover {
