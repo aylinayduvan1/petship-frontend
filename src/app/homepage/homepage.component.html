@@ -1,23 +1,4 @@
-<<<<<<< HEAD
-
-=======
-<app-navbar></app-navbar>
-<app-banner></app-banner>
-<app-kategori></app-kategori>
-<app-about></app-about>
-<app-footer></app-footer>
-<router-outlet></router-outlet>
->>>>>>> 1b2a110b5d7fd7d57b4443a6d2983e818fc4defb
-
-<!-- template: `
-<h2>Giriş Yap</h2>
-<form (submit)="login()" ngModelOptions="{standalone: true}">
-  <<input type="text" [(ngModel)]="username" name="username" placeholder="Kullanıcı Adı">
-<input type="password" [(ngModel)]="password" name="password" placeholder="Şifre">
-
-  <button type="submit">Giriş</button>
-</form>
-`, -->
+<!-- navbar -->
 <nav class="navbar navbar-expand-lg" style="background-color: #4BA47E;">
   <div class="container">
     <a class="navbar-brand" href="#">
@@ -47,7 +28,7 @@
 
 
 
-
+<!-- kategoriler -->
 <div id="carouselExampleAutoplaying" class="carousel slide mb-5" data-bs-ride="carousel" style="background-color: #4BA47E;;">
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -91,6 +72,7 @@
     </div>
     
     
+    <!-- kartlar -->
     
     <div  class="kategori-kartlarm">
       <div *ngIf="seciliKategori === 'kedi'">
@@ -157,7 +139,7 @@
 
 
 
-
+<!-- hakkımzda -->
 
 
   <div id="about" class="container" style="padding-top: 150px; padding-bottom: 150px;">
@@ -179,6 +161,51 @@
       </div>
     </div>
   </div>
+
+
+  
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <h4>Hakkımızda</h4>
+          <p>Petship Sitemiz, evsiz yavrularımızı sıcak bir yuvaya sahiplendirerek onlara yeni bir yuva bulma amacıyla kurulmuştur.</p>
+        </div>
+        <div class="col-md-6">
+          <h4>İletişim</h4>
+          <p>Email: info@hayvansahiplendirme.com</p>
+          <p>Telefon: 123-456-7890</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <h4>Sosyal Medya</h4>
+          <ul class="social-media">
+            <li><a href="https://www.facebook.com" target="_blank"><img src="assets/facebook.svg" alt="Facebook"></a></li>
+            <li><a href="https://www.instagram.com" target="_blank"><img src="assets/instagram.svg" alt="Instagram"></a></li>
+            <li><a href="https://www.twitter.com" target="_blank"><img src="assets/twitter.svg" alt="Twitter"></a></li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <h4>Hızlı Linkler</h4>
+          <ul class="quick-links">
+            <li><a href="#">Hakkımızda</a></li>
+            <li><a href="#">SSS</a></li>
+            <li><a href="#">İletişim</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <p>&copy; 2023 Petship. Tüm hakları saklıdır.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
 
 
 
