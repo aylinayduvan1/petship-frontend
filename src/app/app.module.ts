@@ -20,6 +20,7 @@ import {AboutComponent} from './about/about.component';
 import { ToastComponent } from './toast/toast.component'
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ToastModule } from 'primeng/toast';
     LogincComponent,
     HomepageComponent,
     AboutComponent,
-    ToastComponent
+    ToastComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

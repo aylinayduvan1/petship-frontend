@@ -1,0 +1,40 @@
+.footer {
+  background-color: #f8f9fa;
+  padding: 30px 0;
+}
+
+.footer h4 {
+  color: #333;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.footer p {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.footer .row {
+  margin-bottom: 20px;
+}
+
+.footer .col-md-12 {
+  margin-top: 20px;
+}
+
+.footer .text-center {
+  text-align: center;
+  color: #888;
+  font-size: 12px;
+}
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.footer {
+  /* Diğer stil kuralları */
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Diğer stil kuralları */
