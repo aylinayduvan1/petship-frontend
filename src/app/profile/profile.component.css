@@ -1,10 +1,53 @@
 .navbar-nav .nav-link {
-  font-size: 14px; /* Yazı boyutunu istediğiniz değere ayarlayın */
-  color: white; /* Yazı rengini beyaz yapmak için */
-  margin-right: 60px; /* Yazılar arasındaki boşluğu ayarlamak için */
+  font-size: 14px;
+  color: white;
+  margin-right: 60px;
   font-weight: bold;
   letter-spacing: 2px;
 }
+
+.navbar-nav a {
+  background-image: linear-gradient(to right, #d6bc54, #d6bc54 50%, #ffffff 50%);
+  background-size: 200% 100%;
+  background-position: -100%;
+  display: inline-block;
+  padding: 5px 0;
+  position: relative;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar-nav a:before {
+  content: '';
+  background: #d6bc54;
+  display: block;
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar-nav a:hover {
+  background-position: 0;
+}
+
+.navbar-nav a:hover::before {
+  width: 100%;
+}
+
+/* Presentational Styles */
+body {
+  display: grid;
+  font-family: 'Poppins', sans-serif;
+  font-size: 27px;
+  font-weight: 700;
+  height: 100vh;
+  place-items: center;
+}
+
 
 
 
