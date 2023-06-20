@@ -16,7 +16,7 @@
           <a class="nav-link active" routerLink="/profile" routerLinkActive="active" aria-current="page" href="#" >Profilim</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" href="#iletisim">İletişim</a>
+          <a class="nav-link" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" (click)="scrollToSection('contact')">İletişim</a>
         </li>
      <!-- <p-avatar icon="pi pi-user" styleClass="mr-2" shape="circle"></p-avatar>   -->
       </ul>
@@ -111,7 +111,7 @@
 
 
   <!-- FOOTER -->
-  <div class="container-fulid  footer"  >
+  <div id="contact" class="container-fulid footer"  style="margin-top: 65px;">
     <div class="row">
       <div class="col-md-5">
         <h4>Hakkımızda</h4>
