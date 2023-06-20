@@ -82,7 +82,7 @@ body {
   border-radius: 0;
   color: #89817f;
   border-left: 5px solid #fff;
-  padding: 5px 10px 5px 10px;
+  padding: 5px 25% 5px 10px;
 
 
 }
@@ -419,11 +419,14 @@ ul.summary-list > li:last-child  {
 }
 
 
-/* FOOTER */
+/* FOOTER */ /*Pes ediyorum*/
 .footer {
   background-color: #f8f9fa;
-  padding: 30px 4;
   font-family: 'Roboto', sans-serif;
+  display: flex;
+   justify-content: space-around; 
+   align-items: center ; 
+   padding: 50px 100px 50px 100px;
 }
 
 .footer h4 {
@@ -437,10 +440,17 @@ ul.summary-list > li:last-child  {
   color: #666;
   font-size: 14px;
   line-height: 1.5;
-  width: 90%;
+  margin-bottom: 10px;
+  width: 80%;
 }
 
+.footer .row {
+  margin-bottom: 20px;
+}
 
+.footer .col-md-12 {
+  margin-top: 20px;
+}
 
 .footer .text-center {
   text-align: center;
@@ -448,19 +458,25 @@ ul.summary-list > li:last-child  {
   font-size: 12px;
 }
 
+
+
+.social-media li a {
+  text-decoration: none;
+} 
 .social-media {
+  list-style: none;  
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   list-style: none;
   padding: 0;
+  margin-bottom: 20px;
+  width: 90%;
 }
 
 
+
 .social-media img {
-  width: 55%;
-  height: 60%;
-  float: left;
-  margin-left: 5%;
+  width: 30%;
 }
 
 .quick-links {
@@ -486,6 +502,16 @@ ul.summary-list > li:last-child  {
 }
 
 .quick-links li a:hover {
+  color: #333;
+}
+.list{
+  display: flex;   
+  list-style: none;  
+  justify-content: space-between;
+}
+
+.list li a {
+  text-decoration: none;
   color: #333;
 }
 

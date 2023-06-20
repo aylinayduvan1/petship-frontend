@@ -8,5 +8,9 @@ import { Component} from '@angular/core';
 export class AppComponent {
  
 
-  
+  currentContent: string = 'home';
+
+  changeContent(content: string) {
+    this.currentContent = content;
+  }
 }

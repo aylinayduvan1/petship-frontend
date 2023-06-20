@@ -21,6 +21,9 @@ import { ToastComponent } from './toast/toast.component'
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { FooterComponent } from './footer/footer.component';
+import { CommonModule } from '@angular/common';
+import { ProfileModule } from './profile/profile.module';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +36,7 @@ import { FooterComponent } from './footer/footer.component';
     HomepageComponent,
     AboutComponent,
     ToastComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,8 +46,9 @@ import { FooterComponent } from './footer/footer.component';
     AvatarModule,
     AppRoutingModule,
     RouterModule,
-    ToastModule
-
+    ToastModule,
+    CommonModule,
+     ProfileModule
   ],
   providers: [AuthService,
   MessageService],
