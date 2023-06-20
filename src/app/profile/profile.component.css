@@ -58,6 +58,9 @@ body {
 
 .profile-nav ul {
   margin-top: 10px;   /*profile/edit profile*/
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
 
 }
 
@@ -76,6 +79,8 @@ body {
   border-radius: 0;
   color: #89817f;
   border-left: 5px solid #fff;
+  padding: 5px 10px 5px 10px;
+
 
 }
 
@@ -90,7 +95,6 @@ body {
 
 .profile-nav ul > li:last-child > a:last-child {
   border-radius: 0 0 4px 4px;
-
 
 }
 
@@ -159,19 +163,22 @@ body {
 
 .bio-row {         /*bilgiler*/
   color: #0c7e58;
-  width: 40%;
+  width: 100%;
   float: left;
   margin-bottom: 10px;
   padding:0 15px;
   height: 50px;
+  display: flex; justify-content: start; gap: 25px;
 }
 
 .bio-row p span {
   color:#89817e;
   font-weight: 400;
   width: 100%;
-  display: inline-block;
+ 
   font-size: 20px;
+  display: flex;
+  justify-content: space-between;
 
 }
 
@@ -427,17 +434,10 @@ ul.summary-list > li:last-child  {
   color: #666;
   font-size: 14px;
   line-height: 1.5;
-  margin-bottom: 10px;
   width: 90%;
 }
 
-.footer .row {
-  margin-bottom: 20px;
-}
 
-.footer .col-md-12 {
-  margin-top: 20px;
-}
 
 .footer .text-center {
   text-align: center;
@@ -450,11 +450,9 @@ ul.summary-list > li:last-child  {
   justify-content: center;
   list-style: none;
   padding: 0;
-  margin-bottom: 20px;
 }
 
 .social-media li {
-  margin: 0 10px;
 }
 
 .social-media img {
