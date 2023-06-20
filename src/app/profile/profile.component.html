@@ -1,224 +1,303 @@
+<!--NAVBAR-->
 
 <nav class="navbar navbar-expand-lg" id="home" style="background-color: #4BA47E;  padding: 0px">
+
   <div class="container">
+
     <a class="navbar-brand" routerLinkActive="/homepage" href="/homepage">
+
       <img src="assets/petship-logo.png" alt="Logo" width="70" height="70" class="d-inline-block align-text-top">
+
     </a>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+
       <span class="navbar-toggler-icon"></span>
+
     </button>
+
     <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+
       <ul class="navbar-nav">
+
         <li class="nav-item">
-        <!--  <a class="nav-link active" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" (click)="scrollToSection ('about')">Hakkımızda</a>
-        </li> -->
+
+
+
+
         <li class="nav-item">
+
           <a class="nav-link active" routerLink="/profile" routerLinkActive="active" aria-current="page" href="#" >Profilim</a>
+
         </li>
+
         <li class="nav-item">
+
           <a class="nav-link" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" (click)="scrollToSection('contact')">İletişim</a>
+
         </li>
-     <!-- <p-avatar icon="pi pi-user" styleClass="mr-2" shape="circle"></p-avatar>   -->
+
+
+
+
       </ul>
+
     </div>
+
   </div>
+
 </nav>
 
+<!--HEADİNG-->
 
-
-<!-- burası profil componenti -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-<div class="container bootstrap snippets bootdey" style="padding: 10px 100px 200px 100px;">
+
+<div class="container bootstrap snippets bootdey" style="padding: 50px 100px 200px 100px;">
+
 <div class="row">
+
   <div class="profile-nav col-md-3">
+
       <div class="panel">
+
           <div class="user-heading round">
+
               <a href="#">
+
                   <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="">
+
               </a>
+
               <h1>Çağla Özay</h1>
+
               <p>çaça@theEmail.com</p>
+
           </div>
+
           <ul class="nav nav-pills nav-stacked" >
-              <li class="active" ><a a (click)="changeContent('home')" > <i class="fa fa-user"></i> Kişisel Bilgiler</a></li>
-              <li ><a (click)="changeContent('about')"> <i class="fa fa-edit mt-3"></i> Hayvan Geçmişi</a></li>
+
+              <li class="active" ><a href="#" > <i class="fa fa-user"></i> Kişisel Bilgiler</a></li>
+
+              <li ><a href="#"> <i class="fa fa-edit mt-3"></i> Hayvan Geçmişi</a></li>
+
           </ul>
+
       </div>
+
   </div>
-  <div class=" profile-info col-md-9">
+
+  <!--İNFO-->
+
+  <div class="profile-info col-md-9">
+
       <div class="panel">
-          <div class="bio-graph-heading mb-3" >
-              sizin harika profiliniz böyle bakın da mutlu olun ayol sizin harika profiliniz böyle bakın da mutlu olun ayol.
-          </div>
-          <div class="row" id="home" *ngIf="currentContent === 'home'">
-            <h4>Kişisel Bilgiler</h4>
-            <div class="col-sm-6 mb-3 ">
+
+          <div class="bio-graph-heading mb-5" >
+
+            <h4>Kişisel bilgiler</h4>
+
+         </div>
+
+<!--CARD1-->
+
+          <div class="row">
+
+            <div class="col-sm-6 mb-sm-0" >
+
               <div class="card">
+
                 <div class="card-body">
+
                   <div class="bio-row">
-                    <h5>Ad:</h5>
-                    <p>Çağla</p>
+
+                    <h6>Adı:</h6>
+
+                    <p>-</p>
+
                 </div>
+
                 <div class="bio-row">
-                  <h5>Ad:</h5>
-                  <p>Çağla</p>
+
+                  <h6>Soyadı:</h6>
+
+                  <p>-</p>
+
                 </div>
+
                 <div class="bio-row">
-                  <h5>Ad:</h5>
-                  <p>Çağla</p>
+
+                  <h6>Email:</h6>
+
+                  <p>-</p>
+
                 </div>
+
                 <div class="bio-row">
-                  <h5>Ad:</h5>
-                  <p>Çağla</p>
+
+                  <h6>GSM:</h6>
+
+                  <p>-</p>
+
                  </div>
+
                 <div class="bio-row">
-                  <h5>Ad:</h5>
-                  <p>Çağla</p>
+
+                  <h6>Doğum Tarihi:</h6>
+
+                  <p>-</p>
+
                 </div>
+
                 </div>
+
               </div>
+
             </div>
-            <div class="col-sm-6">
+
+            <!--CARD2-->
+
+            <div class="col-sm-6 mb-sm-0">
+
               <div class="card">
+
                 <div class="card-body">
+
                 <div class="bio-row">
-                  <h5>Ad:</h5>
-                  <p>Çağla</p>
+
+                  <h6>Cinsiyet:</h6>
+
+                  <p>-</p>
+
                 </div>
+
                 <div class="bio-row">
-                  <h5>Ad:</h5>
-                  <p>Çağla</p>
+
+                  <h6>Konum:</h6>
+
+                  <p>-</p>
+
                  </div>
-              <div class="bio-row">
-                <h5>Ad:</h5>
-                <p>Çağla</p>
-              </div>
-            <div class="bio-row">
-              <h5>Ad:</h5>
-              <p>Çağla</p>
-            </div>
-            <div class="bio-row">
-              <h5>Ad:</h5>
-              <p>Çağla</p>
-            </div>
+
+                 <div class="bio-row1">
+                  <h6>Daha önce evcil hayvan baktınız mı?</h6>
+                  <p class="scrollable">
+                    <label>
+                      <input type="radio" name="evcil-hayvan" value="evet"> Evet
+                    </label>
+                    <label>
+                      <input type="radio" name="evcil-hayvan" value="hayır"> Hayır
+                    </label>
+                  </p>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div class="row" id="about" *ngIf="currentContent === 'about'">
-            <h4> Hayvan Geçmişi</h4>
-            <div class="col-sm-12 mb-3 ">
-              <div class="card ">
-                <div class="card-body">
-                  <div class="card mb-4 mt-3">
-                    <div class="card-body" style="display: flex; justify-content: space-between; align-items: center;">
-                      <img src="assets/dog.png" alt="" style="border-radius: 50%; width: 12%;">
-                      <div>
-                        <h6>Mina</h6>
-                      <h6>2 yaşında</h6>
-                      <h6>22/10/2007</h6>
-                      </div>
-                      <div class="spinner-grow text-success" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                      </div>
-                      <p>merhaba ben mina en yakın arkadaşımı arıyorum..</p>
 
-
-                    </div>
-                  </div>
-                  <div class="card mb-4">
-                    <div class="card-body" style="display: flex; justify-content: space-between; align-items: center;">
-                      <img src="assets/dog.png" alt="" style="border-radius: 50%; width: 12%;">
-                      <div>
-                        <h6>Mina</h6>
-                      <h6>2 yaşında</h6>
-                      <h6>22/10/2007</h6>
-                      </div>
-                      <div class="spinner-grow text-danger" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                      </div>
-                      <p>merhaba ben mina en yakın arkadaşımı arıyorum..</p>
-                      
-
-                    </div>
-                  </div>
-                  <div class="card mb-4">
-                    <div class="card-body" style="display: flex; justify-content: space-between; align-items: center;">
-                      <img src="assets/dog.png" alt="" style="border-radius: 50%; width: 12%;">
-                      <div>
-                        <h6>Mina</h6>
-                      <h6>2 yaşında</h6>
-                      <h6>22/10/2007</h6>
-                      </div>
-                      <div class="spinner-grow text-warning" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                      </div>
-                      <p>merhaba ben mina en yakın arkadaşımı arıyorum..</p>
-                      
-
-                    </div>
-                  </div>
+                <div class="bio-row1">
+                  <h6>Şuan evcil hayvanınız var mı?</h6>
+                  <p class="scrollable">
+                    <label>
+                      <input type="radio" name="evcil-hayvan" value="evet"> Evet
+                    </label>
+                    <label>
+                      <input type="radio" name="evcil-hayvan" value="hayır"> Hayır
+                    </label>
+                  </p>
                 </div>
+
+                </div>
+
               </div>
+
             </div>
-            
-              </div>
-            </div>
+
           </div>
+
       </div>
+
  </div>
 
-
-
-
-
-
-  <!-- FOOTER -->
-  <!-- FOOTER -->
-  <div id="contact" class="container-fulid footer"  style="margin-top: 65px;">
-    <div class="row">
-      <div class="col-md-5">
-        <h4>Hakkımızda</h4>
-        <p>Petship Sitemiz, evsiz yavrularımızı sıcak bir yuvaya sahiplendirerek onlara yeni bir yuva bulma amacıyla kurulmuştur
-        evsiz yavrularımızı sıcak bir yuvaya sahiplendirerek onlara yeni bir yuva bulma amacıyla kurulmuştur.</p>
-        <div style="width: 100%; margin-top: 75px;" >
-          <h4>Sosyal Medya</h4>
-          <div class="social-media">
-            <li><a href="https://www.facebook.com" target="_blank"><img src="assets/facebook.svg" alt="Facebook"></a></li>
-          <li><a href="https://www.instagram.com" target="_blank"><img src="assets/instagram.svg" alt="Instagram"></a></li>
-          <li><a href="https://www.twitter.com" target="_blank"><img src="assets/twitter.svg" alt="Twitter"></a></li>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <h4>İletişim</h4>
-        <p>Email: info@hayvansahiplendirme.com</p>
-        <p>Telefon: 123-456-7890</p>
-        <div style="width: 70%; margin-top: 100px;" >
-          <h4 >Hızlı Linkler</h4>
-          <div class="list">
-          <li><a class="nav-link active" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" (click)="scrollToSection('home')">Anasayfa</a></li>
-          <li><a class="nav-link active" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" (click)="scrollToSection('about')">Hakkımızda</a></li>
-          <li><a class="nav-link" routerLink="/profile" routerLinkActive="active" aria-current="page" href="#" >Profilim</a></li>
-          <li><a class="nav-link" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" href="#iletisim">İletişim</a></li>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3  ">
-        <img src="assets/transparent-logo.png" alt="Logo" width="300" height="300">
-      </div>
-    </div>
-    </div>
-    <div class="container-fulid" style="background-color: #f0f0f0; ">
-      <div class="col-md-12 text-center " style="height: 40px;">
-        <p>&copy; 2023 Petship. Tüm hakları saklıdır.</p> 
-      </div>
-  </div>
-
-
-
-<!--
-<div class="to-top" [ngClass]="{'show-scrolltop': isScrollingDown}" (click)="scrollToTop()">
-  <div #animationContainer></div>
 </div>
--->
+
+</div>
+
+
+
+
+
+
+
+  <!-- FOOTER -->
+
+  <div id="contact" class="container-fulid footer"  style="margin-top: 65px;">
+
+    <div class="row">
+
+      <div class="col-md-5">
+
+        <h4>Hakkımızda</h4>
+
+        <p>Petship Sitemiz, evsiz yavrularımızı sıcak bir yuvaya sahiplendirerek onlara yeni bir yuva bulma amacıyla kurulmuştur
+
+        evsiz yavrularımızı sıcak bir yuvaya sahiplendirerek onlara yeni bir yuva bulma amacıyla kurulmuştur.</p>
+
+        <div style="width: 100%; margin-top: 75px;" >
+
+          <h4>Sosyal Medya</h4>
+
+          <div class="social-media">
+
+            <li><a href="https://www.facebook.com" target="_blank"><img src="assets/facebook.svg" alt="Facebook"></a></li>
+
+          <li><a href="https://www.instagram.com" target="_blank"><img src="assets/instagram.svg" alt="Instagram"></a></li>
+
+          <li><a href="https://www.twitter.com" target="_blank"><img src="assets/twitter.svg" alt="Twitter"></a></li>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="col-md-4">
+
+        <h4>İletişim</h4>
+
+        <p>Email: info@hayvansahiplendirme.com</p>
+
+        <p>Telefon: 123-456-7890</p>
+
+        <div style="width: 70%; margin-top: 100px;" >
+
+          <h4 >Hızlı Linkler</h4>
+
+          <div class="list">
+
+            <li><a class="nav-link" routerLink="/homepage" routerLinkActive="active" aria-current="page" href="homepage" >AnaSayfa</a></li>
+
+            <li><a class="nav-link" routerLink="/profile" routerLinkActive="active" aria-current="page" href="profile" >Profilim</a></li>
+
+            <li><a class="nav-link" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" href="#iletisim">İletişim</a></li>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="col-md-3  ">
+
+        <img src="assets/transparent-logo.png" alt="Logo" width="300" height="300">
+
+      </div>
+
+    </div>
+
+    </div>
+
+    <div class="container-fulid" style="background-color: #f0f0f0; ">
+
+        <div class="col-md-12 text-center " style="height: 40px;">
+
+          <p>&copy; 2023 Petship. Tüm hakları saklıdır.</p>
+
+        </div>
+
+    </div>
