@@ -54,7 +54,7 @@
 
 <!-- burası profil componenti -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-<div class="container bootstrap snippets bootdey" style="padding: 10px 100px 200px 100px;">
+<div class="container bootstrap snippets bootdey" style="padding: 20px 100px 200px 100px;">
 <div class="row">
   <div class="profile-nav col-md-3">
       <div class="panel">
@@ -82,25 +82,31 @@
               <div class="card">
                 <div class="card-body">
                   <div class="bio-row">
-                    <h5>Ad:</h5>
-                    <p>Çağla</p>
+                    <h6>Adı:</h6>
+
+                    <p>-</p>
                 </div>
                 <div class="bio-row">
-                  <h5>Ad:</h5>
-                  <p>Çağla</p>
+                  <h6>Soyadı:</h6>
+
+                  <p>-</p>
                 </div>
                 <div class="bio-row">
-                  <h5>Ad:</h5>
-                  <p>Çağla</p>
+                  <h6>Email:</h6>
+
+                  <p>-</p>
                 </div>
                 <div class="bio-row">
-                  <h5>Ad:</h5>
-                  <p>Çağla</p>
+                  <h6>Doğum Tarihi:</h6>
+
+                  <p>-</p>
                  </div>
-                <div class="bio-row">
-                  <h5>Ad:</h5>
-                  <p>Çağla</p>
-                </div>
+                 <div class="bio-row">
+                  <h6>GSM:</h6>
+
+                  <p>-</p>
+                 </div>
+                
                 </div>
               </div>
             </div>
@@ -293,3 +299,9 @@
         </div>
 
     </div>
+
+
+  <!-- scroll  -->
+  <div class="to-top" [ngClass]="{'show-scrolltop': isScrollingDown}" (click)="scrollToTop()">
+    <div #animationContainer></div>
+  </div>
