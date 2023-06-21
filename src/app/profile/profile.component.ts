@@ -7,13 +7,13 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
   @Output() contentChange: EventEmitter<string> = new EventEmitter<string>();
-  currentContent: string = 'home'; // varsayılan içerik "Ana Sayfa"
+  currentContent: string = 'home';
 
   changeContent(content: string) {
-    this.currentContent = content; // tıklanan bağlantıya göre içeriği değiştir
+    this.currentContent = content;
   }
 
-  
+
 
   constructor() { }
 

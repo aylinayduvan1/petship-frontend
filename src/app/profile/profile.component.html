@@ -48,175 +48,167 @@
 
 </nav>
 
-<!--HEADİNG-->
 
+
+
+
+<!-- burası profil componenti -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-
-<div class="container bootstrap snippets bootdey" style="padding: 50px 100px 200px 100px;">
-
+<div class="container bootstrap snippets bootdey" style="padding: 10px 100px 200px 100px;">
 <div class="row">
-
   <div class="profile-nav col-md-3">
-
       <div class="panel">
-
           <div class="user-heading round">
-
               <a href="#">
-
                   <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="">
-
               </a>
-
               <h1>Çağla Özay</h1>
-
               <p>çaça@theEmail.com</p>
-
           </div>
-
           <ul class="nav nav-pills nav-stacked" >
-
-              <li class="active" ><a href="#" > <i class="fa fa-user"></i> Kişisel Bilgiler</a></li>
-
-              <li ><a href="#"> <i class="fa fa-edit mt-3"></i> Hayvan Geçmişi</a></li>
-
+              <li class="active" ><a  (click)="changeContent('home')" > <i class="fa fa-user"></i> Kişisel Bilgiler</a></li>
+              <li ><a (click)="changeContent('about')"> <i class="fa fa-edit mt-3"></i> Hayvan Geçmişi</a></li>
           </ul>
-
       </div>
-
   </div>
-
-  <!--İNFO-->
-
-  <div class="profile-info col-md-9">
-
+  <div class=" profile-info col-md-9">
       <div class="panel">
-
-          <div class="bio-graph-heading mb-5" >
-
-            <h4>Kişisel bilgiler</h4>
-
-         </div>
-
-<!--CARD1-->
-
-          <div class="row">
-
-            <div class="col-sm-6 mb-sm-0" >
-
+          <div class="bio-graph-heading mb-3" >
+            <h4  id="home" *ngIf="currentContent === 'home'">Kişisel Bilgiler</h4>
+            <h4  id="about" *ngIf="currentContent === 'about'"> Hayvan Geçmişi</h4>
+          </div>
+          <div class="row" id="home" *ngIf="currentContent === 'home'">
+            <div class="col-sm-6 mb-3 ">
               <div class="card">
-
                 <div class="card-body">
-
+                  <div class="bio-row">
+                    <h5>Ad:</h5>
+                    <p>Çağla</p>
+                </div>
+                <div class="bio-row">
+                  <h5>Ad:</h5>
+                  <p>Çağla</p>
+                </div>
+                <div class="bio-row">
+                  <h5>Ad:</h5>
+                  <p>Çağla</p>
+                </div>
+                <div class="bio-row">
+                  <h5>Ad:</h5>
+                  <p>Çağla</p>
+                 </div>
+                <div class="bio-row">
+                  <h5>Ad:</h5>
+                  <p>Çağla</p>
+                </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
                   <div class="bio-row">
 
-                    <h6>Adı:</h6>
-
+                    <h6>Cinsiyet:</h6>
+  
                     <p>-</p>
-
-                </div>
-
-                <div class="bio-row">
-
-                  <h6>Soyadı:</h6>
-
-                  <p>-</p>
-
-                </div>
-
-                <div class="bio-row">
-
-                  <h6>Email:</h6>
-
-                  <p>-</p>
-
-                </div>
-
-                <div class="bio-row">
-
-                  <h6>GSM:</h6>
-
-                  <p>-</p>
-
-                 </div>
-
-                <div class="bio-row">
-
-                  <h6>Doğum Tarihi:</h6>
-
-                  <p>-</p>
-
-                </div>
-
-                </div>
-
+  
+                  </div>
+  
+                  <div class="bio-row">
+  
+                    <h6>Konum:</h6>
+  
+                    <p>-</p>
+  
+                   </div>
+              <div class="bio-row1">
+                <h6>Şuan evcil hayvanınız var mı?</h6>
+                <p class="scrollable">
+                  <label>
+                    <input type="radio" name="evcil-hayvan" value="evet"> Evet
+                  </label>
+                  <label>
+                    <input type="radio" name="evcil-hayvan" value="hayır"> Hayır
+                  </label>
+                </p>
               </div>
-
+            <div class="bio-row1">
+              <h6>Şuan evcil hayvanınız var mı?</h6>
+              <p class="scrollable">
+                <label>
+                  <input type="radio" name="evcil-hayvan" value="evet"> Evet
+                </label>
+                <label>
+                  <input type="radio" name="evcil-hayvan" value="hayır"> Hayır
+                </label>
+              </p>
             </div>
-
-            <!--CARD2-->
-
-            <div class="col-sm-6 mb-sm-0">
-
-              <div class="card">
-
-                <div class="card-body">
-
-                <div class="bio-row">
-
-                  <h6>Cinsiyet:</h6>
-
-                  <p>-</p>
-
                 </div>
-
-                <div class="bio-row">
-
-                  <h6>Konum:</h6>
-
-                  <p>-</p>
-
-                 </div>
-
-                 <div class="bio-row1">
-                  <h6>Daha önce evcil hayvan baktınız mı?</h6>
-                  <p class="scrollable">
-                    <label>
-                      <input type="radio" name="evcil-hayvan" value="evet"> Evet
-                    </label>
-                    <label>
-                      <input type="radio" name="evcil-hayvan" value="hayır"> Hayır
-                    </label>
-                  </p>
-                </div>
-
-                <div class="bio-row1">
-                  <h6>Şuan evcil hayvanınız var mı?</h6>
-                  <p class="scrollable">
-                    <label>
-                      <input type="radio" name="evcil-hayvan" value="evet"> Evet
-                    </label>
-                    <label>
-                      <input type="radio" name="evcil-hayvan" value="hayır"> Hayır
-                    </label>
-                  </p>
-                </div>
-
-                </div>
-
               </div>
-
             </div>
-
           </div>
+          <div class="row" id="about" *ngIf="currentContent === 'about'">
+            <div class="col-sm-12 mb-3 ">
+              <div class="card ">
+                <div class="card-body">
+                  <div class="card mb-4 mt-3">
+                    <div class="card-body" style="display: flex; justify-content: space-between; align-items: center;">
+                      <img src="assets/dog.png" alt="" style="border-radius: 50%; width: 12%;">
+                      <div>
+                        <h6>Mina</h6>
+                      <h6>2 yaşında</h6>
+                      <h6>22/10/2007</h6>
+                      </div>
+                      <div class="spinner-grow text-success" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                      </div>
+                      <p>merhaba ben mina en yakın arkadaşımı arıyorum..</p>
 
+
+                    </div>
+                  </div>
+                  <div class="card mb-4">
+                    <div class="card-body" style="display: flex; justify-content: space-between; align-items: center;">
+                      <img src="assets/dog.png" alt="" style="border-radius: 50%; width: 12%;">
+                      <div>
+                        <h6>Mina</h6>
+                      <h6>2 yaşında</h6>
+                      <h6>22/10/2007</h6>
+                      </div>
+                      <div class="spinner-grow text-danger" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                      </div>
+                      <p>merhaba ben mina en yakın arkadaşımı arıyorum..</p>
+                      
+
+                    </div>
+                  </div>
+                  <div class="card mb-4">
+                    <div class="card-body" style="display: flex; justify-content: space-between; align-items: center;">
+                      <img src="assets/dog.png" alt="" style="border-radius: 50%; width: 12%;">
+                      <div>
+                        <h6>Mina</h6>
+                      <h6>2 yaşında</h6>
+                      <h6>22/10/2007</h6>
+                      </div>
+                      <div class="spinner-grow text-warning" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                      </div>
+                      <p>merhaba ben mina en yakın arkadaşımı arıyorum..</p>
+                      
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+              </div>
+            </div>
+          </div>
       </div>
-
  </div>
-
-</div>
-
-</div>
 
 
 
