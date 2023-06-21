@@ -23,6 +23,7 @@ import { ToastModule } from 'primeng/toast';
 import { FooterComponent } from './footer/footer.component';
 import { CommonModule } from '@angular/common';
 import { ProfileModule } from './profile/profile.module';
+import { DialogModule } from 'primeng/dialog';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { ProfileModule } from './profile/profile.module';
     RouterModule,
     ToastModule,
     CommonModule,
-     ProfileModule
+     ProfileModule,
+     DialogModule
   ],
   providers: [AuthService,
   MessageService],

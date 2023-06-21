@@ -175,6 +175,12 @@ scrollToTop(): void {
   });
 }
 
+//model için 
+visible: boolean = false;
+
+    showDialog() {
+        this.visible = true;
+    }
 }
 
 
