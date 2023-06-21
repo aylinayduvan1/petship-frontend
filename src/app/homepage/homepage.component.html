@@ -28,7 +28,7 @@
 
 
 
-  <!-- kategoriler -->
+  <!-- banner -->
   <div id="carouselExampleAutoplaying" class="carousel slide mb-5" data-bs-ride="carousel" style="background-color: #4BA47E;;">
     <div class="carousel-inner">
       <div class="carousel-item active">
@@ -47,6 +47,11 @@
       <span class="visually-hidden">ileri</span>
     </button>
   </div>
+
+
+
+
+  <!-- kategorielr -->
   <div class="container ">
     <div >
       <div class="text-center " style=" margin-bottom: 40px;">
@@ -72,28 +77,66 @@
       </div>
   </div>
 
+
+
+
     <!-- kartlar -->
 
-    <div  class="kategori-kartlarm">
-      <div *ngIf="seciliKategori === 'kedi'">
-        <div class="row">
-          <div class="col-md-2 " *ngFor="let kedi of kediKartlar; let i = index">
-            <div class="card mb-4 category-card" (mouseenter)="kedi.showButton = true" (mouseleave)="kedi.showButton = false">
-              <img [src]="'assets/' + kedi.gorseli" alt="Kedi Görseli" class="card-img-top">
-              <div class="card-body">
-                <h5 class="card-title">{{ kedi.adi }}</h5>
-                <p class="card-text">Yaşı: {{ kedi.yasi }}</p>
-                <p class="card-text">Cinsiyeti: {{ kedi.cinsiyeti }}</p>
-                <div class="ikonlar">
-                  <button class="btn btn-warning btn-lg" *ngIf="kedi.showButton" (click)="playAnimation(i)">
-                    <i class="fas fa-comments"></i>
-                  </button>
-                  <button class="btn btn-info btn-lg" *ngIf="kedi.showButton" (click)="showDialog()" icon="pi pi-external-link" label="Show">
-                    <i class="fas fa-info-circle"></i>
-                  </button>
-                </div>
+<div  class="kategori-kartlarm">
+ <div class="container">
+  <div *ngIf="seciliKategori === 'kedi'">
+    <div class="row">
+      <div class="col-md-2 " *ngFor="let kedi of kediKartlar; let i = index">
+        <div class="card mb-4 category-card" (mouseenter)="kedi.showButton = true" (mouseleave)="kedi.showButton = false">
+          <img [src]="'assets/' + kedi.gorseli" alt="Kedi Görseli" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title">{{ kedi.adi }}</h5>
+            <p class="card-text">Yaşı: {{ kedi.yasi }}</p>
+            <p class="card-text">Cinsiyeti: {{ kedi.cinsiyeti }}</p>
+            <div class="ikonlar">
+              <button class="btn btn-warning btn-lg" *ngIf="kedi.showButton" (click)="playAnimation(i)">
+                <i class="fas fa-comments"></i>
+              </button>
+              <button class="btn btn-info btn-lg" *ngIf="kedi.showButton" (click)="showDialog()" icon="pi pi-external-link" label="Show">
+                <i class="fas fa-info-circle"></i>
+              </button>
+            </div>
 
-              </div>
+          </div>
+
+          <div class="card flex justify-content-center">
+
+            <p-dialog header="Long Content" [(visible)]="visible" [style]="{ width: '50vw', height: '300px' }">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p> 
+        </p-dialog>
+        </div>
+        
+        </div>
+            <div id="animationContainer" class="animation-container" *ngIf="animationVisible && seciliKartIndex === i"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div *ngIf="seciliKategori === 'köpek'">
+      <div class="row">
+      <div class="col-md-2" *ngFor="let kopek of kopekKartlar; let i = index">
+        <div class="card mb-4 category-card" (mouseenter)="kopek.showButton = true" (mouseleave)="kopek.showButton = false">
+          <img [src]="'assets/' + kopek.gorseli" alt="Kedi Görseli" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title">{{ kopek.adi }}</h5>
+            <p class="card-text">Yaşı: {{ kopek.yasi }}</p>
+            <p class="card-text">Cinsiyeti: {{ kopek.cinsiyeti }}</p>
+            <div class="ikonlar">
+              <button class="btn btn-warning btn-lg" *ngIf="kopek.showButton" (click)="playAnimation(i)">
+                <i class="fas fa-comments"></i>
+              </button>
+              <button class="btn btn-info btn-lg" *ngIf="kopek.showButton" (click)="showDialog()" icon="pi pi-external-link" label="Show">
+                <i class="fas fa-info-circle"></i>
+              </button>
 
               <div class="card flex justify-content-center">
 
@@ -101,58 +144,55 @@
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                         consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-            
-                   
+                    </p> 
             </p-dialog>
             </div>
+            </div>
+            <div id="animationContainer" class="animation-container" *ngIf="animationVisible && seciliKartIndex === i"></div>
+          </div>
+        </div>
+      </div>
+      </div>
 
-            
-            </div>
-                <div id="animationContainer" class="animation-container" *ngIf="animationVisible && seciliKartIndex === i"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div *ngIf="seciliKategori === 'köpek'">
-        <div class="row">
-          <div class="col-md-2" *ngFor="let kopek of kopekKartlar; let i = index">
-            <div class="card mb-4 category-card" (mouseenter)="kopek.showButton = true" (mouseleave)="kopek.showButton = false">
-              <img [src]="'assets/' + kopek.gorseli" alt="Kedi Görseli" class="card-img-top">
-              <div class="card-body">
-                <h5 class="card-title">{{ kopek.adi }}</h5>
-                <p class="card-text">Yaşı: {{ kopek.yasi }}</p>
-                <p class="card-text">Cinsiyeti: {{ kopek.cinsiyeti }}</p>
-                <button class="btn btn-warning btn-lg" *ngIf="kopek.showButton" (click)="playAnimation(i)">
-                  <i class="fas fa-comments"></i>
-                </button>
-                <div id="animationContainer" class="animation-container" *ngIf="animationVisible && seciliKartIndex === i"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div *ngIf="seciliKategori === 'kuş'">
-        <div class="row">
-          <div class="col-md-2" *ngFor="let kus of kusKartlar; let i = index">
-            <div class="card mb-4 category-card " (mouseenter)="kus.showButton = true" (mouseleave)="kus.showButton = false">
-              <img [src]="'assets/' + kus.gorseli" alt="Kedi Görseli" class="card-img-top">
-              <div class="card-body">
-                <h5 class="card-title">{{ kus.adi }}</h5>
-                <p class="card-text">Yaşı: {{ kus.yasi }}</p>
-                <p class="card-text">Cinsiyeti: {{ kus.cinsiyeti }}</p>
+    </div>
+  
+    <div *ngIf="seciliKategori === 'kuş'">
+      <div class="row">
+        <div class="col-md-2" *ngFor="let kus of kusKartlar; let i = index">
+          <div class="card mb-4 category-card " (mouseenter)="kus.showButton = true" (mouseleave)="kus.showButton = false">
+            <img [src]="'assets/' + kus.gorseli" alt="Kedi Görseli" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">{{ kus.adi }}</h5>
+              <p class="card-text">Yaşı: {{ kus.yasi }}</p>
+              <p class="card-text">Cinsiyeti: {{ kus.cinsiyeti }}</p>
+              <button class="btn btn-warning btn-lg" *ngIf="kus.showButton" (click)="playAnimation(i)">
+                <i class="fas fa-comments"></i>
+              </button>
+              <div class="ikonlar">
                 <button class="btn btn-warning btn-lg" *ngIf="kus.showButton" (click)="playAnimation(i)">
                   <i class="fas fa-comments"></i>
                 </button>
-                <div id="animationContainer" class="animation-container" *ngIf="animationVisible && seciliKartIndex === i"></div>
+                <button class="btn btn-info btn-lg" *ngIf="kus.showButton" (click)="showDialog()" icon="pi pi-external-link" label="Show">
+                  <i class="fas fa-info-circle"></i>
+                </button>
+
+                <div class="card flex justify-content-center">
+
+                  <p-dialog header="Long Content" [(visible)]="visible" [style]="{ width: '50vw', height: '300px' }">
+                      <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                      </p> 
+              </p-dialog>
+              </div>
+              <div id="animationContainer" class="animation-container" *ngIf="animationVisible && seciliKartIndex === i"></div>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-
+ </div>
+</div>
 
 
 
