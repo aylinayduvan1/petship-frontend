@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({ //@Component dekoratörü, bu sınıfın bir Angular bileşeni olduğunu belirtir.
   // ([(ngModel)]) kullanarak bileşenin email ve password özellikleriyle senkronize edilir
