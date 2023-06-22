@@ -261,6 +261,42 @@ body {
   color: #333;
 }
 
+.modal-content {
+  display: flex;
+  align-items: center;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 80vh;
+  
+}
+
+.modal-content #modalContent {
+  display: flex;
+  align-items: center;
+}
+
+.modal-content #modalContent img {
+  width: 50%;
+  margin-right: 10px;
+  overflow-y: auto;
+  overflow-x: auto;
+  position:relative;
+  top: 0;
+}
+
+.modal-image
+{
+  top: 0;
+  left: 0;
+}
+
+
+
+.modal-content #modalContent .text-container {
+  width: 50%;
+}
+
 
 /* up button */
 .to-top {
@@ -280,5 +316,8 @@ body {
 
 .show-scrolltop {
   opacity: 1;
+
+  
+  
 }
 
