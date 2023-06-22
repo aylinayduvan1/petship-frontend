@@ -57,7 +57,7 @@ playAnimation(index: number): void {
     renderer: 'svg',
     loop: false,
     autoplay: true,
-    path: 'assets/animation.json' // Animasyon dosyasının yolunu buraya girin
+    path: 'assets/animations/animation.json' // Animasyon dosyasının yolunu buraya girin
   });
 
   animation.addEventListener('complete', () => {
@@ -134,7 +134,7 @@ initializeAnimation() {
     renderer: 'svg',
     loop: true,
     autoplay: true,
-    path: 'assets/about.json' // Animasyon dosyasının yolunu buraya göre ayarlayın
+    path: 'assets/animations/about.json' // Animasyon dosyasının yolunu buraya göre ayarlayın
   });
 
 }
