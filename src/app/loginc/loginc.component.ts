@@ -25,7 +25,7 @@ export class LogincComponent {
     if (this.username === 'aylin' && this.password === '123') {
       setTimeout(() => {
         this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Giriş yaptınız..' });
-        this.router.navigate(['/homepage']); // Giriş doğruysa /homepage'e yönlendir
+        this.router.navigate(['/profile']); // Giriş doğruysa /homepage'e yönlendir
       }, 2000); // 2 saniye (2000 milisaniye) beklet
     } else {
       this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Kullanıcı adı veya şifre hatalı' });
