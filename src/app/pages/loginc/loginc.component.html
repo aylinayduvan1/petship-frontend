@@ -15,15 +15,16 @@
                                         <h4 style="color: aliceblue;" class="mb-4 pb-3">Log In</h4>
                                         <form (submit)="login()" ngModelOptions="{standalone: true}">
                                             <div class="form-group">
-                                                <input type="text" [(ngModel)]="username" name="username" placeholder="Kullanıcı Adı" class="form-style">
+                                                <input type="text" [(ngModel)]="loginRequest.Email"  name="username" placeholder="Kullanıcı Adı" class="form-style">
                                                 <i class="input-icon uil uil-at"></i>
                                             </div>
                                             <div class="form-group mt-2">
-                                                <input type="password" [(ngModel)]="password" name="password" placeholder="Şifre" class="form-style">
+                                                <input type="password" [(ngModel)]="loginRequest.password" name="password" placeholder="Şifre" class="form-style">
                                                 <i class="input-icon uil uil-lock-alt"></i>
                                             </div>
 
-                                            <button type="submit" pButton pRipple (click)="showSuccess()" label="Success" class="btn mt-4">Giriş yap</button>
+                                            <button type="submit" pButton pRipple  label="Success" class="btn mt-4" (click)="login()">Giriş yap</button>
+                                            <!-- (click)="showSuccess()" -->
                                         </form>
 
                                         <p class="mb-0 mt-4 text-center"><a href="#0" class="link">Forgot your password?</a></p>

@@ -9,10 +9,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { LoginComponent } from './components/login/login.component';
-import { AuthService } from './services/auth.service';
+import { LogincComponent } from '../app/pages/loginc/loginc.component';
+import { AuthService } from './services/auth/auth.service';
 import { AvatarModule } from 'primeng/avatar';
-import { LogincComponent } from './pages/loginc/loginc.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { RouterModule } from '@angular/router'; // RouterModule'yu import edin
@@ -32,7 +31,6 @@ import { DialogModule } from 'primeng/dialog';
     NavbarComponent,
     BannerComponent,
     CategoriesComponent,
-    LoginComponent,
     LogincComponent,
     HomepageComponent,
     AboutComponent,
