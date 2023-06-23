@@ -7,7 +7,6 @@ import { ResponseStatus } from '../../models/response/base-response.model';
 import { TokenResponse } from '../../models/response/token-response.model';
 import { User } from '../../models/user.model';
 
-//@Injectable dekoratörü, bu sınıfın bir Angular enjekte edilebilir hizmet olduğunu belirtir.
 @Injectable({
   providedIn: 'root',
 })
@@ -15,19 +14,15 @@ export class AuthService {
   public currentUser: Observable<User | null>;
   private currentUserSubject: BehaviorSubject<User | null>;
 
-  //prettier-ignore
   constructor(private readonly apiService: ApiService) {
     this.currentUserSubject = new BehaviorSubject<User | null>(JSON.parse(<string>sessionStorage.getItem('current_user')));
-
     this.currentUser = this.currentUserSubject.asObservable();
   }
-
 
   public get currentUserValue(): User | null {
     return this.currentUserSubject.value;
   }
 
-  //prettier-ignore
   public async login(request: LoginRequest): Promise<ResponseStatus> {
     const loginResponse = await this.apiService.login(request).toPromise();
 
@@ -36,39 +31,26 @@ export class AuthService {
     if (status == ResponseStatus.Ok) {
       this.setToken(loginResponse!.data);
 
-      const profileResponse = await this.apiService
-        .getProfileInfo()
-        .toPromise();
+      // Remove the following code block that fetches profile info
 
-      status = profileResponse!.status;
-
-      if (status == ResponseStatus.Ok) {
-        sessionStorage.setItem('current_user', JSON.stringify(profileResponse!.data));
-
-        this.currentUserSubject.next(profileResponse!.data);
-      } else {
-        await this.logOut();
-      }
+      sessionStorage.setItem('current_user', JSON.stringify({}));
+      this.currentUserSubject.next({} as User);
     }
 
     return status;
   }
 
   public async refreshToken(): Promise<boolean> {
-    const refreshTokenResponse = await this.apiService
-      .refreshToken(<string>sessionStorage.getItem('refresh_token'))
-      .toPromise();
+    const refreshTokenResponse = await this.apiService.refreshToken(<string>sessionStorage.getItem('refresh_token')).toPromise();
 
     if (refreshTokenResponse!.status == ResponseStatus.Ok) {
       this.setToken(refreshTokenResponse!.data);
-
       return true;
     }
 
     return false;
   }
 
-  //prettier-ignore
   private setToken(token: TokenResponse | null) {
     if (token != null) {
       sessionStorage.setItem('access_token', JSON.stringify(token.accessToken));
@@ -82,4 +64,3 @@ export class AuthService {
     this.currentUserSubject.next(null);
   }
 }
-

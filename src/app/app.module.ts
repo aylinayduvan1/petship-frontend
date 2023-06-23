@@ -9,7 +9,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { LogincComponent } from '../app/pages/loginc/loginc.component';
 import { AuthService } from './services/auth/auth.service';
 import { AvatarModule } from 'primeng/avatar';
 import { AppRoutingModule } from './app-routing.module';
@@ -23,6 +22,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { CommonModule } from '@angular/common';
 import { ProfileModule } from './components/profile/profile.module';
 import { DialogModule } from 'primeng/dialog';
+import { AuthModule } from './modules/auth/auth.module';
 
 
 @NgModule({
@@ -31,7 +31,6 @@ import { DialogModule } from 'primeng/dialog';
     NavbarComponent,
     BannerComponent,
     CategoriesComponent,
-    LogincComponent,
     HomepageComponent,
     AboutComponent,
     ToastComponent,
@@ -51,7 +50,8 @@ import { DialogModule } from 'primeng/dialog';
      DialogModule
   ],
   providers: [AuthService,
-  MessageService],
+  MessageService,
+  AuthModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,6 @@
 export const environment = {
-  production: true,
-  application_url: '',
-  api_base_url: '',
-  api_url: '',
+  production: false,
+  api_url: 'http://localhost:5258/api',
+  api_base_url: 'http://localhost:5258',
+  application_url: 'http://localhost:4200',
 };

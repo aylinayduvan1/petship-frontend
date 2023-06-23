@@ -34,7 +34,7 @@ export class LogincComponent {
         this.router.navigate(['/profile']); // Giriş doğruysa /homepage'e yönlendir
       }, 2000); // 2 saniye (2000 milisaniye) beklet
     } else if (status == ResponseStatus.Invalid)
-      this.loginRequest.password = '';
+      this.loginRequest.Password = '';
       this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Kullanıcı adı veya şifre hatalı' });
   }
 
