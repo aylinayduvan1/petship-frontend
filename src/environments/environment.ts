@@ -4,3 +4,4 @@ export const environment = {
   api_base_url: 'http://localhost:5258',
   application_url: 'http://localhost:4200',
 };
+//burası böyle güncellenmeli
