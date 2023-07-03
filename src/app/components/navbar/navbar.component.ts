@@ -6,4 +6,11 @@ import { Component } from '@angular/core';
   templateUrl: '../navbar/navbar.component.html',
   styleUrls: ['../navbar/navbar.component.css']
 })
-export class NavbarComponent  { }
+export class NavbarComponent  {
+  scrollToSection(section: string) {
+    const element = document.getElementById(section);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+}

@@ -1,3 +1,5 @@
+
+/* KATEGORİELR VE KARTLAR*/
 .btn-img{
   max-width: 150px;
   height: auto;
@@ -7,10 +9,19 @@
 }
 
 .btn-img:hover {
-  transform: scale(1.2); 
+  transform: scale(1.2);
   /* transform: rotate(15deg); */
   /* transform: translate(-5px, -10px); */
 }
+
+.ikonlar {
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+
+
 
 .hover-zoom {
   background-size: 100% 100%;
@@ -36,7 +47,7 @@
   position: relative;
 }
 
-.card::before {
+.category-card::before {
   content: "";
   position: absolute;
   top: 0;
@@ -48,19 +59,33 @@
   transition: background-color 1s ease; /* Geçiş animasyonu için süre ve geçiş işlevini ayarlayın */
 }
 
-.card:hover::before {
+.category-card:hover::before {
   background-color: rgba(0, 0, 0, 0.5); /* Hovar durumunda arka plan rengini güncelleyin */
 }
 
 .btn-warning{
   position: absolute;
-  top: 50%;
+  top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
   opacity: 0; /* Butonu varsayılan olarak gizleyin */
   transition: opacity 1s ease; /* Geçiş animasyonu için süre ve geçiş işlevini ayarlayın */
 }
+.btn-info {
+  position: absolute;
+  top: calc(50% + 20px); /* İlk butona göre 50 piksel aşağıda hizala */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  opacity: 1; /* Butonu varsayılan olarak gizleyin */
+  transition: opacity 1s ease; /* Geçiş animasyonu için süre ve geçiş işlevini ayarlayın */
+  background-color: #4BA47E ;
+  border: none;
+}
+
+
+
 
 .card:hover .btn-warning {
   opacity: 1; /* Hovar durumunda butonun görünürlüğünü ayarlayın */

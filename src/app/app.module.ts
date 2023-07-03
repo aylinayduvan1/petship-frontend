@@ -14,7 +14,7 @@ import { AvatarModule } from 'primeng/avatar';
 import { AppRoutingModule } from './app-routing.module';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { RouterModule } from '@angular/router'; // RouterModule'yu import edin
-import {AboutComponent} from './components/categories/about/about.component';
+import {AboutComponent} from './components/about/about.component';
 import { ToastComponent } from './toast/toast.component'
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';

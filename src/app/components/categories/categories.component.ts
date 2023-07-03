@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input , ElementRef , ViewChild} from '@angular/core';
 declare let lottie: any;
+import { AnimationItem } from 'lottie-web';
 
 
 interface Kedi {
@@ -60,7 +61,6 @@ export class CategoriesComponent {
   }
   
   
-
  
   kediKartlar: Kedi[] = [
     { adi: 'Kedi 1', yasi: 2, cinsiyeti: 'Erkek', gorseli: 'kedi-image.png' , showButton: false},
@@ -105,4 +105,36 @@ export class CategoriesComponent {
     { adi: 'Kopek 2', yasi: 3, cinsiyeti: 'Dişi', gorseli: 'dog.png', showButton: false },
     { adi: 'Kopek 2', yasi: 3, cinsiyeti: 'Dişi', gorseli: 'dog.png', showButton: false },
   ];
+
+
+  //model için 
+visible: boolean = false;
+
+showDialog() {
+    this.visible = true;
+}
+//about
+@ViewChild('lottieContainer', { static: true }) lottieContainer!: ElementRef;
+animation!: AnimationItem;
+
+ngOnInit() {
+  this.initializeAnimation();
+}
+
+ngOnDestroy() {
+  if (this.animation) {
+    this.animation.destroy();
+  }
+}
+
+initializeAnimation() {
+  this.animation = (window as any).lottie.loadAnimation({
+    container: this.lottieContainer.nativeElement,
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    path: 'assets/animations/about.json' // Animasyon dosyasının yolunu buraya göre ayarlayın
+  });
+
+}
 }

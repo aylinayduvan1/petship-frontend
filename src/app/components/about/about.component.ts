@@ -27,7 +27,7 @@ export class AboutComponent {
       renderer: 'svg',
       loop: true,
       autoplay: true,
-      path: 'assets/about.json' // Animasyon dosyasının yolunu buraya göre ayarlayın
+      path: 'assets/animations/about.json' // Animasyon dosyasının yolunu buraya göre ayarlayın
     });
 
   }

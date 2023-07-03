@@ -1,3 +1,4 @@
+/* BANNER */
 .carousel-item img {
     height: 90vh; /* Resimlerin yüksekliğini 100 viewport yüksekliği olarak ayarlar */
     object-fit: cover; /* Resmi bozulmadan ekranı kaplayacak şekilde ölçekler */

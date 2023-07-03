@@ -30,9 +30,20 @@ export class AuthService {
 
     if (status == ResponseStatus.Ok) {
       this.setToken(loginResponse!.data);
-
-      // Remove the following code block that fetches profile info
-
+        //   const profileResponse = await this.apiService
+        //     .getProfileInfo()
+        //     .toPromise();
+    
+        //   status = profileResponse!.status;
+    
+        //   if (status == ResponseStatus.Ok) {
+        //     sessionStorage.setItem('current_user', JSON.stringify(profileResponse!.data));
+    
+        //     this.currentUserSubject.next(profileResponse!.data);
+        //   } else {
+        //     await this.logOut();
+        //   }
+        // }
       sessionStorage.setItem('current_user', JSON.stringify({}));
       this.currentUserSubject.next({} as User);
     }

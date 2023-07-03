@@ -1,26 +1,25 @@
-<nav class="navbar navbar-expand-lg  " style="background-color: #4BA47E;" >
-  <div class="container">
-    <a class="navbar-brand" href="#">
-      <img src="assets/petship-logo2.png" alt="Logo" width="50" height="50" class="d-inline-block align-text-top">
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" routerLink="/hakkimizda" routerLinkActive="active"  aria-current="page" href="#">Hakkımızda</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Profilim</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">İletişim</a>
-        </li>
-        <p-avatar icon="pi pi-user" styleClass="mr-2" shape="circle"></p-avatar> 
-
-      </ul>
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-lg " style="background-color: #4BA47E; padding: 0px;">
+    <div class="container">
+      <a class="navbar-brand" routerLinkActive="/" href="/">
+        <img src="assets/images/petship-logo.png" alt="Logo" width="70" height="70" class="d-inline-block align-text-top">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" (click)="scrollToSection('about')">Hakkımızda</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="/login" routerLinkActive="active" aria-current="page" href="#" >Profilim</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" (click)="scrollToSection('contact')">İletişim</a>
+          </li>
+          <p-avatar icon="pi pi-user" styleClass="mr-2" shape="circle"></p-avatar>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
-
+  </nav>
