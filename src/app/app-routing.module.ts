@@ -12,8 +12,8 @@ const routes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'hakkimizda', component: AboutComponent, pathMatch: 'full' },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: 'auth', loadChildren: () => import('./modules/auth/auth.module').then((m) => m.AuthModule) },
-  { path: '**', redirectTo: '' }
+  { path: 'auth', loadChildren: () => import('./modules/auth/auth.module').then((m) => m.AuthModule) },   //loadChildren özelliği, belirli bir modülün dinamik olarak yüklenmesini sağlar.
+  { path: '**', redirectTo: '' }    //geçersiz bir URL girildiğinde varsayılan olarak ana sayfaya yönlendirir.
   ];
 
 @NgModule({
