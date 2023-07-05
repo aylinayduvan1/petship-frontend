@@ -1,12 +1,10 @@
-
-
 <app-navbar></app-navbar>
 
 
 
 <!-- burası profil componenti -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-<div class="container bootstrap snippets bootdey" style="padding: 20px 100px 200px 100px;">
+<div class=" bootstrap snippets bootdey" style="padding: 20px 50px 200px 50px;">
 <div class="row">
   <div class="profile-nav col-md-3">
       <div class="panel">
@@ -34,10 +32,15 @@
             <h4  id="users" *ngIf="currentContent === 'users'"> Kullanıcılar</h4>
           </div>
 
+
+          <!-- kişisel bilgiler -->
           <div  id="home" *ngIf="currentContent === 'home'" >
             <app-users-info-listes></app-users-info-listes>
           </div>
 
+
+
+          <!-- ilanlar -->
           <div  id="advert" *ngIf="currentContent === 'advert'">
             <app-advert-listes></app-advert-listes>
           </div>
@@ -59,5 +62,5 @@
  </div>
 
 
-
+ <!-- footer -->
 <app-footer></app-footer>

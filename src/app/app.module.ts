@@ -28,6 +28,8 @@ import { UsersInfoListesComponent } from './components/pagess/profile/profile-pa
 import { UsersListesComponent } from './components/pagess/profile/profile-panel/users-listes/users-listes.component';
 import { CategoriesListesComponent } from './components/pagess/profile/profile-panel/categories-listes/categories-listes.component';
 import { AdvertListesComponent } from './components/pagess/profile/profile-panel/advert-listes/advert-listes.component';
+import { RippleModule } from 'primeng/ripple';
+import { CustomerService } from './components/pagess/profile/profile-panel/users-listes/customerservice/customerservice';
 
 
 @NgModule({
@@ -44,7 +46,7 @@ import { AdvertListesComponent } from './components/pagess/profile/profile-panel
     UsersInfoListesComponent,
     UsersListesComponent,
     CategoriesListesComponent,
-    AdvertListesComponent
+    AdvertListesComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,10 +59,12 @@ import { AdvertListesComponent } from './components/pagess/profile/profile-panel
     ToastModule,
     CommonModule,
      ProfileModule,
-     DialogModule
+     DialogModule,
+    RippleModule,
   ],
   providers: [AuthService,
   MessageService,
+  CustomerService,
   AuthModule],
   bootstrap: [AppComponent]
 })
