@@ -1,12 +1,14 @@
+<<<<<<< HEAD
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+=======
+import { NgModule,  CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+>>>>>>> 721316550c8d8c71c4ece2342a4e00f70796848a
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { AppComponent } from './app.component';
 import { BannerComponent } from './components/banner/banner.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth/auth.service';
@@ -28,6 +30,10 @@ import { UsersInfoListesComponent } from './components/pagess/profile/profile-pa
 import { UsersListesComponent } from './components/pagess/profile/profile-panel/users-listes/users-listes.component';
 import { CategoriesListesComponent } from './components/pagess/profile/profile-panel/categories-listes/categories-listes.component';
 import { AdvertListesComponent } from './components/pagess/profile/profile-panel/advert-listes/advert-listes.component';
+import { AccordionModule } from 'primeng/accordion';
+import { ButtonModule } from 'primeng/button';
+
+
 
 import { TableModule } from 'primeng/table';
 import {TagModule} from 'primeng/tag';
@@ -39,8 +45,13 @@ import { DropdownModule } from 'primeng/dropdown';
 
 
 @NgModule({
+<<<<<<< HEAD
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   
+=======
+
+
+>>>>>>> 721316550c8d8c71c4ece2342a4e00f70796848a
   declarations: [
     AppComponent,
     NavbarComponent,
@@ -54,7 +65,8 @@ import { DropdownModule } from 'primeng/dropdown';
     UsersInfoListesComponent,
     UsersListesComponent,
     CategoriesListesComponent,
-    AdvertListesComponent
+    AdvertListesComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -68,17 +80,23 @@ import { DropdownModule } from 'primeng/dropdown';
     CommonModule,
      ProfileModule,
      DialogModule,
+<<<<<<< HEAD
      TableModule,
      TagModule,
      ProgressBarModule,
      SliderModule,
      MultiSelectModule,
      DropdownModule
+=======
+     AccordionModule,
+    ButtonModule
+>>>>>>> 721316550c8d8c71c4ece2342a4e00f70796848a
   ],
   providers: [AuthService,
     CustomerService,
   MessageService,
   AuthModule],
   bootstrap: [AppComponent]
+  
 })
 export class AppModule { }
