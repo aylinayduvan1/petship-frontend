@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -29,8 +29,18 @@ import { UsersListesComponent } from './components/pagess/profile/profile-panel/
 import { CategoriesListesComponent } from './components/pagess/profile/profile-panel/categories-listes/categories-listes.component';
 import { AdvertListesComponent } from './components/pagess/profile/profile-panel/advert-listes/advert-listes.component';
 
+import { TableModule } from 'primeng/table';
+import {TagModule} from 'primeng/tag';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { SliderModule } from 'primeng/slider';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { CustomerService } from './components/pagess/profile/profile-panel/categories-listes/type-service/customer_service';
+import { DropdownModule } from 'primeng/dropdown';
+
 
 @NgModule({
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  
   declarations: [
     AppComponent,
     NavbarComponent,
@@ -57,9 +67,16 @@ import { AdvertListesComponent } from './components/pagess/profile/profile-panel
     ToastModule,
     CommonModule,
      ProfileModule,
-     DialogModule
+     DialogModule,
+     TableModule,
+     TagModule,
+     ProgressBarModule,
+     SliderModule,
+     MultiSelectModule,
+     DropdownModule
   ],
   providers: [AuthService,
+    CustomerService,
   MessageService,
   AuthModule],
   bootstrap: [AppComponent]
