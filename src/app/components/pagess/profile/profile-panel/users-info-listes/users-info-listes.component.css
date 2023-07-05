@@ -1,62 +1,86 @@
 .bio-row {         /*bilgiler*/
 
     color: #0c7e58;
-  
+
     width: 100%;
-  
+
     float: left;
-  
+
     margin-top: 10px;
-  
+
     padding:0 15px;
-  
+
     height: 50px;
-  
+
     display: flex;
-  
+
     gap: 30%;
-  
+
     font-style: italic;
-  
+
   }
-  
+
   .bio-row1 {         /*bilgiler2 bio rowları ayır*/
-  
+
     color: #0c7e58;
-  
+
     width: 100%;
-  
+
     float: left;
-  
+
     margin-top: 10px;
-  
+
     margin-bottom: 45px;
-  
+
     padding:0 15px;
-  
+
     height: 50px;
-  
+
     display: flex;
-  
+
     gap: 30%;
-  
+
     font-style: italic;
     display: flex;
     flex-direction: column;
   }
-  
-  
-  
+  .bio-row2 {         /*bilgiler2 bio rowları ayır*/
+
+    color: #0c7e58;
+
+    width: 100%;
+
+    float: left;
+
+    margin-top: 10px;
+
+    margin-bottom: 45px;
+
+    padding:0 15px;
+
+    height: 50px;
+
+    display: flex;
+
+    gap: 30%;
+
+    font-style: italic;
+    display: flex;
+    flex-direction: column;
+  }
+
+
+
   .scrollable input[type="radio"] {
     display: none;
   }
-  
+
   .scrollable label {
     display: inline-block;
     margin-right: 10px;
     cursor: pointer;
   }
-  
+
   .scrollable label:before {
     content: "";
     display: inline-block;
@@ -67,20 +91,66 @@
     border-radius: 50%;
     vertical-align: middle;
   }
-  
+
   .scrollable input[type="radio"]:checked + label:before {
     background-color: #000;
   }
-  
+
   .bio-row p span {
-  
+
     color:#89817e;
-  
+
     font-weight: 400;
-  
+
     width: 100%;
-  
+
     font-size: 20px;
-  
+
+  }
+  #edit {
+    background-color: #0c7e58; /* Arkaplan rengi */
+    color: white; /* Metin rengi */
+    padding: 10px 20px; /* Dolgu (yukarıdan-aşağıdan, soldan-sağa) */
+    border: none; /* Kenarlık yok */
+    border-radius: 5px; /* Köşelerin yuvarlaklığı */
+    cursor: pointer; /* İmleç şekli */
+  }
+
+  #edit:hover {
+    background-color: #0c7e58; /* Üzerine gelindiğindeki arka plan rengi */
+  }
+  #update {
+    background-color: #0c7e58; /* Arkaplan rengi */
+    color: white; /* Metin rengi */
+    padding: 10px 20px; /* Dolgu (yukarıdan-aşağıdan, soldan-sağa) */
+    border: none; /* Kenarlık yok */
+    border-radius: 5px; /* Köşelerin yuvarlaklığı */
+    cursor: pointer; /* İmleç şekli */
+
+  }
+
+  #update:hover {
+    background-color: #0c7e58; /* Üzerine gelindiğindeki arka plan rengi */
+  }
+  .input-field {
+    margin-bottom: 10px;
+  }
+
+  .input-field input[type="text"],
+  .input-field input[type="email"],
+  .input-field input[type="date"],
+  .input-field input[type="tel"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .input-field input[type="text"]:disabled,
+  .input-field input[type="email"]:disabled,
+  .input-field input[type="date"]:disabled,
+  .input-field input[type="tel"]:disabled {
+    background-color: #f2f2f2;
+    cursor: not-allowed;
   }
 

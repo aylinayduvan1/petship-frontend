@@ -13,7 +13,24 @@ export class UsersInfoListesComponent {
     this.currentContent = content;
   }
 
+  selectedOption1: string = '';
+  selectedOption2: string = '';
 
+  ad: string = '';
+  soyad: string = '';
+  email: string='';
+  bdate: string = '';
+  gsm: string='';
+  gender:string = '';
+  
+  isEditing: boolean = false;
+  toggleEditing() {
+    this.isEditing = !this.isEditing;
+  }
+
+  update() {
+    // Güncelleme işlemleri
+  }
 
   constructor() { }
 
@@ -27,5 +44,5 @@ export class UsersInfoListesComponent {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
-  } 
+  }
 }
