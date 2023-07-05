@@ -1,79 +1,121 @@
- <!-- kullanıcı bilgileri -->
-    <div class="row">
-      <div class="col-sm-12 col-md-6 mb-3 ">
-        <div class="card">
-          <div class="card-body">
-            <div class="bio-row">
-              <h6>Adı:</h6>
-  
-              <p>-</p>
-          </div>
-          <div class="bio-row">
-            <h6>Soyadı:</h6>
-  
-            <p>-</p>
-          </div>
-          <div class="bio-row">
-            <h6>Email:</h6>
-  
-            <p>-</p>
-          </div>
-          <div class="bio-row">
-            <h6>Doğum Tarihi:</h6>
-  
-            <p>-</p>
-           </div>
-           <div class="bio-row">
-            <h6>GSM:</h6>
-  
-            <p>-</p>
-           </div>
-  
-          </div>
+<div class="row">
+  <div class="col-sm-12 col-md-6 mb-3">
+    <div class="card">
+      <div class="card-body">
+        <div class="bio-row">
+          <h6>Adı:</h6>
+          <ng-container *ngIf="isEditing; else readOnlyField">
+            <input type="text" [(ngModel)]="ad" class="form-control">
+          </ng-container>
+          <ng-template #readOnlyField>
+            <p>{{ ad }}</p>
+          </ng-template>
         </div>
-      </div>
-      <div class="col-sm-12 col-md-6">
-        <div class="card">
-          <div class="card-body">
-            <div class="bio-row">
-  
-              <h6>Cinsiyet:</h6>
-  
-              <p>-</p>
-  
-            </div>
-  
-            <div class="bio-row">
-  
-              <h6>Konum:</h6>
-  
-              <p>-</p>
-  
-             </div>
-        <div class="bio-row1">
-          <h6>Şuan evcil hayvanınız var mı?</h6>
-          <p class="scrollable">
-            <label>
-              <input type="radio" name="evcil-hayvan" value="evet"> Evet
-            </label>
-            <label>
-              <input type="radio" name="evcil-hayvan" value="hayır"> Hayır
-            </label>
-          </p>
+        <div class="bio-row">
+          <h6>Soyadı:</h6>
+          <ng-container *ngIf="isEditing; else readOnlyField">
+            <input type="text" [(ngModel)]="soyad" class="form-control">
+          </ng-container>
+          <ng-template #readOnlyField>
+            <p>{{ soyad }}</p>
+          </ng-template>
         </div>
-      <div class="bio-row1">
-        <h6>Şuan evcil hayvanınız var mı?</h6>
-        <p class="scrollable">
-          <label>
-            <input type="radio" name="evcil-hayvan" value="evet"> Evet
-          </label>
-          <label>
-            <input type="radio" name="evcil-hayvan" value="hayır"> Hayır
-          </label>
-        </p>
-      </div>
-          </div>
+        <div class="bio-row">
+          <h6>Email:</h6>
+          <ng-container *ngIf="isEditing; else readOnlyField">
+            <input type="text" [(ngModel)]="email" class="form-control">
+          </ng-container>
+          <ng-template #readOnlyField>
+            <p>{{ email }}</p>
+          </ng-template>
+        </div>
+        <div class="bio-row">
+          <h6>Doğum Tarihi:</h6>
+          <ng-container *ngIf="isEditing; else readOnlyField">
+            <input type="text" [(ngModel)]="bdate" class="form-control">
+          </ng-container>
+          <ng-template #readOnlyField>
+            <p>{{ bdate }}</p>
+          </ng-template>
+        </div>
+        <div class="bio-row">
+          <h6>GSM:</h6>
+          <ng-container *ngIf="isEditing; else readOnlyField">
+            <input type="text" [(ngModel)]="gsm" class="form-control">
+          </ng-container>
+          <ng-template #readOnlyField>
+            <p>{{ gsm }}</p>
+          </ng-template>
         </div>
       </div>
     </div>
+  </div>
+  <div class="col-sm-12 col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <div class="bio-row">
+          <h6>Cinsiyet:</h6>
+          <ng-container *ngIf="isEditing; else readOnlyField">
+            <input type="text" [(ngModel)]="gender" class="form-control">
+          </ng-container>
+          <ng-template #readOnlyField>
+            <p>{{ gender }}</p>
+          </ng-template>
+        </div>
+        <div class="bio-row1">
+          <h6>Konum:</h6>
+          <p>-</p>
+        </div>
+        <div class="bio-row1">
+          <h6>Şu an evcil hayvanınız var mı?</h6>
+          <label>
+            <input
+              type="radio"
+              name="evcil-hayvan1"
+              value="evet"
+              [(ngModel)]="selectedOption1"
+            />
+            Evet
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="evcil-hayvan2"
+              value="hayır"
+              [(ngModel)]="selectedOption1"
+            />
+            Hayır
+          </label>
+        </div>
 
+        <div class="bio-row2">
+          <h6>Şu an evcil hayvanınız var mı?</h6>
+          <label>
+            <input
+              type="radio"
+              name="evcil-hayvan3"
+              value="evet"
+              [(ngModel)]="selectedOption2"
+            />
+            Evet
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="evcil-hayvan4"
+              value="hayır"
+              [(ngModel)]="selectedOption2"
+            />
+            Hayır
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <button id="edit" style="width: max-content" (click)="toggleEditing()">Düzenle</button>
+    <button id="update" [disabled]="!isEditing">Güncelle</button>
+  </div>
+</div>
