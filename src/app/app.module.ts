@@ -1,8 +1,8 @@
-<<<<<<< HEAD
+
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-=======
-import { NgModule,  CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
->>>>>>> 721316550c8d8c71c4ece2342a4e00f70796848a
+
+
+
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
@@ -45,13 +45,12 @@ import { DropdownModule } from 'primeng/dropdown';
 
 
 @NgModule({
-<<<<<<< HEAD
+
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   
-=======
 
 
->>>>>>> 721316550c8d8c71c4ece2342a4e00f70796848a
+
   declarations: [
     AppComponent,
     NavbarComponent,
@@ -80,17 +79,16 @@ import { DropdownModule } from 'primeng/dropdown';
     CommonModule,
      ProfileModule,
      DialogModule,
-<<<<<<< HEAD
+
      TableModule,
      TagModule,
      ProgressBarModule,
      SliderModule,
      MultiSelectModule,
-     DropdownModule
-=======
+     DropdownModule,
      AccordionModule,
     ButtonModule
->>>>>>> 721316550c8d8c71c4ece2342a4e00f70796848a
+
   ],
   providers: [AuthService,
     CustomerService,
