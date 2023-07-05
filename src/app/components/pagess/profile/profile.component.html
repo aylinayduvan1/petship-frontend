@@ -1,0 +1,63 @@
+
+
+<app-navbar></app-navbar>
+
+
+
+<!-- burası profil componenti -->
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container bootstrap snippets bootdey" style="padding: 20px 100px 200px 100px;">
+<div class="row">
+  <div class="profile-nav col-md-3">
+      <div class="panel">
+          <div class="user-heading round">
+              <a href="#">
+                  <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="">
+              </a>
+              <h1>Çağla Özay</h1>
+              <p>çaça@theEmail.com</p>
+          </div>
+          <ul class="nav nav-pills nav-stacked" >
+              <li class="active" ><a  (click)="changeContent('home')" > <i class="fa fa-user"></i> Kişisel Bilgiler</a></li>
+              <li ><a (click)="changeContent('advert')"> <i class="fa fa-edit mt-3"></i> İlanlar</a></li>
+              <li ><a (click)="changeContent('categories')"> <i class="fa fa-edit mt-3"></i> Kategoriler</a></li>
+              <li ><a (click)="changeContent('users')"> <i class="fa fa-edit mt-3"></i> Kullanıcılar</a></li>
+          </ul>
+      </div>
+  </div>
+  <div class=" profile-info col-md-9">
+      <div class="panel">
+          <div class="bio-graph-heading mb-3" >
+            <h4  id="home" *ngIf="currentContent === 'home'">Kişisel Bilgiler</h4>
+            <h4  id="advert" *ngIf="currentContent === 'advert'"> İlanlar</h4>
+            <h4  id="categories" *ngIf="currentContent === 'categories'"> Kategoriler</h4>
+            <h4  id="users" *ngIf="currentContent === 'users'"> Kullanıcılar</h4>
+          </div>
+
+          <div  id="home" *ngIf="currentContent === 'home'" >
+            <app-users-info-listes></app-users-info-listes>
+          </div>
+
+          <div  id="advert" *ngIf="currentContent === 'advert'">
+            <app-advert-listes></app-advert-listes>
+          </div>
+
+
+          <!-- kategororiler -->
+          <div  id="categories" *ngIf="currentContent === 'categories'">
+            <app-categories-listes></app-categories-listes>
+          </div>
+
+
+          <!-- kullanıcılar -->
+          <div  id="users" *ngIf="currentContent === 'users'">
+            <app-users-listes></app-users-listes>
+          </div>
+        </div>
+      </div>
+    </div>
+ </div>
+
+
+
+<app-footer></app-footer>

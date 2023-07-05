@@ -1,0 +1,86 @@
+.bio-row {         /*bilgiler*/
+
+    color: #0c7e58;
+  
+    width: 100%;
+  
+    float: left;
+  
+    margin-top: 10px;
+  
+    padding:0 15px;
+  
+    height: 50px;
+  
+    display: flex;
+  
+    gap: 30%;
+  
+    font-style: italic;
+  
+  }
+  
+  .bio-row1 {         /*bilgiler2 bio rowları ayır*/
+  
+    color: #0c7e58;
+  
+    width: 100%;
+  
+    float: left;
+  
+    margin-top: 10px;
+  
+    margin-bottom: 45px;
+  
+    padding:0 15px;
+  
+    height: 50px;
+  
+    display: flex;
+  
+    gap: 30%;
+  
+    font-style: italic;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  
+  
+  .scrollable input[type="radio"] {
+    display: none;
+  }
+  
+  .scrollable label {
+    display: inline-block;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  .scrollable label:before {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    border: 2px solid #4BA47E;
+    border-radius: 50%;
+    vertical-align: middle;
+  }
+  
+  .scrollable input[type="radio"]:checked + label:before {
+    background-color: #000;
+  }
+  
+  .bio-row p span {
+  
+    color:#89817e;
+  
+    font-weight: 400;
+  
+    width: 100%;
+  
+    font-size: 20px;
+  
+  }
+

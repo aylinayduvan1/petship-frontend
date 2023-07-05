@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LogincComponent } from './modules/auth/loginc/loginc.component';
-import { HomepageComponent } from './pages/homepage/homepage.component';
+import { HomepageComponent } from './components/pagess/homee/homepage.component';
 import { AboutComponent } from './components/about/about.component';
-import { ProfileComponent } from './components/profile/profile.component';
+import { ProfileComponent } from './components/pagess/profile/profile.component';
 import { AuthGuard } from 'src/app/guards/auth.guard';
 
 

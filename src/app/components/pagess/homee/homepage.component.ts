@@ -4,8 +4,8 @@ declare let lottie: any;
 
 @Component({
   selector: 'app-homepage',
-  templateUrl: '../homepage/homepage.component.html',
-  styleUrls: ['../homepage/homepage.component.css']
+  templateUrl: '../homee/homepage.component.html',
+  styleUrls: ['../homee/homepage.component.css']
 })
 export class HomepageComponent {
  
