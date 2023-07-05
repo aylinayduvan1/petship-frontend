@@ -8,7 +8,7 @@ export class CustomerService {
            
             {
                 id: 1497,
-                name: 'Flo Bookamer',
+                name: 'Köpek',
                 country: {
                     name: 'Argentina',
                     code: 'ar'
@@ -26,7 +26,7 @@ export class CustomerService {
             },
             {
                 id: 1498,
-                name: 'Jani Biddy',
+                name: 'Kuş',
                 country: {
                     name: 'Switzerland',
                     code: 'ch'
@@ -44,7 +44,7 @@ export class CustomerService {
             },
             {
                 id: 1499,
-                name: 'Chauncey Motley',
+                name: 'Kedi',
                 country: {
                     name: 'Argentina',
                     code: 'ar'
