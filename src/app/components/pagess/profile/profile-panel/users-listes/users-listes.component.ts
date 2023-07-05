@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Customer } from '../users-listes/type-folder/customer';
-import { CustomerService } from '../users-listes/customerservice/customerservice'; 
+import { CustomerServiceUserList } from '../users-listes/customerservice/customerservice'; 
 @Component({
   selector: 'app-users-listes',
   templateUrl: './users-listes.component.html',
@@ -9,7 +9,7 @@ import { CustomerService } from '../users-listes/customerservice/customerservice
 export class UsersListesComponent {
   customers!: Customer[];
 
-  constructor(private customerService: CustomerService) {}
+  constructor(private customerService: CustomerServiceUserList) {}
 
   ngOnInit() {
       this.customerService.getCustomersMedium().then((data) => {

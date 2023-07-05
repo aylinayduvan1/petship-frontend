@@ -1,12 +1,10 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { AppComponent } from './app.component';
 import { BannerComponent } from './components/banner/banner.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth/auth.service';
@@ -29,10 +27,25 @@ import { UsersListesComponent } from './components/pagess/profile/profile-panel/
 import { CategoriesListesComponent } from './components/pagess/profile/profile-panel/categories-listes/categories-listes.component';
 import { AdvertListesComponent } from './components/pagess/profile/profile-panel/advert-listes/advert-listes.component';
 import { RippleModule } from 'primeng/ripple';
-import { CustomerService } from './components/pagess/profile/profile-panel/users-listes/customerservice/customerservice';
+import { CustomerServiceUserList } from './components/pagess/profile/profile-panel/users-listes/customerservice/customerservice';
+import { AccordionModule } from 'primeng/accordion';
+import { ButtonModule } from 'primeng/button';
+import { TableModule } from 'primeng/table';
+import {TagModule} from 'primeng/tag';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { SliderModule } from 'primeng/slider';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { CustomerService } from './components/pagess/profile/profile-panel/categories-listes/type-service/customer_service';
+import { DropdownModule } from 'primeng/dropdown';
 
 
 @NgModule({
+
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  
+
+
+
   declarations: [
     AppComponent,
     NavbarComponent,
@@ -47,6 +60,7 @@ import { CustomerService } from './components/pagess/profile/profile-panel/users
     UsersListesComponent,
     CategoriesListesComponent,
     AdvertListesComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -61,11 +75,21 @@ import { CustomerService } from './components/pagess/profile/profile-panel/users
      ProfileModule,
      DialogModule,
     RippleModule,
+     TableModule,
+     TagModule,
+     ProgressBarModule,
+     SliderModule,
+     MultiSelectModule,
+     DropdownModule,
+     AccordionModule,
+    ButtonModule
   ],
   providers: [AuthService,
-  MessageService,
-  CustomerService,
-  AuthModule],
+    CustomerServiceUserList,
+    MessageService,
+    CustomerService,
+    AuthModule],
   bootstrap: [AppComponent]
+  
 })
 export class AppModule { }
