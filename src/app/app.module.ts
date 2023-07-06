@@ -38,6 +38,19 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { CustomerService } from './components/pagess/profile/profile-panel/categories-listes/type-service/customer_service';
 import { DropdownModule } from 'primeng/dropdown';
 import { ConfirmationService} from 'primeng/api';
+import { ProductService } from './components/pagess/profile/profile-panel/advert-listes/service/productservice';
+import { Toolbar, ToolbarModule } from 'primeng/toolbar';
+
+
+
+
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { FileUploadModule } from 'primeng/fileupload';
+import { RatingModule } from 'primeng/rating';
+import { InputTextModule } from 'primeng/inputtext';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 
 @NgModule({
@@ -85,12 +98,23 @@ import { ConfirmationService} from 'primeng/api';
      DropdownModule,
      AccordionModule,
     ButtonModule,
-     ToastModule
+     ToastModule,
+     ToolbarModule,
+     ConfirmDialogModule,
+     FileUploadModule,
+    RatingModule,
+    TagModule,
+    InputTextModule,
+    InputTextareaModule,
+    DropdownModule,
+    RadioButtonModule,
+    InputNumberModule,
   ],
   providers: [AuthService,
     CustomerServiceUserList,
     MessageService,
     CustomerService,
+    ProductService,
     AuthModule],
   bootstrap: [AppComponent]
 
