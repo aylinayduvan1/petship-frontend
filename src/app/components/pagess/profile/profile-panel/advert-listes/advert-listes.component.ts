@@ -59,6 +59,7 @@ export class  AdvertListesComponent implements OnInit{
         this.product = { ...product };
         this.productDialog = true;
     }
+    
 
     deleteProduct(product: Product) {
         this.confirmationService.confirm({
@@ -130,5 +131,10 @@ export class  AdvertListesComponent implements OnInit{
         default:
           return '';
         }
+    }
+
+
+    onImageUpload(event: any) {
+        const uploadedFiles = event.files;
     }
 }
