@@ -56,10 +56,6 @@ import { InputNumberModule } from 'primeng/inputnumber';
 @NgModule({
 
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-
-
-
-
   declarations: [
     AppComponent,
     NavbarComponent,
