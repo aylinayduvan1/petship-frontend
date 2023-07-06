@@ -42,9 +42,6 @@ import { DropdownModule } from 'primeng/dropdown';
 @NgModule({
 
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  
-
-
 
   declarations: [
     AppComponent,
