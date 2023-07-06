@@ -18,11 +18,11 @@ export class UsersInfoListesComponent {
 
   ad: string = '';
   soyad: string = '';
-  email: string='';
+  email: string = '';
   bdate: string = '';
-  gsm: string='';
-  gender:string = '';
-  
+  gsm: string = '';
+  gender:string='';
+
   isEditing: boolean = false;
   toggleEditing() {
     this.isEditing = !this.isEditing;
@@ -35,8 +35,12 @@ export class UsersInfoListesComponent {
   constructor() { }
 
   ngOnInit(): void {
-    this.currentContent = 'home'; // Örnek olarak 'home' değerini ata (istediğiniz varsayılan içeriği belirleyin)
-
+    // İlk değer atamalarını yapabilirsiniz
+    this.ad = 'Örnek Ad';
+    this.soyad = 'Örnek Soyad';
+    this.email = 'ornek@mail.com';
+    this.bdate = '01/01/2000';
+    this.gsm = '5555555555';
   }
 
   scrollToSection(section: string) {

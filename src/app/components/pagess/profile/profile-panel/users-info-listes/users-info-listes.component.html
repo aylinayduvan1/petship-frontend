@@ -4,49 +4,50 @@
       <div class="card-body">
         <div class="bio-row">
           <h6>Adı:</h6>
-          <ng-container *ngIf="isEditing; else readOnlyField">
+          <ng-container *ngIf="isEditing; else readOnlyAd">
             <input type="text" [(ngModel)]="ad" class="form-control">
           </ng-container>
-          <ng-template #readOnlyField>
+          <ng-template #readOnlyAd>
             <p>{{ ad }}</p>
           </ng-template>
         </div>
         <div class="bio-row">
           <h6>Soyadı:</h6>
-          <ng-container *ngIf="isEditing; else readOnlyField">
+          <ng-container *ngIf="isEditing; else readOnlySoyad">
             <input type="text" [(ngModel)]="soyad" class="form-control">
           </ng-container>
-          <ng-template #readOnlyField>
+          <ng-template #readOnlySoyad>
             <p>{{ soyad }}</p>
           </ng-template>
         </div>
         <div class="bio-row">
           <h6>Email:</h6>
-          <ng-container *ngIf="isEditing; else readOnlyField">
+          <ng-container *ngIf="isEditing; else readOnlyEmail">
             <input type="text" [(ngModel)]="email" class="form-control">
           </ng-container>
-          <ng-template #readOnlyField>
+          <ng-template #readOnlyEmail>
             <p>{{ email }}</p>
           </ng-template>
         </div>
         <div class="bio-row">
           <h6>Doğum Tarihi:</h6>
-          <ng-container *ngIf="isEditing; else readOnlyField">
+          <ng-container *ngIf="isEditing; else readOnlyBdate">
             <input type="text" [(ngModel)]="bdate" class="form-control">
           </ng-container>
-          <ng-template #readOnlyField>
+          <ng-template #readOnlyBdate>
             <p>{{ bdate }}</p>
           </ng-template>
         </div>
         <div class="bio-row">
           <h6>GSM:</h6>
-          <ng-container *ngIf="isEditing; else readOnlyField">
+          <ng-container *ngIf="isEditing; else readOnlyGsm">
             <input type="text" [(ngModel)]="gsm" class="form-control">
           </ng-container>
-          <ng-template #readOnlyField>
+          <ng-template #readOnlyGsm>
             <p>{{ gsm }}</p>
           </ng-template>
         </div>
+
       </div>
     </div>
   </div>
@@ -76,9 +77,8 @@
               [(ngModel)]="selectedOption1"
             />
             Evet
-          </label>
-          <label>
-            <input
+
+            <input style="margin-left: 15%;"
               type="radio"
               name="evcil-hayvan2"
               value="hayır"
@@ -98,9 +98,8 @@
               [(ngModel)]="selectedOption2"
             />
             Evet
-          </label>
-          <label>
-            <input
+
+            <input style="margin-left: 15%;"
               type="radio"
               name="evcil-hayvan4"
               value="hayır"
