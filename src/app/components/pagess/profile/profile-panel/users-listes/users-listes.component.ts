@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Customer } from '../users-listes/type-folder/customer';
 import { CustomerServiceUserList } from '../users-listes/customerservice/customerservice';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { Router } from "@angular/router";
+import { ApiService } from 'src/app/services/api/api.service';
+import { User } from 'src/app/models/user.model';
+ 
 
 @Component({
   selector: 'app-users-listes',
@@ -11,14 +15,27 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 })
 export class UsersListesComponent implements OnInit {
   customers!: Customer[];
+  users:User[] = []
+ 
 
   constructor(
+    private readonly apiService: ApiService, 
+    private router: Router,
     private customerService: CustomerServiceUserList,
     private messageService: MessageService,
     private confirmationService: ConfirmationService
   ) {}
+    
 
+  refresh() {
+    this.apiService.getAllEntities(User).subscribe((response) => {
+      this.users = response.data;
+    });
+console.log(this.users)
+
+}
   ngOnInit() {
+    this.refresh();
     this.customerService.getCustomersMedium().then((data) => {
       this.customers = data;
     });
@@ -61,5 +78,4 @@ export class UsersListesComponent implements OnInit {
     this.customers = this.customers.filter((c) => c.id !== customer.id);
     this.messageService.add({ severity: 'success', summary: 'Başarılı', detail: 'Kullanıcı başarı ile silindi', life: 3000 });
   }
-  
 }

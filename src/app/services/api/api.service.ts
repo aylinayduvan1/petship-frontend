@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Type } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable, map } from 'rxjs';
+import { Observable, map, share } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { BaseDataResponse } from '../../models/response/base-data-response.model';
 import { TokenResponse } from '../../models/response/token-response.model';
@@ -66,4 +66,13 @@ export class ApiService {
         })
       );
   }
-}     
+
+
+
+  
+  getAllEntities<TEntity>(entityType: Type<TEntity>) {
+    return this.http.request<BaseDataResponse<TEntity[]>>
+      ("get", environment.api_url + "/" + entityType.name + "/GetAll").pipe(share());
+  } 
+
+}   
