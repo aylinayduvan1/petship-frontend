@@ -1,3 +1,7 @@
 .custom-button {
     background-color: #4BA47E !important;
 }
+
+.button-space {
+    margin-right: 8px; /* İstediğiniz boşluk miktarını burada ayarlayabilirsiniz */
+  }
