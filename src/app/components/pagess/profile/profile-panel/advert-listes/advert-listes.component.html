@@ -40,9 +40,10 @@
               <td>{{ product.category }}</td>
               <td><p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating></td>
               <td>
-                  <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editProduct(product)"></button>
-                  <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteProduct(product)"></button>
-              </td>
+                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editProduct(product)"></button>
+                <span class="button-space"></span>
+                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteProduct(product)"></button>
+            </td>
           </tr>
 
       </ng-template>

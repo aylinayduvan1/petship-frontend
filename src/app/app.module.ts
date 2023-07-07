@@ -40,10 +40,6 @@ import { DropdownModule } from 'primeng/dropdown';
 import { ConfirmationService} from 'primeng/api';
 import { ProductService } from './components/pagess/profile/profile-panel/advert-listes/service/productservice';
 import { Toolbar, ToolbarModule } from 'primeng/toolbar';
-
-
-
-
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { FileUploadModule } from 'primeng/fileupload';
 import { RatingModule } from 'primeng/rating';
