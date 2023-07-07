@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-body">
         <div class="bio-row">
-          <h6 style="font-size:1vw;">Adı:</h6>
+          <h6 style="font-size: 20px;">Adı:</h6>
           <ng-container *ngIf="isEditing; else readOnlyAd">
             <input type="text" [(ngModel)]="ad" class="form-control">
           </ng-container>
@@ -12,7 +12,7 @@
           </ng-template>
         </div>
         <div class="bio-row">
-          <h6 style="font-size:1vw;">Soyadı:</h6>
+          <h6 style="font-size: 20px;">Soyadı:</h6>
           <ng-container *ngIf="isEditing; else readOnlySoyad">
             <input type="text" [(ngModel)]="soyad" class="form-control">
           </ng-container>
@@ -21,7 +21,7 @@
           </ng-template>
         </div>
         <div class="bio-row">
-          <h6 style="font-size:1vw;">Email:</h6>
+          <h6 style="font-size:20px;">Email:</h6>
           <ng-container *ngIf="isEditing; else readOnlyEmail">
             <input type="text" [(ngModel)]="email" class="form-control">
           </ng-container>
@@ -30,7 +30,7 @@
           </ng-template>
         </div>
         <div class="bio-row">
-          <h6 style="font-size:1vw;">Doğum Tarihi:</h6>
+          <h6 style="font-size:20px;">Doğum Tarihi:</h6>
           <ng-container *ngIf="isEditing; else readOnlyBdate">
             <input type="text" [(ngModel)]="bdate" class="form-control">
           </ng-container>
@@ -39,7 +39,7 @@
           </ng-template>
         </div>
         <div class="bio-row">
-          <h6 style="font-size:1vw;">GSM:</h6>
+          <h6 style="font-size:20px;">GSM:</h6>
           <ng-container *ngIf="isEditing; else readOnlyGsm">
             <input type="text" [(ngModel)]="gsm" class="form-control">
           </ng-container>
@@ -55,7 +55,7 @@
     <div class="card">
       <div class="card-body">
         <div class="bio-row">
-          <h6 style="font-size:1vw;">Cinsiyet:</h6>
+          <h6 style="font-size:20px;">Cinsiyet:</h6>
           <ng-container *ngIf="isEditing; else readOnlyField">
             <input type="text" [(ngModel)]="gender" class="form-control">
           </ng-container>
@@ -64,11 +64,11 @@
           </ng-template>
         </div>
         <div class="bio-row1">
-          <h6 style="font-size:1vw;">Konum:</h6>
-          <p style="font-size:1vw;">-</p>
+          <h6 style="font-size: 20px;">Konum:</h6>
+          <p style="font-size: 15px;">-</p>
         </div>
         <div class="bio-row1">
-          <h6 style="font-size:1vw;">Şu an evcil hayvanınız var mı?</h6>
+          <h6 style="font-size:20px;">Şu an evcil hayvanınız var mı?</h6>
           <label>
             <input
               type="radio"
@@ -89,7 +89,7 @@
         </div>
 
         <div class="bio-row2">
-          <h6 style="font-size:1vw;" >Şu an evcil hayvanınız var mı?</h6>
+          <h6 style="font-size: 20px;" >Şu an evcil hayvanınız var mı?</h6>
           <label>
             <input
               type="radio"
