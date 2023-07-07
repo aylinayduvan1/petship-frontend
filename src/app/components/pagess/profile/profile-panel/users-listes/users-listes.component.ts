@@ -31,9 +31,9 @@ export class UsersListesComponent implements OnInit {
     this.apiService.getAllEntities(User).subscribe((response) => {
       this.users = response.data;
     });
-console.log(this.users)
+    console.log(this.users)
 
-}
+  }
   ngOnInit() {
     this.refresh();
     this.customerService.getCustomersMedium().then((data) => {

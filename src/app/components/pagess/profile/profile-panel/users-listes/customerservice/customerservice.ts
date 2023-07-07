@@ -24,44 +24,7 @@ export class CustomerServiceUserList {
                 },
                 balance: 63121
             },
-            
-            {
-                id: 1473,
-                name: 'hayvan adi',
-                country: {
-                    name: 'Turkey',
-                    code: 'tr'
-                },
-                company: 'Irving Foot Center',
-                date: '2015-07-22',
-                status: 'renewal',
-                verified: true,
-                activity: 72,
-                representative: {
-                    name: 'Elif',
-                    image: 'asiyajavayant.png'
-                },
-                balance: 71061
-            },
-           
-            {
-                id: 1475,
-                name: 'pamuk',
-                country: {
-                    name: 'Israel',
-                    code: 'il'
-                },
-                company: 'Mcrae, James L',
-                date: '2018-03-20',
-                status: 'proposal',
-                verified: true,
-                activity: 45,
-                representative: {
-                    name: 'Faide',
-                    image: 'bernardodominic.png'
-                },
-                balance: 58495
-            },
+ 
             {
                 id: 1476,
                 name: 'karabaş',
@@ -80,24 +43,7 @@ export class CustomerServiceUserList {
                 },
                 balance: 96252
             },
-            {
-                id: 1477,
-                name: 'cici',
-                country: {
-                    name: 'Latvia',
-                    code: 'lv'
-                },
-                company: 'Kummerer, J Michael Esq',
-                date: '2017-02-21',
-                status: 'proposal',
-                verified: true,
-                activity: 12,
-                representative: {
-                    name: 'çağla',
-                    image: 'stephenshaw.png'
-                },
-                balance: 71454
-            },
+           
             
         ];
     }
