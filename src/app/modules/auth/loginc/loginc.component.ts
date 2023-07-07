@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { LoginRequest } from 'src/app/models/request/login-request.model';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ResponseStatus } from 'src/app/models/response/base-response.model';
+import { AnimationItem } from 'lottie-web';
 
+declare let lottie: any;
 
 @Component({
   selector: 'app-loginc',
@@ -13,6 +15,43 @@ import { ResponseStatus } from 'src/app/models/response/base-response.model';
   providers: [MessageService]
 })
 export class LogincComponent {
+  @ViewChild('lottieContainer', { static: true }) lottieContainer!: ElementRef;
+  value!: string;
+  animation!: AnimationItem;
+  animationRunning = false;
+
+  ngOnDestroy() {
+    if (this.animation) {
+      this.animation.destroy();
+    }
+  }
+
+  toggleAnimation() {
+    if (this.animationRunning) {
+      this.animation.stop();
+      this.animationRunning = false;
+    } else {
+      if (this.animation) {
+        this.animation.destroy();
+      }
+      this.initializeAnimation();
+      this.animation.play();
+      this.animationRunning = true;
+    }
+  }
+
+  initializeAnimation() {
+    this.animation = (window as any).lottie.loadAnimation({
+      container: this.lottieContainer.nativeElement,
+      renderer: 'svg',
+      loop: false,
+      autoplay: true,
+      path: 'assets/animations/kus.json',
+      animationSpeed: 0.5, // Adjust the speed here   
+    });
+  }
+
+
   public loginRequest: LoginRequest = <LoginRequest>{};
 
   constructor(
@@ -22,6 +61,8 @@ export class LogincComponent {
   ) {}
 
   ngOnInit(): void {
+    this.initializeAnimation();
+
   }
 
   async login() {

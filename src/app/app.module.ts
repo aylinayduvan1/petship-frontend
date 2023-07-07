@@ -47,6 +47,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { PasswordModule } from 'primeng/password';
 
 
 @NgModule({
@@ -101,6 +102,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
     DropdownModule,
     RadioButtonModule,
     InputNumberModule,
+    PasswordModule
   ],
   providers: [AuthService,
     CustomerServiceUserList,

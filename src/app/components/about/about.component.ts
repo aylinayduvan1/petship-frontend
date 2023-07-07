@@ -26,7 +26,7 @@ export class AboutComponent {
       container: this.lottieContainer.nativeElement,
       renderer: 'svg',
       loop: true,
-      autoplay: true,
+      autoplay: false,
       path: 'assets/animations/about.json' // Animasyon dosyasının yolunu buraya göre ayarlayın
     });
 
