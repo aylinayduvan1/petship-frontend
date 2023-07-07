@@ -1,61 +1,60 @@
 <div class="row" style="margin: 4px;">
-    
-<div class="card">
-    <p-table 
-    [paginator]="true"
-    [rows]="5"
-    [tableStyle]="{ 'min-width': '50rem' }"
-    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-    [rowsPerPageOptions]="[5, 10]"
+    <div class="card">
+        <p-table 
+            [paginator]="true"
+            [rows]="5"
+            [tableStyle]="{ 'min-width': '50rem' }"
+            [rowsPerPageOptions]="[5, 10]"
+            [value]="customers" sortField="representative.name" sortMode="single" dataKey="representative.name" rowGroupMode="subheader" groupRowsBy="representative.name" [tableStyle]="{'min-width': '50rem'}">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="width:15%">Kullanıcı</th>
+                    <th style="width:15%">İlan no</th>
+                    <th style="width:15%">Durum</th>
+                    <th style="width:15%">İlan tarihi</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="groupheader" let-customer let-rowIndex="rowIndex" let-expanded="expanded">
+                    <tr>
+                        <td colspan="5">
+                            <div style="display: flex; justify-content: space-between;" >
+                                <div *ngFor="let user of users">
+                                    <button type="button" pButton pRipple [pRowToggler]="customer" class="p-button-text p-button-rounded p-button-plain mr-2" [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+                                    <img [alt]="customer.representative.name" src="https://primefaces.org/cdn/primeng/images/demo/avatar/{{customer.representative.image}}" width="32" style="vertical-align: middle; margin-right: 15px;" />
+                                    <span class="font-bold ml-2">{{user.userName}}</span>
+                                </div>
+                                <div>
+                                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteCustomer(customer)"></button>
+                                </div>
+                            </div>                
+                        </td>
+                    </tr>
+            </ng-template>
+            <ng-template pTemplate="rowexpansion" let-customer>
 
-    [value]="customers" sortField="representative.name" sortMode="single" dataKey="representative.name" rowGroupMode="subheader" groupRowsBy="representative.name" [tableStyle]="{'min-width': '70rem'}">
-        <ng-template pTemplate="header">
-            <tr>
-                <th style="width:15%">Kullanıcı</th>
-                <th style="width:15%">İlan no</th>
-                <th style="width:15%">Durum</th>
-                <th style="width:15%">İlan tarihi</th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="groupheader" let-customer let-rowIndex="rowIndex" let-expanded="expanded">
-            <tr>
-                <td colspan="5">
-                    
-                  <div style="display: flex; justify-content: space-between;">
-                    <div>
-                        <button type="button" pButton pRipple [pRowToggler]="customer" class="p-button-text p-button-rounded p-button-plain mr-2" [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
-                        <img [alt]="customer.representative.name" src="https://primefaces.org/cdn/primeng/images/demo/avatar/{{customer.representative.image}}" width="32" style="vertical-align: middle; margin-right: 15px;" />
-                        <span class="font-bold ml-2">{{customer.representative.name}}</span>
-                       </div>
-                        <div>
-                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteCustomer(customer)"></button>
-                            
-                        </div>
-                  </div>                
-                </td>
-            </tr>
-        </ng-template>
-        
-        <ng-template pTemplate="rowexpansion" let-customer>
-            <tr>
-                <td>
-                    {{customer.name}}
-                </td>
-                <td>
-                    <img src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png" [class]="'flag flag-' + customer.country.code" style="width: 20px">
-                    <span class="ml-1 vertical-align-middle">{{customer.country.name}}</span>
-                </td>
-                
-                <td>
-                    <p-tag [value]="customer.status" [severity]="getSeverity(customer.status)"></p-tag>
-                </td>
-                <td>
-                    {{customer.date}}
-                </td>
-            </tr>
-        </ng-template>
-       
-    </p-table>
-</div>
+                <tr>
+                    <td>
+                        {{customer.name}}
+                    </td>
+                    <td>
+                        <span class="ml-1 vertical-align-middle">{{customer.country.name}}</span>
+                    </td>
+                    <td>
+                        <p-tag [value]="customer.status" [severity]="getSeverity(customer.status)"></p-tag>
+                    </td>
+                    <td>
+                        {{customer.date}}
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
 </div>
 <p-toast></p-toast>
+
+
+<!-- <div *ngFor="let user of users">
+    <div>
+        {{user.userName}}
+    </div>
+</div> -->
