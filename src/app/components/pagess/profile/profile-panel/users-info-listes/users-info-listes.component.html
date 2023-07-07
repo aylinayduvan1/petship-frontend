@@ -5,7 +5,7 @@
         <div class="bio-row">
           <h6 style="font-size: 20px;">Adı:</h6>
           <ng-container *ngIf="isEditing; else readOnlyAd">
-            <input type="text" [(ngModel)]="ad" class="form-control">
+            <input type="text" [(ngModel)]="ad" class="form-control"style="width: 100%;">
           </ng-container>
           <ng-template #readOnlyAd>
             <p>{{ ad }}</p>
@@ -14,7 +14,7 @@
         <div class="bio-row">
           <h6 style="font-size: 20px;">Soyadı:</h6>
           <ng-container *ngIf="isEditing; else readOnlySoyad">
-            <input type="text" [(ngModel)]="soyad" class="form-control">
+            <input type="text" [(ngModel)]="soyad" class="form-control"style="width: 100%;">
           </ng-container>
           <ng-template #readOnlySoyad>
             <p>{{ soyad }}</p>
@@ -23,7 +23,7 @@
         <div class="bio-row">
           <h6 style="font-size:20px;">Email:</h6>
           <ng-container *ngIf="isEditing; else readOnlyEmail">
-            <input type="text" [(ngModel)]="email" class="form-control">
+            <input type="text" [(ngModel)]="email" class="form-control"style="width: 100%;">
           </ng-container>
           <ng-template #readOnlyEmail>
             <p>{{ email }}</p>
@@ -32,7 +32,7 @@
         <div class="bio-row">
           <h6 style="font-size:20px;">Doğum Tarihi:</h6>
           <ng-container *ngIf="isEditing; else readOnlyBdate">
-            <input type="text" [(ngModel)]="bdate" class="form-control">
+            <input type="text" [(ngModel)]="bdate" class="form-control"style="width: 100%;">
           </ng-container>
           <ng-template #readOnlyBdate>
             <p>{{ bdate }}</p>
@@ -41,7 +41,7 @@
         <div class="bio-row">
           <h6 style="font-size:20px;">GSM:</h6>
           <ng-container *ngIf="isEditing; else readOnlyGsm">
-            <input type="text" [(ngModel)]="gsm" class="form-control">
+            <input type="text" [(ngModel)]="gsm" class="form-control" style="width: 100%;">
           </ng-container>
           <ng-template #readOnlyGsm>
             <p>{{ gsm }}</p>
@@ -57,7 +57,7 @@
         <div class="bio-row">
           <h6 style="font-size:20px;">Cinsiyet:</h6>
           <ng-container *ngIf="isEditing; else readOnlyField">
-            <input type="text" [(ngModel)]="gender" class="form-control">
+            <input type="text" [(ngModel)]="gender" class="form-control" style="width: 100%;">
           </ng-container>
           <ng-template #readOnlyField>
             <p>{{ gender }}</p>

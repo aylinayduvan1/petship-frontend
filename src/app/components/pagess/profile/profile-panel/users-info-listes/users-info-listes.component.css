@@ -1,23 +1,16 @@
 .bio-row {         /*bilgiler*/
 
-    color: #0c7e58;
-
-    width: 100%;
-
-    float: left;
-
-    margin-top: 10px;
-
-    padding:0 15px;
-
-    height: 50px;
-
-    display: flex;
-
-    gap: 30%;
-
-    font-style: italic;
-    font-size: 20px;;
+  color: #0c7e58;
+  width: 100%;
+  float: left;
+  margin-top: 10px;
+  padding: 0 10px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  font-style: italic;
+  font-size: 20px;
+  gap: 3%;
 
   }
   .bio-row p {
@@ -31,52 +24,32 @@
   .bio-row1 {         /*bilgiler2 bio rowları ayır*/
 
     color: #0c7e58;
-
     width: 100%;
-
     float: left;
-
     margin-top: 10px;
-
     margin-bottom: 45px;
-
-    padding:0 15px;
-
+    padding: 0 15px;
     height: 50px;
-
     display: flex;
-
-    gap: 30%;
-
     font-style: italic;
     display: flex;
     flex-direction: column;
-    font-size: 20px;;
+    font-size: 20px;
   }
   .bio-row2 {         /*bilgiler2 bio rowları ayır*/
 
-    color: #0c7e58;
-
-    width: 100%;
-
-    float: left;
-
-    margin-top: 10px;
-
-    margin-bottom: 45px;
-
-    padding:0 15px;
-
-    height: 50px;
-
-    display: flex;
-
-    gap: 30%;
-
-    font-style: italic;
-    display: flex;
-    flex-direction: column;
-    font-size: 20px;;
+  color: #0c7e58;
+  width: 100%;
+  float: left;
+  margin-top: 10px;
+  margin-bottom: 45px;
+  padding: 0 15px;
+  height: 50px;
+  display: flex;
+  font-style: italic;
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
   }
 
 
@@ -143,6 +116,7 @@
   }
   .input-field {
     margin-bottom: 10px;
+    display: flex;
   }
 
   .input-field input[type="text"],
@@ -150,9 +124,11 @@
   .input-field input[type="date"],
   .input-field input[type="tel"] {
     width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  padding: 0px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 50px;
+  display: flex;
   }
 
   .input-field input[type="text"]:disabled,
