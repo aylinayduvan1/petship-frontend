@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
@@ -48,6 +48,8 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { PasswordModule } from 'primeng/password';
+import { CalendarModule } from 'primeng/calendar';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -102,7 +104,9 @@ import { PasswordModule } from 'primeng/password';
     DropdownModule,
     RadioButtonModule,
     InputNumberModule,
-    PasswordModule
+    PasswordModule,
+    CalendarModule,
+    ReactiveFormsModule
   ],
   providers: [AuthService,
     CustomerServiceUserList,

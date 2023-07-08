@@ -2,6 +2,7 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { LoginRequest } from 'src/app/models/request/login-request.model';
+import { RegisterRequest} from 'src/app/models/request/register-request.model';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ResponseStatus } from 'src/app/models/response/base-response.model';
 import { AnimationItem } from 'lottie-web';
@@ -16,15 +17,33 @@ declare let lottie: any;
 })
 export class LogincComponent {
   @ViewChild('lottieContainer', { static: true }) lottieContainer!: ElementRef;
-  value!: string;
   animation!: AnimationItem;
   animationRunning = false;
+  isLoginFormVisible = true;
+  value: string | undefined;
+  date: Date | undefined;
 
+  toggleForm() {
+    this.isLoginFormVisible = !this.isLoginFormVisible;
+    const cardElement:any = document.querySelector('.card');
+    cardElement.classList.toggle('flipped');
+  }
+  
   ngOnDestroy() {
     if (this.animation) {
       this.animation.destroy();
     }
   }
+
+  animalHistoryOptions = [
+    { label: 'Hayvan besledim', value: true },
+    { label: 'Hayvan beslemedim', value: false }
+  ];
+  
+  animalExitsOptions = [
+    { label: 'Hayvanım var', value: true },
+    { label: 'Hayvanım yok', value: false }
+  ];
 
   toggleAnimation() {
     if (this.animationRunning) {
@@ -47,11 +66,11 @@ export class LogincComponent {
       loop: false,
       autoplay: true,
       path: 'assets/animations/kus.json',
-      animationSpeed: 0.5, // Adjust the speed here   
+      animationSpeed: 0.9, // Adjust the speed here   
     });
   }
 
-
+  public registerRequest: RegisterRequest = <RegisterRequest>{};
   public loginRequest: LoginRequest = <LoginRequest>{};
 
   constructor(
@@ -79,25 +98,27 @@ export class LogincComponent {
       this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Kullanıcı adı veya şifre hatalı' });
   }
 
+  
+  async register() {
+    let status = await this.authService.register(this.registerRequest);
+  
+    if (status == ResponseStatus.Ok) {
+      setTimeout(() => {
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Kaydınız başarıyla oluşturuldu.' });
+        this.router.navigate(['/profile']); // Başarılı bir şekilde kayıt olunursa /profile sayfasına yönlendir
+      }, 2000); // 2 saniye beklet
+    } else if (status == ResponseStatus.Invalid) {
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Geçersiz kayıt bilgileri.' });
+    }
+  }
 
-  // showSuccess() {
-  //   if (this.username === 'aylin' && this.password === '123') {
-  //     this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Giriş yaptınız..' });
-  //   } 
-  // }
 
-  // login() {
-  //   // Giriş doğrulaması yapılacak
-  //   if (this.username === 'aylin' && this.password === '123') {
-  //     setTimeout(() => {
-  //       this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Giriş yaptınız..' });
-  //       this.router.navigate(['/profile']); // Giriş doğruysa /homepage'e yönlendir
-  //     }, 2000); // 2 saniye (2000 milisaniye) beklet
-  //   } else {
-  //     this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Kullanıcı adı veya şifre hatalı' });
-  //   }
-  // }
   
+showLoginForm: boolean = true;
+
+showRegisterForm() {
+  this.showLoginForm = false;
+}
   
-  
+
 }

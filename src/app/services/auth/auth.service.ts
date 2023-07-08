@@ -6,6 +6,7 @@ import { LoginRequest } from '../../models/request/login-request.model';
 import { ResponseStatus } from '../../models/response/base-response.model';
 import { TokenResponse } from '../../models/response/token-response.model';
 import { User } from '../../models/user.model';
+import { RegisterRequest } from 'src/app/models/request/register-request.model';
 
 @Injectable({
   providedIn: 'root',
@@ -51,6 +52,25 @@ export class AuthService {
     return status;
   }
 
+
+  public async register(request: RegisterRequest): Promise<ResponseStatus> {
+    request.animal_exist = Boolean(request.animal_exist);
+    request.animal_history = Boolean(request.animal_history);
+
+    const registerResponse = await this.apiService.register(request).toPromise();
+
+    let status = registerResponse!.status;
+
+    if (status == ResponseStatus.Ok) {
+      this.setToken(registerResponse!.data);
+      sessionStorage.setItem('current_user', JSON.stringify({}));
+      this.currentUserSubject.next({} as User);
+    }
+
+    return status;
+  }
+
+  
   public async refreshToken(): Promise<boolean> {
     const refreshTokenResponse = await this.apiService.refreshToken(<string>sessionStorage.getItem('refresh_token')).toPromise();
 
