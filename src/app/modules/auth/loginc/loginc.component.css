@@ -1,33 +1,4 @@
-
-
-/* Please ❤ this if you like it! */
-
-
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
-.login-card {
-  width: 100%;
-  max-width: 480px;
-  height: 300px;
-}
-
-.register-card {
-  width: 100%;
-  max-width: 650px;
-  height: 500px;
-}
-
-.flip-card {
-  transition: transform 1.2s;
-  transform-style: preserve-3d;
-}
-
-.flip-card.register-card {
-  transform: rotateX(360deg);
-}
-
-
-
-
 body{
 	font-family: 'Poppins', sans-serif;
 	font-weight: 300;
@@ -78,4 +49,62 @@ body{
   color: white;
   box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
 }
+
+
+/* giriş üye ol cardları */
+.login-card {
+  width: 100%;
+  max-width: 480px;
+  height: 300px;
+}
+
+.register-card {
+  width: 100%;
+  max-width: 650px;
+  height: 500px;
+}
+
+.flip-card {
+  transition: transform 1.2s;
+  transform-style: preserve-3d;
+}
+
+.flip-card.register-card {
+  transform: rotateX(360deg);
+}
+
+
+.login-container{
+  display: flex; justify-content: center; align-items: center; flex-direction: column; height: 100vh; background-color: #F2F2F2;
+}
+
+.login-animation-container{
+  height: 200px; display: flex; align-items: center; justify-content: center;
+}
+
+.card-detail{
+  height: 100%; display: flex; flex-direction: column;  justify-content: center;
+}
+
+.form-check{
+  display: flex; justify-content: center; align-items: center;
+}
+
+.row{
+  display: flex; justify-content: center;
+}
+
+.radio-container{
+  display: flex; justify-content: space-between; align-items:center;
+}
+
+.dropdown-container{
+  display: flex; justify-content: space-between; align-items: center;
+}
+
+
+
+
+
+
 
