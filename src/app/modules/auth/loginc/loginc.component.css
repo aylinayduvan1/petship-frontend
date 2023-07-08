@@ -101,7 +101,10 @@ body{
 .dropdown-container{
   display: flex; justify-content: space-between; align-items: center;
 }
-
+.form-check-input:checked{
+  background-color: #387f60 !important;
+  border-color: #387f60 !important;
+}
 
 
 
