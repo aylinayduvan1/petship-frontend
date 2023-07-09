@@ -104,11 +104,11 @@ export class LogincComponent {
   
     if (status == ResponseStatus.Ok) {
       setTimeout(() => {
-        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Kaydınız başarıyla oluşturuldu.' });
-        this.router.navigate(['/profile']); // Başarılı bir şekilde kayıt olunursa /profile sayfasına yönlendir
+        this.messageService.add({ severity: 'success', summary: 'Başarılı', detail: 'Kaydınız başarıyla oluşturuldu.' });
+        window.location.reload(); // Refresh the page
       }, 2000); // 2 saniye beklet
     } else if (status == ResponseStatus.Invalid) {
-      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Geçersiz kayıt bilgileri.' });
+      this.messageService.add({ severity: 'error', summary: 'Hatalı', detail: 'Geçersiz kayıt bilgileri.' });
     }
   }
 
