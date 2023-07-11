@@ -5,7 +5,8 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { Router } from "@angular/router";
 import { ApiService } from 'src/app/services/api/api.service';
 import { User } from 'src/app/models/user.model';
- 
+import { ResponseStatus } from 'src/app/models/response/base-response.model';
+
 
 @Component({
   selector: 'app-users-listes',
@@ -34,11 +35,25 @@ export class UsersListesComponent implements OnInit {
     console.log(this.users)
 
   }
+
+
   ngOnInit() {
     this.refresh();
     this.customerService.getCustomersMedium().then((data) => {
       this.customers = data;
     });
+  }
+
+  onDelete(id: number) {
+    this.delete(id).then(response => {
+      if (response?.status == ResponseStatus.Ok) {
+        this.refresh();
+      }
+    });
+  }
+
+  delete(id: number) {
+    return this.apiService.deleteEntity(id, User);
   }
 
   calculateCustomerTotal(name: string) {

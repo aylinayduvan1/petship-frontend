@@ -43,49 +43,66 @@
                       <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Soyadın" value="" [disabled]="!isEditing">
                     </div>
                   </div>
-                </div>
+                  <div  class="col-lg-3">
+                    <div class="form-group focused">
+                      <label class="form-control-label" for="input-last-name">Doğum Tarihiniz</label>
+                      <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Örnek giriş :''03.05.2000'' " value="" [disabled]="!isEditing">
+                    </div>
+                    </div>
+                    <div id="gendersecim">
+                      <h6 class="heading-small text-muted mb-4">Cinsiyet</h6>
+                      <div class="pl-lg-4">
+                        <div class="col-5 mb-2 radio-container">
+                          <div class="flex align-items-center">
+                            <p-radioButton name="gender" [(ngModel)]="selectedGender" value="k" inputId="k" [disabled]="!isEditing"></p-radioButton>
+                            <label style="margin-left: 15px;" for="k">Kadın</label>
+                          </div>
+                          <div class="flex align-items-center" f>
+                            <p-radioButton st name="gender" [(ngModel)]="selectedGender" value="e" inputId="e" [disabled]="!isEditing" ></p-radioButton>
+                            <label style="margin-left: 15px;" for="e">Erkek</label>
+                          </div>
+                        </div>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-5 mb-2 mt-3" >
+                      <div class="dropdown-container w-100" >
+                          <p-dropdown class="w-100" name="animal_exist"  [options]="animalExitsOptions" optionLabel="label" styleClass="w-100" [disabled]="!isEditing"></p-dropdown>
+                      </div>
+                  </div>
+                  <div class="col-5 mb-2 mt-3">
+                      <div class="dropdown-container w-100">
+                          <p-dropdown class="w-100" name="animal_history" [options]="animalHistoryOptions" optionLabel="label" styleClass="w-100"[disabled]="!isEditing"></p-dropdown>
+                      </div>
+
               </div>
+                  </div>
+                </div>
+
               <hr class="my-4">
-              <!-- Address -->
+              <!-- İletişim bilgileri -->
               <h6 class="heading-small text-muted mb-4">İletişim Bilgileri</h6>
               <div class="pl-lg-4">
                 <div class="row">
-                  <div class="col-md-12">
+                  <div class="col-md-4">
                     <div class="form-group focused">
                       <label class="form-control-label" for="input-address">Adres</label>
-                      <input id="input-address" class="form-control form-control-alternative" placeholder="Ev Adresin" value="" type="text" [disabled]="!isEditing">
+                      <input id="input-address" class="form-control form-control-alternative" placeholder="Adresin(İl/İlçe)" value="" type="text" [disabled]="!isEditing">
                     </div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="col-lg-4">
-                    <div class="form-group focused">
-                      <label class="form-control-label" for="input-city">Şehir</label>
-                      <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="Şehir" value="" [disabled]="!isEditing">
-                    </div>
+
+                  <div class="col-lg-4 form-group focused">
+                    <label class="form-control-label" for="input-last-name">GSM</label>
+                    <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="GSM Numaranız" value="" [disabled]="!isEditing">
                   </div>
-                  <div class="col-lg-4">
-                    <div class="form-group focused">
-                      <label class="form-control-label" for="input-country">Ülke</label>
-                      <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="Ülke" value="" [disabled]="!isEditing">
-                    </div>
+
+                  <div class="col-lg-4 form-group focused">
+                    <label class="form-control-label" for="input-last-name">E-mail Adresiniz</label>
+                    <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="E-mail Adresiniz" value="" [disabled]="!isEditing">
                   </div>
-                  <div class="col-lg-4">
-                    <div class="form-group">
-                      <label class="form-control-label" for="input-country">Posta Kodu</label>
-                      <input type="number" id="input-postal-code" class="form-control form-control-alternative" placeholder="" [disabled]="!isEditing">
-                    </div>
                   </div>
-                </div>
-              </div>
-              <hr class="my-4">
-              <!-- Description -->
-              <h6 class="heading-small text-muted mb-4">Hakkımda</h6>
-              <div class="pl-lg-4">
-                <div class="form-group focused">
-                  <label class="form-control-label">Hakkımda</label>
-                  <textarea rows="4" class="form-control form-control-alternative" placeholder="Seninle ilgili bir kaç söz . . . " value=""[disabled]="!isEditing"></textarea>
-                </div>
+                <hr class="my-4">
               </div>
               <span>
                 <button (click)="toggleEditing()" class="p-button p-button-rounded" id="buton1">Düzenle</button>

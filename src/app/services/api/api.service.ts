@@ -7,6 +7,7 @@ import { TokenResponse } from '../../models/response/token-response.model';
 import { LoginRequest } from '../../models/request/login-request.model';
 import { RegisterRequest } from '../../models/request/register-request.model';
 import { User } from '../../models/user.model';
+import { BaseResponse } from 'src/app/models/response/base-response.model';
 
 @Injectable({
   providedIn: 'root',
@@ -74,5 +75,10 @@ export class ApiService {
     return this.http.request<BaseDataResponse<TEntity[]>>
       ("get", environment.api_url + "/" + entityType.name + "/GetAll").pipe(share());
   } 
+ 
+
+ deleteEntity<TEntity>(id : number, entityType : Type<TEntity>) {
+    return this.http.delete<BaseResponse>(environment.api_url + "/" + entityType.name + "/Delete?id=" + id).pipe(share()).toPromise();
+  }
 
 }   
