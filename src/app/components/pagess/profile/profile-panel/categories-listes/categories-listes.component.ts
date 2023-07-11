@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { Customer, Representative } from '../categories-listes/type-folder/customer';
 import { CustomerService } from '../categories-listes/type-service/customer_service';
 import { DropdownChangeEvent } from 'primeng/dropdown';
+import { ApiService } from 'src/app/services/api/api.service';
+import { Router } from "@angular/router";
+import { Category } from 'src/app/models/categories.model';
 
 
 @Component({
@@ -26,6 +29,12 @@ export class CategoriesListesComponent {
 
     statuses: any[] | undefined = undefined;
 
+
+
+    categories:Category[] = []
+
+
+
     filter(value: any) {
       // Fonksiyonun içeriği
     }
@@ -44,10 +53,21 @@ export class CategoriesListesComponent {
     
     
 
-    constructor(private customerService: CustomerService) {}
+    constructor(
+      private readonly apiService: ApiService, 
+    private router: Router,
+    private customerService: CustomerService) {}
     
+    refresh() {
+      this.apiService.getAllEntities(Category).subscribe((response) => {
+        this.categories = response.data;
+      });
+      console.log(this.categories)
+  
+    }
 
     ngOnInit() {
+      this.refresh()
         this.customerService.getCustomersLarge().then((customers) => {
             this.customers = customers;
             this.loading = false;

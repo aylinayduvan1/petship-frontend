@@ -44,25 +44,34 @@
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-customer>
-            <tr class="p-selectable-row">
+            <tr class="p-selectable-row" *ngFor=" let category of categories">
                 <td>
                     <p-tableCheckbox [value]="customer"></p-tableCheckbox>
 
                 </td>
                 <td>
                     <span class="p-column-title">Name</span>
-                    {{ customer.name }}
+                    {{category.category_name }}
                 </td>
                
                 <td>
                     
-                    <img src="https://primefaces.org/cdn/primeng/images/demo/avatar/{{ customer.representative.image }}" width="32" style="vertical-align: middle" />
+                    <img src="https://primefaces.org/cdn/primeng/images/demo/avatar/  {{category.category_img }}
+                    " width="32" style="vertical-align: middle" />
                     
                 </td>
                
-               
+                
             </tr>
         </ng-template>
         
     </p-table>
+    <div *ngFor=" let category of categories" style="background-color: aqua;">
+        <div>
+            {{category.category_name }}
+            {{category.category_img }}
+
+        </div>
+    </div>
 </div>
+
