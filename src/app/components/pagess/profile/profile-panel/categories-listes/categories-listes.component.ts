@@ -13,27 +13,20 @@ import { Category } from 'src/app/models/categories.model';
   styleUrls: ['./categories-listes.component.css']
 })
 export class CategoriesListesComponent {
-    customers!: Customer[];
+  
+    categories:Category[] = [];
+    
+    selectedItems: any[] = [];
 
-    selectedCustomers!: Customer[];
 
     representatives!: Representative[];
 
-    
-
-    loading: boolean = true;
 
     activityValues: number[] = [0, 100];
     
     value: string | null = null;
 
     statuses: any[] | undefined = undefined;
-
-
-
-    categories:Category[] = []
-
-
 
     filter(value: any) {
       // Fonksiyonun içeriği
@@ -68,50 +61,13 @@ export class CategoriesListesComponent {
 
     ngOnInit() {
       this.refresh()
-        this.customerService.getCustomersLarge().then((customers) => {
-            this.customers = customers;
-            this.loading = false;
-
-            this.customers.forEach((customer) => (customer.date = new Date(<Date>customer.date)));
-
-            if (this.statuses) {
-              // statuses null değilse
-              this.statuses.push(/* değerleri ekle */);
-            }
-            
-        });
-
-        this.representatives = [
-            { name: 'Amy Elsner', image: 'amyelsner.png' },
-            { name: 'Anna Fali', image: 'annafali.png' },
-            { name: 'Asiya Javayant', image: 'asiyajavayant.png' },
-            { name: 'Bernardo Dominic', image: 'bernardodominic.png' },
-            { name: 'Elwin Sharvill', image: 'elwinsharvill.png' },
-            { name: 'Ioni Bowcher', image: 'ionibowcher.png' },
-            { name: 'Ivan Magalhaes', image: 'ivanmagalhaes.png' },
-            { name: 'Onyama Limba', image: 'onyamalimba.png' },
-            { name: 'Stephen Shaw', image: 'stephenshaw.png' },
-            { name: 'Xuxue Feng', image: 'xuxuefeng.png' },
-            { name: 'John Doe', image: 'johndoe.jpg' },
-            { name: 'Jane Smith', image: 'janesmith.jpg' }
-        ];
-
-        this.statuses = [
-            { label: 'Unqualified', value: 'unqualified' },
-            { label: 'Qualified', value: 'qualified' },
-            { label: 'New', value: 'new' },
-            { label: 'Negotiation', value: 'negotiation' },
-            { label: 'Renewal', value: 'renewal' },
-            { label: 'Proposal', value: 'proposal' },
-            // Component sınıfının içinde tanımlanması gereken örnek veriler
-
-            { label: 'Active', value: 'active' },
-            { label: 'Inactive', value: 'inactive' },
-            // Diğer durumlar
-        ];
-
-        
+          
     }
+
+    isChecked(event: any, category: any) {
+      this.selectedItems = event.checked ? [category] : [];
+    }
+    
 
     getSeverity(status: string) : any {
         switch (status) {
