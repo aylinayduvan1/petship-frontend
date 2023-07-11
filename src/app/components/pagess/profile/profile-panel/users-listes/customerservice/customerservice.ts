@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class CustomerServiceUserList {
-    
+
     getData() {
         return [
             {
@@ -42,34 +42,34 @@ export class CustomerServiceUserList {
                 },
                 balance: 96252
             },
-           
-            
+
+
         ];
     }
 
     constructor(private http: HttpClient) {}
-    
-    getCustomersMini() {
+
+    getAdvertsMini() {
         return Promise.resolve(this.getData().slice(0, 5));
     }
 
-    getCustomersSmall() {
+    getAdvertsSmall() {
         return Promise.resolve(this.getData().slice(0, 10));
     }
 
-    getCustomersMedium() {
+    getAdvertsMedium() {
         return Promise.resolve(this.getData().slice(0, 50));
     }
 
-    getCustomersLarge() {
+    getAdvertsLarge() {
         return Promise.resolve(this.getData().slice(0, 200));
     }
 
-    getCustomersXLarge() {
+    getAdvertsXLarge() {
         return Promise.resolve(this.getData());
     }
 
-    getCustomers(params?: any) {
+    getAdverts (params?: any) {
         return this.http.get<any>('https://www.primefaces.org/data/customers', { params: params }).toPromise();
     }
 };

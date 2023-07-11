@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 export class CustomerService {
     getData() {
         return [
-           
+
             {
                 id: 1497,
                 name: 'Köpek',
@@ -64,7 +64,7 @@ export class CustomerService {
     }
 
     constructor(private http: HttpClient) {}
-    
+
     getCustomersMini() {
         return Promise.resolve(this.getData().slice(0, 5));
     }

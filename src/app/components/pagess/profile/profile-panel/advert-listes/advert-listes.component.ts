@@ -1,173 +1,79 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { Product } from './domain/product';
-import { ProductServiceService } from './service/productservice';
+import { AdvertService } from 'src/app/components/pagess/profile/profile-panel/advert-listes/service/advert-service';
 import { ApiService } from 'src/app/services/api/api.service';
-import {Advert} from 'src/app/models/advert.model'
+import { Advert } from 'src/app/models/advert.model';
 import { Router } from '@angular/router';
-
+import { CustomerServiceUserList } from '../users-listes/customerservice/customerservice';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-advert-listes',
   templateUrl: './advert-listes.component.html',
   styleUrls: ['./advert-listes.component.css'],
-  providers: [MessageService, ConfirmationService]
+  providers: [MessageService, ConfirmationService, CustomerServiceUserList]
 })
-export class  AdvertListesComponent implements OnInit{
-    productDialog: boolean = false;
+export class AdvertListesComponent implements OnInit {
+  productDialog: boolean = false;
+  adverts: Advert[] = [];
+  selectedProducts: Advert[] | null = null;
+  submitted: boolean = false;
+  statuses: any[] = [];
+  searchValue: string = '';
+  product: Advert = {};
 
-    products!: Product[];
+  constructor(
+    private advertservice: AdvertService,
+    private messageService: MessageService,
+    private confirmationService: ConfirmationService,
+    private apiService: ApiService,
+    private router: Router,
+    private customerService: CustomerServiceUserList,
+    private http: HttpClient
+  ) {}
 
-    product!: Product;
+  refresh() {
+    this.apiService.getAllEntities(Advert).subscribe((response) => {
+      this.adverts = response.data;
+      console.log(this.adverts); // API isteği tamamlandıktan sonra çalışacak
+    });
+  }
 
-    selectedProducts!: Product[] | null;
+  ngOnInit() {
+    this.refresh();
+    this.advertservice.getAdvertsMedium().subscribe((data: Advert[]) => {
+      this.adverts = data;
+    });
+  }
 
-    submitted: boolean = false;
+  delete(id: number) {
+    return this.apiService.deleteEntity(id, 'Adverts');
+  }
 
-    statuses!: any[];
-
-    searchValue: string = '';
-
-    adverts:Advert[]=[];
-
-
-    constructor( private messageService: MessageService, 
-        private readonly apiService: ApiService, 
-        private router: Router,
-        private productService: ProductServiceService,
-    private confirmationService: ConfirmationService) 
-    {}
-    ngOnInit(): void {
+  onDelete(id: number) {
+    this.delete(id).then(response => {
+      if (response?.status === 'Ok') {
         this.refresh();
-
-        throw new Error('Method not implemented.');
-        //service yazarken apiServiceden çek
-
-    }
-
-    
-   
-
-    
-    refresh() {
-        this.apiService.getAllEntities(Advert).subscribe((response) => {
-          this.adverts = response.data;
-          console.log(this.adverts)
-        });
-        console.log(this.adverts)
-    
+        this.messageService.add({ severity: 'success', summary: 'Başarılı', detail: 'Kullanıcı başarı ile silindi', life: 3000 });
       }
+    });
+  }
 
-   
-    openNew() {
-        this.product = {};
-        this.submitted = false;
-        this.productDialog = true;
-    }
+  calculateCustomerTotal(advert_title: string) {
+    let total = 0;
 
-   
-    deleteSelectedProducts() {
-        this.confirmationService.confirm({
-            message: 'Are you sure you want to delete the selected products?',
-            header: 'Confirm',
-            icon: 'pi pi-exclamation-triangle',
-            accept: () => {
-                this.products = this.products.filter((val) => !this.selectedProducts?.includes(val));
-                this.selectedProducts = null;
-                this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Products Deleted', life: 3000 });
-            }
-        });
-    }
-
-   /* editProduct(advert: Advert) {
-        this.product = { ...advert.product };
-        this.productDialog = true;
+    if (this.adverts) {
+      for (let advert of this.adverts) {
+        if (advert.representative?.name === advert_title) {
+          total++;
+        }
       }
-    */
-
-    deleteProduct(product: Product) {
-        this.confirmationService.confirm({
-            message: 'Are you sure you want to delete ' + product.name + '?',
-            header: 'Confirm',
-            icon: 'pi pi-exclamation-triangle',
-            accept: () => {
-                this.products = this.products.filter((val) => val.id !== product.id);
-                this.product = {};
-                this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
-            }
-        });
     }
+  }
 
-    hideDialog() {
-        this.productDialog = false;
-        this.submitted = false;
-    }
-
-    saveProduct() {
-            this.submitted = true;
-          
-            if (this.product.name?.trim()) {
-              if (this.product.id) {
-                const index = this.findIndexById(this.product.id);
-               // this.adverts[index].product = { ...this.product };
-                this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Updated', life: 3000 });
-              } else {
-                this.product.id = this.createId();
-                this.product.image = 'product-placeholder.svg';
-                const newAdvert: Advert = {
-                  id: 0,
-                  advert_no: 0,
-                  advert_date: '',
-                  advert_title: '',
-                  situation: true,
-                  advert_text: '',
-                 // product: { ...this.product }
-                };
-                this.adverts.push(newAdvert);
-                this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Created', life: 3000 });
-              }
-          
-              this.productDialog = false;
-              this.product = {};
-            }
-          }
-          
-    findIndexById(id: string): number {
-        let index = -1;
-        for (let i = 0; i < this.products.length; i++) {
-            if (this.products[i].id === id) {
-                index = i;
-                break;
-            }
-        }
-
-        return index;
-    }
-
-    createId(): string {
-        let id = '';
-        var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        for (var i = 0; i < 5; i++) {
-            id += chars.charAt(Math.floor(Math.random() * chars.length));
-        }
-        return id;
-    }
-
-    getSeverity(status: string): string {
-      switch (status) {
-        case 'INSTOCK':
-          return 'success';
-        case 'LOWSTOCK':
-          return 'warning';
-        case 'OUTOFSTOCK':
-          return 'danger';
-        default:
-          return '';
-        }
-    }
-
-
-    onImageUpload(event: any) {
-        const uploadedFiles = event.files;
-    }
+  deleteAdvert(advert: Advert) {
+    this.adverts = this.adverts.filter((c) => c.id !== advert.id);
+    this.messageService.add({ severity: 'success', summary: 'Başarılı', detail: 'Kullanıcı başarı ile silindi', life: 3000 });
+  }
 }

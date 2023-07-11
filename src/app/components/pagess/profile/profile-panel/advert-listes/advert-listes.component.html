@@ -6,7 +6,7 @@
           <button pButton pRipple label="İlan Ekle" icon="pi pi-plus" class="p-button-success mr-2 custom-button" (click)="openNew()"></button>
       </ng-template>
     </p-toolbar>
- 
+
   <!--TABLE -->
   <p-table
       #dt
@@ -30,7 +30,7 @@
           </tr>
       </ng-template>
 -->
-      
+
 
       <ng-template pTemplate="header">
         <tr>
@@ -50,7 +50,7 @@
 
     <ng-template pTemplate="body" let-advert>
         <tr>
-            <td>{{ advert.advert_no }}</td>  
+            <td>{{ advert.advert_no }}</td>
             <td>{{ advert.advert_title }}</td>
             <td>
                 <img [src]="'assets/images/dog.png'" width="50" class="shadow-4" />
@@ -93,10 +93,10 @@
     </div>
       </ng-template>
     -->
-      
+
 
       <ng-template pTemplate="summary">
-          <div class="flex align-items-center justify-content-between">In total there are {{ products ? products.length : 0 }} products.</div>
+          <div class="flex align-items-center justify-content-between">In total there are {{ adverts ? adverts.length : 0 }} products.</div>
       </ng-template>
   </p-table>
 </div>
@@ -105,8 +105,8 @@
     <ng-template pTemplate="content">
       <div class="field">
         <label for="name">Name</label>
-        <input type="text" pInputText id="name" [(ngModel)]="product.name" required autofocus />
-        <small class="p-error" *ngIf="submitted && !product.name">Name is required.</small>
+        <input type="text" pInputText id="name" [(ngModel)]="adverts" required autofocus />
+        <small class="p-error" *ngIf="submitted && !adverts">Name is required.</small>
       </div>
   <!--img ekleme-->
       <div class="field">
@@ -116,10 +116,6 @@
         <small class="p-error" *ngIf="submitted && !product.image">Image is required.</small>
       </div>
 
-      <div class="field">
-          <label for="description">Description</label>
-          <textarea id="description" pInputTextarea [(ngModel)]="product.description" required rows="3" cols="20"></textarea>
-      </div>
 
       <div class="field">
               <ng-template pTemplate="selectedItem">
@@ -134,17 +130,17 @@
 
           <div class="formgrid grid">
               <div class="field-radiobutton col-6">
-                  <p-radioButton id="category1" name="category" value="Kedi" [(ngModel)]="product.category"></p-radioButton>
+                  <p-radioButton id="category1" name="category" value="Kedi" [(ngModel)]="adverts"></p-radioButton>
                   <label for="category1">Kedi</label>
               </div>
 
               <div class="field-radiobutton col-6">
-                  <p-radioButton id="category2" name="category" value="Köpek" [(ngModel)]="product.category"></p-radioButton>
+                  <p-radioButton id="category2" name="category" value="Köpek" [(ngModel)]="adverts.category"></p-radioButton>
                   <label for="category2">Köpek</label>
               </div>
 
               <div class="field-radiobutton col-6">
-                  <p-radioButton id="category3" name="category" value="Kuş" [(ngModel)]="product.category"></p-radioButton>
+                  <p-radioButton id="category3" name="category" value="Kuş" [(ngModel)]="adverts.category"></p-radioButton>
                   <label for="category3">Kuş</label>
               </div>
           </div>
@@ -152,7 +148,7 @@
 
       <div class="formgrid grid">
       </div>
-      
+
   </ng-template>
 
   <ng-template pTemplate="footer">

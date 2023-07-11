@@ -14,19 +14,20 @@ import { ResponseStatus } from 'src/app/models/response/base-response.model';
   styleUrls: ['./users-listes.component.css'],
   providers: [MessageService, ConfirmationService, CustomerServiceUserList]
 })
+
 export class UsersListesComponent implements OnInit {
   customers!: Customer[];
   users:User[] = []
- 
+
 
   constructor(
-    private readonly apiService: ApiService, 
+    private readonly apiService: ApiService,
     private router: Router,
     private customerService: CustomerServiceUserList,
     private messageService: MessageService,
     private confirmationService: ConfirmationService
   ) {}
-    
+
 
   refresh() {
     this.apiService.getAllEntities(User).subscribe((response) => {
@@ -39,7 +40,7 @@ export class UsersListesComponent implements OnInit {
 
   ngOnInit() {
     this.refresh();
-    this.customerService.getCustomersMedium().then((data) => {
+    this.customerService.getAdvertsMedium().then((data) => {
       this.customers = data;
     });
   }
@@ -56,7 +57,7 @@ export class UsersListesComponent implements OnInit {
 
   delete(id: number) {
     return this.apiService.deleteEntity(id, User);
-    
+
   }
 
   calculateCustomerTotal(name: string) {

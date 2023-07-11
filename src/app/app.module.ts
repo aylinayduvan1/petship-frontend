@@ -38,7 +38,7 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { CustomerService } from './components/pagess/profile/profile-panel/categories-listes/type-service/customer_service';
 import { DropdownModule } from 'primeng/dropdown';
 import { ConfirmationService} from 'primeng/api';
-import { ProductServiceService } from './components/pagess/profile/profile-panel/advert-listes/service/productservice';
+import { AdvertService } from './components/pagess/profile/profile-panel/advert-listes/service/advert-service';
 import { Toolbar, ToolbarModule } from 'primeng/toolbar';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { FileUploadModule } from 'primeng/fileupload';
@@ -112,7 +112,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CustomerServiceUserList,
     MessageService,
     CustomerService,
-    ProductServiceService,
+    AdvertService,
     AuthModule],
   bootstrap: [AppComponent]
 
