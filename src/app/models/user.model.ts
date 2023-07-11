@@ -1,4 +1,4 @@
-import { Category } from 'src/app/models/categories.model';
+import { Advert } from 'src/app/models/advert.model';
 
 export class User {
   id: number =0;
@@ -6,7 +6,7 @@ export class User {
   fullName: string = '';
   email: string = '';
   userType: UserType = 0;
-  category_name : Category [] = []; }
+  advert_title : Advert [] = []; }
 
 export enum UserType {
   Admin,
