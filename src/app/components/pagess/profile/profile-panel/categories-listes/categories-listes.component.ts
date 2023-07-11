@@ -54,7 +54,7 @@ export class CategoriesListesComponent {
     
 
     constructor(
-      private readonly apiService: ApiService, 
+    private readonly apiService: ApiService, 
     private router: Router,
     private customerService: CustomerService) {}
     
