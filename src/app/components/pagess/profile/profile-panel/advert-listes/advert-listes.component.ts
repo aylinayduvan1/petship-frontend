@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Product } from './domain/product';
+import { ProductServiceService } from './service/productservice';
+import { ApiService } from 'src/app/services/api/api.service';
+import {Advert} from 'src/app/models/advert.model'
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-advert-listes',
@@ -23,10 +28,35 @@ export class  AdvertListesComponent implements OnInit{
 
     searchValue: string = '';
 
-    constructor( private messageService: MessageService, private confirmationService: ConfirmationService) {}
+    adverts:Advert[]=[];
+
+
+    constructor( private messageService: MessageService, 
+        private readonly apiService: ApiService, 
+        private router: Router,
+        private productService: ProductServiceService,
+    private confirmationService: ConfirmationService) 
+    {}
     ngOnInit(): void {
+        this.refresh();
+
         throw new Error('Method not implemented.');
+        //service yazarken apiServiceden çek
+
     }
+
+    
+   
+
+    
+    refresh() {
+        this.apiService.getAllEntities(Advert).subscribe((response) => {
+          this.adverts = response.data;
+          console.log(this.adverts)
+        });
+        console.log(this.adverts)
+    
+      }
 
    
     openNew() {
@@ -35,6 +65,7 @@ export class  AdvertListesComponent implements OnInit{
         this.productDialog = true;
     }
 
+   
     deleteSelectedProducts() {
         this.confirmationService.confirm({
             message: 'Are you sure you want to delete the selected products?',
@@ -48,11 +79,11 @@ export class  AdvertListesComponent implements OnInit{
         });
     }
 
-    editProduct(product: Product) {
-        this.product = { ...product };
+   /* editProduct(advert: Advert) {
+        this.product = { ...advert.product };
         this.productDialog = true;
-    }
-    
+      }
+    */
 
     deleteProduct(product: Product) {
         this.confirmationService.confirm({
@@ -73,25 +104,34 @@ export class  AdvertListesComponent implements OnInit{
     }
 
     saveProduct() {
-        this.submitted = true;
-
-        if (this.product.name?.trim()) {
-            if (this.product.id) {
-                this.products[this.findIndexById(this.product.id)] = this.product;
+            this.submitted = true;
+          
+            if (this.product.name?.trim()) {
+              if (this.product.id) {
+                const index = this.findIndexById(this.product.id);
+               // this.adverts[index].product = { ...this.product };
                 this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Updated', life: 3000 });
-            } else {
+              } else {
                 this.product.id = this.createId();
                 this.product.image = 'product-placeholder.svg';
-                this.products.push(this.product);
+                const newAdvert: Advert = {
+                  id: 0,
+                  advert_no: 0,
+                  advert_date: '',
+                  advert_title: '',
+                  situation: true,
+                  advert_text: '',
+                 // product: { ...this.product }
+                };
+                this.adverts.push(newAdvert);
                 this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Created', life: 3000 });
+              }
+          
+              this.productDialog = false;
+              this.product = {};
             }
-
-            this.products = [...this.products];
-            this.productDialog = false;
-            this.product = {};
-        }
-    }
-
+          }
+          
     findIndexById(id: string): number {
         let index = -1;
         for (let i = 0; i < this.products.length; i++) {

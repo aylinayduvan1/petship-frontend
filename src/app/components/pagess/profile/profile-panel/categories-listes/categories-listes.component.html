@@ -1,18 +1,18 @@
 
 <div class="card">
     <p-table
-        #dt
-        [value]="customers"
-        [(selection)]="selectedCustomers"
-        dataKey="id"
-        [rowHover]="true"
-        [rows]="10"
-        [showCurrentPageReport]="true"
-        [loading]="loading"
-        [paginator]="true"
-        [filterDelay]="0"
-        [globalFilterFields]="['name', 'country.name', 'representative.name', 'status']"
-    >
+    #dt
+    [value]="categories"
+    [(selection)]="selectedItems"
+    dataKey="id"
+    [rowHover]="true"
+    [rows]="10"
+    [showCurrentPageReport]="true"
+    [paginator]="true"
+    [filterDelay]="0"
+    [globalFilterFields]="['name', 'country.name', 'representative.name', 'status']"
+>
+
     <ng-template pTemplate="caption">
         
           <div class="table-header">
@@ -43,10 +43,11 @@
                 <th style="width: 5rem"></th>
             </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-customer>
-            <tr class="p-selectable-row" *ngFor=" let category of categories">
+        <ng-template pTemplate="body" let-category>
+            <tr class="p-selectable-row">
                 <td>
-                    <p-tableCheckbox [value]="customer"></p-tableCheckbox>
+                    <p-tableCheckbox [value]="category" (onChange)="isChecked($event, category)"></p-tableCheckbox>
+
 
                 </td>
                 <td>

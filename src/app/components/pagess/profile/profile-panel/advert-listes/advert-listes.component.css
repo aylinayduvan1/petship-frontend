@@ -5,3 +5,7 @@
 .button-space {
     margin-right: 8px; /* İstediğiniz boşluk miktarını burada ayarlayabilirsiniz */
   }
+
+  table{
+    width:90%;
+  }
