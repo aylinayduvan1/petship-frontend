@@ -28,7 +28,7 @@ export class  AdvertListesComponent implements OnInit{
 
     searchValue: string = '';
 
-    adverts:Advert[]=[]
+    adverts:Advert[]=[];
 
     
     constructor(
@@ -48,6 +48,7 @@ export class  AdvertListesComponent implements OnInit{
     refresh() {
         this.apiService.getAllEntities(Advert).subscribe((response) => {
           this.adverts = response.data;
+          console.log(this.adverts)
         });
         console.log(this.adverts)
     
