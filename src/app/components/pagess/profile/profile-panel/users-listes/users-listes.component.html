@@ -23,11 +23,12 @@
                                     <img [alt]="customer.representative.name" src="https://primefaces.org/cdn/primeng/images/demo/avatar/{{customer.representative.image}}" width="32" style="vertical-align: middle; margin-right: 15px;" />
                                     <span class="font-bold ml-2">{{user.userName}}</span>
 
-                                </div>
                                 <div>
-                                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteCustomer(customer)"></button>
+                                    <button (click)="onDelete(user.id)" pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"></button>
                                 </div>
-                            </div>                
+                            </div>   
+                                                            </div>
+             
                         </td>
                     </tr>
             </ng-template>

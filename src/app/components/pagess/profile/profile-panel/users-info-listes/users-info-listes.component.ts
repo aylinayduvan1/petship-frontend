@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output} from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-users-info-listes',
@@ -15,22 +15,13 @@ export class UsersInfoListesComponent {
 
   selectedOption1: string = '';
   selectedOption2: string = '';
-
+  selectedGender: string = '';
   ad: string = '';
   soyad: string = '';
   email: string = '';
   bdate: string = '';
   gsm: string = '';
-  gender:string='';
-
-  isEditing: boolean = false;
-  toggleEditing() {
-    this.isEditing = !this.isEditing;
-  }
-
-  update() {
-    // Güncelleme işlemleri
-  }
+  gender: string = '';
 
   constructor() { }
 
@@ -49,4 +40,28 @@ export class UsersInfoListesComponent {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   }
+
+  isEditing: boolean = false;
+
+  toggleEditing() {
+    this.isEditing = !this.isEditing;
+  }
+
+  update() {
+    // Güncelleme işlemleri
+    console.log('Seçili cinsiyet:', this.selectedGender);
+  }
+  animalHistoryOptions = [
+    { label: 'Hayvan besledim', value: true },
+    { label: 'Hayvan beslemedim', value: false }
+  ];
+
+  animalExitsOptions = [
+    { label: 'Hayvanım var', value: true },
+    { label: 'Hayvanım yok', value: false }
+  ];
+
 }
+
+
+
