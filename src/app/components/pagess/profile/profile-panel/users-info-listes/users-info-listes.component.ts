@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output} from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-users-info-listes',
@@ -21,16 +21,7 @@ export class UsersInfoListesComponent {
   email: string = '';
   bdate: string = '';
   gsm: string = '';
-  gender:string='';
-
-  isEditing: boolean = false;
-  toggleEditing() {
-    this.isEditing = !this.isEditing;
-  }
-
-  update() {
-    // Güncelleme işlemleri
-  }
+  gender: string = '';
 
   constructor() { }
 
@@ -49,4 +40,17 @@ export class UsersInfoListesComponent {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   }
+
+  isEditing: boolean = false;
+
+  toggleEditing() {
+    this.isEditing = !this.isEditing;
+  }
+
+  update() {
+    // Güncelleme işlemleri
+  }
 }
+
+
+
