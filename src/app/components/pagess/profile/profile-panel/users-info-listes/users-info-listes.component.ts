@@ -15,7 +15,7 @@ export class UsersInfoListesComponent {
 
   selectedOption1: string = '';
   selectedOption2: string = '';
-
+  selectedGender: string = '';
   ad: string = '';
   soyad: string = '';
   email: string = '';
@@ -49,7 +49,18 @@ export class UsersInfoListesComponent {
 
   update() {
     // Güncelleme işlemleri
+    console.log('Seçili cinsiyet:', this.selectedGender);
   }
+  animalHistoryOptions = [
+    { label: 'Hayvan besledim', value: true },
+    { label: 'Hayvan beslemedim', value: false }
+  ];
+
+  animalExitsOptions = [
+    { label: 'Hayvanım var', value: true },
+    { label: 'Hayvanım yok', value: false }
+  ];
+
 }
 
 
