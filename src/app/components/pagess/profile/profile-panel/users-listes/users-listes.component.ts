@@ -48,12 +48,15 @@ export class UsersListesComponent implements OnInit {
     this.delete(id).then(response => {
       if (response?.status == ResponseStatus.Ok) {
         this.refresh();
+        this.messageService.add({ severity: 'success', summary: 'Başarılı', detail: 'Kullanıcı başarı ile silindi', life: 3000 });
+
       }
     });
   }
 
   delete(id: number) {
     return this.apiService.deleteEntity(id, User);
+    
   }
 
   calculateCustomerTotal(name: string) {

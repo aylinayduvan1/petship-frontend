@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Product } from './domain/product';
-import { ProductService } from './service/productservice';
 
 @Component({
   selector: 'app-advert-listes',
@@ -24,18 +23,12 @@ export class  AdvertListesComponent implements OnInit{
 
     searchValue: string = '';
 
-    constructor(private productService: ProductService, private messageService: MessageService, private confirmationService: ConfirmationService) {}
-
-    ngOnInit() {
-        this.productService.getProducts().then((data) => (this.products = data));
-
-        this.statuses = [
-            { label: 'INSTOCK', value: 'instock' },
-            { label: 'LOWSTOCK', value: 'lowstock' },
-            { label: 'OUTOFSTOCK', value: 'outofstock' }
-        ];
+    constructor( private messageService: MessageService, private confirmationService: ConfirmationService) {}
+    ngOnInit(): void {
+        throw new Error('Method not implemented.');
     }
 
+   
     openNew() {
         this.product = {};
         this.submitted = false;
