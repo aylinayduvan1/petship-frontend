@@ -27,7 +27,6 @@ import { UsersListesComponent } from './components/pagess/profile/profile-panel/
 import { CategoriesListesComponent } from './components/pagess/profile/profile-panel/categories-listes/categories-listes.component';
 import { AdvertListesComponent } from './components/pagess/profile/profile-panel/advert-listes/advert-listes.component';
 import { RippleModule } from 'primeng/ripple';
-import { CustomerServiceUserList } from './components/pagess/profile/profile-panel/users-listes/customerservice/customerservice';
 import { AccordionModule } from 'primeng/accordion';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
@@ -109,7 +108,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
   ],
   providers: [AuthService,
-    CustomerServiceUserList,
     MessageService,
     CustomerService,
     ProductServiceService,

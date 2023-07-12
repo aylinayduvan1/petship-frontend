@@ -6,7 +6,9 @@ export class User {
   fullName: string = '';
   email: string = '';
   userType: UserType = 0;
-  advert_title : Advert [] = []; }
+  adverts: Advert[]=[] // Kullanıcının ilanları
+  expanded: boolean = false;
+}
 
 export enum UserType {
   Admin,
