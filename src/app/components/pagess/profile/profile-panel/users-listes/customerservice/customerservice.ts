@@ -6,25 +6,7 @@ export class CustomerServiceUserList {
     
     getData() {
         return [
-            {
-                id: 1470,
-                name: 'hayvanadi',
-                country: {
-                    name: 'Belarus',
-                    code: 'by'
-                },
-                company: 'New York Public Library',
-                date: '2017-02-12',
-                status: 'qualified',
-                verified: true,
-                activity: 91,
-                representative: {
-                    name: 'Safa',
-                    image: 'bernardodominic.png'
-                },
-                balance: 63121
-            },
- 
+           
             {
                 id: 1476,
                 name: 'karabaş',

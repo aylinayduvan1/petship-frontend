@@ -33,7 +33,7 @@ export class CategoriesListesComponent {
     }
     
    
-    
+   
   
     onChange(event: any) {
       if (event && event.value) {
@@ -87,7 +87,7 @@ export class CategoriesListesComponent {
                 return null;
         }
     }
-
+ 
     
 
   }
