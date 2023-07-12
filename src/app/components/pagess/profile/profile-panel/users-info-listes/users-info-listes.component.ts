@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-
+import { UserService } from './service/user.service';
 @Component({
   selector: 'app-users-info-listes',
   templateUrl: './users-info-listes.component.html',
@@ -26,12 +26,7 @@ export class UsersInfoListesComponent {
   constructor() { }
 
   ngOnInit(): void {
-    // İlk değer atamalarını yapabilirsiniz
-    this.ad = 'Örnek Ad';
-    this.soyad = 'Örnek Soyad';
-    this.email = 'ornek@mail.com';
-    this.bdate = '01/01/2000';
-    this.gsm = '5555555555';
+
   }
 
   scrollToSection(section: string) {
@@ -45,10 +40,13 @@ export class UsersInfoListesComponent {
 
   toggleEditing() {
     this.isEditing = !this.isEditing;
+    this.changeContent('edit');
+
   }
 
   update() {
     // Güncelleme işlemleri
+
     console.log('Seçili cinsiyet:', this.selectedGender);
   }
   animalHistoryOptions = [
