@@ -6,7 +6,25 @@ export class CustomerServiceUserList {
     
     getData() {
         return [
-           
+            {
+                id: 1476,
+                name: 'karabaş',
+                country: {
+                    name: '4646465',
+                    code: 'it'
+                },
+                company: 'burası ieçirk',
+                date: '2017-05-13',
+                status: 'beklemede',
+                verified: true,
+                activity: 34,
+                representative: {
+                    name: 'Aylin',
+                    image: 'annafali.png'
+                },
+                balance: 96252
+            },
+
             {
                 id: 1476,
                 name: 'karabaş',
