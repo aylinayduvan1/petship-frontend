@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Customer } from '../users-listes/type-folder/customer';
-import { CustomerServiceUserList } from '../users-listes/customerservice/customerservice';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Router } from "@angular/router";
 import { ApiService } from 'src/app/services/api/api.service';
@@ -12,17 +11,15 @@ import { ResponseStatus } from 'src/app/models/response/base-response.model';
   selector: 'app-users-listes',
   templateUrl: './users-listes.component.html',
   styleUrls: ['./users-listes.component.css'],
-  providers: [MessageService, ConfirmationService, CustomerServiceUserList]
+  providers: [MessageService, ConfirmationService]
 })
 export class UsersListesComponent implements OnInit {
-  customers!: Customer[];
   users:User[] = []
  
 
   constructor(
     private readonly apiService: ApiService, 
     private router: Router,
-    private customerService: CustomerServiceUserList,
     private messageService: MessageService,
     private confirmationService: ConfirmationService
   ) {}
@@ -39,36 +36,24 @@ export class UsersListesComponent implements OnInit {
 
   ngOnInit() {
     this.refresh();
-    this.customerService.getCustomersMedium().then((data) => {
-      this.customers = data;
-    });
+    
   }
 
   onDelete(id: number) {
     this.delete(id).then(response => {
       if (response?.status == ResponseStatus.Ok) {
         this.refresh();
+        this.messageService.add({ severity: 'success', summary: 'Başarılı', detail: 'Kullanıcı başarı ile silindi', life: 3000 });
+
       }
     });
   }
 
   delete(id: number) {
     return this.apiService.deleteEntity(id, User);
+    
   }
 
-  calculateCustomerTotal(name: string) {
-    let total = 0;
-
-    if (this.customers) {
-      for (let customer of this.customers) {
-        if (customer.representative?.name === name) {
-          total++;
-        }
-      }
-    }
-
-    return total;
-  }
 
   getSeverity(status: string): any {
     switch (status) {
@@ -89,8 +74,4 @@ export class UsersListesComponent implements OnInit {
     }
   }
 
-  deleteCustomer(customer: Customer) {
-    this.customers = this.customers.filter((c) => c.id !== customer.id);
-    this.messageService.add({ severity: 'success', summary: 'Başarılı', detail: 'Kullanıcı başarı ile silindi', life: 3000 });
-  }
 }

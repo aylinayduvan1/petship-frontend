@@ -28,31 +28,37 @@ export class  AdvertListesComponent implements OnInit{
 
     searchValue: string = '';
 
-    adverts:Advert[]=[]
-
-    
-    constructor(
+    adverts:Advert[]=[];
 
 
+    constructor( private messageService: MessageService, 
         private readonly apiService: ApiService, 
         private router: Router,
         private productService: ProductServiceService,
-        private messageService: MessageService,
-        private confirmationService: ConfirmationService) {}
+    private confirmationService: ConfirmationService) 
+    {}
+    ngOnInit(): void {
+        this.refresh();
 
-    ngOnInit() {
+        throw new Error('Method not implemented.');
         //service yazarken apiServiceden çek
-       this.refresh();
-       
+
     }
+
+    
+   
+
+    
     refresh() {
         this.apiService.getAllEntities(Advert).subscribe((response) => {
           this.adverts = response.data;
+          console.log(this.adverts)
         });
         console.log(this.adverts)
     
       }
 
+   
     openNew() {
         this.product = {};
         this.submitted = false;

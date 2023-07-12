@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AnimationItem } from 'lottie-web';
-declare let lottie: any;
+import * as lottie from 'lottie-web';
  
 @Component({
   selector: 'app-about',
@@ -26,7 +26,7 @@ export class AboutComponent {
       container: this.lottieContainer.nativeElement,
       renderer: 'svg',
       loop: true,
-      autoplay: false,
+      autoplay: true,
       path: 'assets/animations/about.json' // Animasyon dosyasının yolunu buraya göre ayarlayın
     });
 
