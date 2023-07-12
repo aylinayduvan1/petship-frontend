@@ -13,7 +13,6 @@
       [value]="adverts"
       [globalFilterFields]="['name', 'country.name', 'representative.name']"
       [tableStyle]="{ 'min-width': '65rem' }"
-      [(selection)]="selectedProducts"
       [rowHover]="true"
       dataKey="id"
       currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
@@ -48,12 +47,12 @@
     </ng-template>
 
 
-    <ng-template pTemplate="body" let-advert>
-        <tr>
+    <ng-template pTemplate="body">
+        <tr *ngFor="let advert of adverts">
             <td>{{ advert.advert_no }}</td>  
             <td>{{ advert.advert_title }}</td>
             <td>
-                <img [src]="'assets/images/dog.png'" width="50" class="shadow-4" />
+                <!-- <img [src]="'assets/images/dog.png'" width="50" class="shadow-4" /> -->
                 <!--<img [src]="'assets/images/' + advert.file_name" width="50" class="shadow-4" />  -->
            </td>
             <td>{{ advert.advert_text }}</td>
@@ -62,12 +61,39 @@
             <td>
               <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"></button>
               <span class="button-space"></span>
-              <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"></button>
-            </td>
+
+              <button  (click)="openModal()" pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"></button>
+
+              <div class="modal fade" tabindex="-1" [class.show]="modalOpen">
+                <!--CSS'i düzenlemezsem çalışmaz-->
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">{{advert.advert_title}} silinecek.</h5>
+                    </div>
+                    <div class="modal-body">
+                      <p>Silmek istediğinize emin misiniz?</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button (click)="onDelete(advert.id)" pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"> </button>
+                      <button type="button" class="btn " (click)="closeModal()">İptal</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+
+              
+              <!-- 
+                backend'den id'yi çekemediğimiz için id'yi tespit edemedi frontend kısmında :) aklımızdao lsun. swaggerda getall'da id yi çekemedik :D
+              -->
+            </td> 
           </tr>
     </ng-template>
-
-
+         
 
 
 <!--
@@ -95,24 +121,22 @@
     -->
       
 
-      <ng-template pTemplate="summary">
-          <div class="flex align-items-center justify-content-between">In total there are {{ products ? products.length : 0 }} products.</div>
-      </ng-template>
+      
   </p-table>
 </div>
 
-<p-dialog [(visible)]="productDialog" [style]="{ width: '450px' }" header="Pet Details" [modal]="true" styleClass="p-fluid">
+<!-- <p-dialog [(visible)]="productDialog" [style]="{ width: '450px' }" header="Pet Details" [modal]="true" styleClass="p-fluid">
     <ng-template pTemplate="content">
       <div class="field">
         <label for="name">Name</label>
         <input type="text" pInputText id="name" [(ngModel)]="product.name" required autofocus />
         <small class="p-error" *ngIf="submitted && !product.name">Name is required.</small>
-      </div>
+      </div> -->
   <!--img ekleme-->
-      <div class="field">
-        <label for="image">Image</label>
+      <!-- <div class="field">
+        <label for="image">Image</label> -->
         <!-- Gerçek bir yükleme URL'siyle değiştirin -->
-        <p-fileUpload name="image" url="YOUR_UPLOAD_URL" mode="basic" accept="image/*" chooseLabel="Choose" (onUpload)="onImageUpload($event)" [showUploadButton]="false"></p-fileUpload>
+        <!-- <p-fileUpload name="image" url="YOUR_UPLOAD_URL" mode="basic" accept="image/*" chooseLabel="Choose" (onUpload)="onImageUpload($event)" [showUploadButton]="false"></p-fileUpload>
         <small class="p-error" *ngIf="submitted && !product.image">Image is required.</small>
       </div>
 
@@ -159,7 +183,7 @@
       <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
       <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveProduct()"></button>
   </ng-template>
-</p-dialog>
+</p-dialog> -->
 
 <p-confirmDialog [style]="{ width: '450px' }"></p-confirmDialog>
 

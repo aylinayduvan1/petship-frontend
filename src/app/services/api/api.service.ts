@@ -69,8 +69,6 @@ export class ApiService {
   }
 
 
-
-  
   getAllEntities<TEntity>(entityType: Type<TEntity>) {
     return this.http.request<BaseDataResponse<TEntity[]>>
       ("get", environment.api_url + "/" + entityType.name + "/GetAll").pipe(share());
@@ -80,5 +78,5 @@ export class ApiService {
  deleteEntity<TEntity>(id : number, entityType : Type<TEntity>) {
     return this.http.delete<BaseResponse>(environment.api_url + "/" + entityType.name + "/Delete?id=" + id).pipe(share()).toPromise();
   }
-
 }   
+
