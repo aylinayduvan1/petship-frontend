@@ -18,18 +18,6 @@
       currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
       [showCurrentPageReport]="true"
   >
-<!--
-    <ng-template pTemplate="header">
-          <tr>
-              <th pSortableColumn="name" style="width: 8%;" > Ad <p-sortIcon field="name"></p-sortIcon></th>
-              <th style="width: 8%;">Görsel</th>
-              <th pSortableColumn="category" style="width: 5%;"> Kategori <p-sortIcon field="category"></p-sortIcon></th>
-              <th pSortableColumn="date" style="width: 8%;" > İlan Tarihi <p-sortIcon field="advert-date"></p-sortIcon></th>
-              <th pSortableColumn="edit/delete" style="width: 3%;"> Düzenle/Sil</th>
-          </tr>
-      </ng-template>
--->
-      
 
       <ng-template pTemplate="header">
         <tr>
@@ -98,14 +86,14 @@
                         <div class="row" >
                                 <div class="col-6 mb-2 mt-3">
                                     <span class="p-float-label">
-                                        <input name="UserName" pInputText placeholder="Adınızı Giriniz"  class="w-100"  style="border: solid 1px rgba(181, 181, 181, 0.267);"/>
-                                        <label htmlFor="username">Hayvan Adı</label>
+                                        <input name="advert_title" pInputText placeholder="Hayvan adı giriniz"  class="w-100"  style="border: solid 1px rgba(181, 181, 181, 0.267);"/>
+                                        <label htmlFor="advert_title">Hayvan Adı</label>
                                     </span>   
                                 </div>
                                 <div class="col-6 mb-2 mt-3"  >   
                                   <span class="p-float-label">
-                                      <input name="user_bdate" pInputText  class="w-100"  style="border: solid 1px rgba(181, 181, 181, 0.267);"/>
-                                      <label htmlFor="username">İlan Tarihi</label>
+                                      <input name="advert_date" pInputText  class="w-100"  style="border: solid 1px rgba(181, 181, 181, 0.267);"/>
+                                      <label htmlFor="advert_date">İlan Tarihi</label>
                                   </span>  
                               </div>
                         </div>             
@@ -149,7 +137,7 @@
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn" (click)="closeModalAdd()" style="width: 30%;">İptal</button>
-                      <button class="btn btn-primary" type="submit" style="width: 30%;" >Üye ol</button>
+                      <button class="btn btn-primary" type="submit" style="width: 30%;" >İlan Ekle</button>
                     </div>
                   </div>
                 </div>
