@@ -11,6 +11,7 @@ import { ResponseStatus } from 'src/app/models/response/base-response.model';
   templateUrl: './advert-listes.component.html',
   styleUrls: ['./advert-listes.component.css'],
   providers: [MessageService, ConfirmationService]
+
 })
 export class  AdvertListesComponent implements OnInit{
     productDialog: boolean = false;
@@ -23,7 +24,7 @@ export class  AdvertListesComponent implements OnInit{
 
     adverts:Advert[]=[];
 
-
+   modalOpenAdd: boolean = false;
     modalOpen: boolean = false; //sayfa ilk açıldığında modal'ın kapalı kalması için false değer verdik
 
     openModal() {
@@ -33,7 +34,17 @@ export class  AdvertListesComponent implements OnInit{
     closeModal() {
       this.modalOpen = false;
     }
-  
+    openModalAdd() {
+      this.modalOpenAdd = true;
+    }
+    
+    closeModalAdd() {
+      this.modalOpenAdd = false;
+    }
+    StatusOptions = [
+      { label: 'İlanda', value: true },
+      { label: 'İlanda değil', value: false }
+    ];
     
     constructor(
 
@@ -51,10 +62,6 @@ export class  AdvertListesComponent implements OnInit{
 
     }
 
-    
-   
-
-    
     refresh() {
         this.apiService.getAllEntities(Advert).subscribe((response) => {
           this.adverts = response.data;
@@ -89,9 +96,7 @@ export class  AdvertListesComponent implements OnInit{
         }); 
     }
    
-    
-
-    
+ 
     delete(advertId: number) {
       return this.apiService.deleteEntity(advertId, Advert);
     }
