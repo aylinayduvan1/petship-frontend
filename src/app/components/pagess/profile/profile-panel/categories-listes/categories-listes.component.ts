@@ -5,7 +5,8 @@ import { DropdownChangeEvent } from 'primeng/dropdown';
 import { ApiService } from 'src/app/services/api/api.service';
 import { Router } from "@angular/router";
 import { Category } from 'src/app/models/categories.model';
-
+import { ResponseStatus } from 'src/app/models/response/base-response.model';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-categories-listes',
@@ -27,6 +28,7 @@ export class CategoriesListesComponent {
     value: string | null = null;
 
     statuses: any[] | undefined = undefined;
+  messageService: any;
 
     filter(value: any) {
       // Fonksiyonun içeriği
@@ -63,6 +65,23 @@ export class CategoriesListesComponent {
       this.refresh()
           
     }
+
+
+    onDelete(id: number) {
+      this.delete(id).then(response => {
+        if (response?.status == ResponseStatus.Ok) {
+          this.refresh();
+          this.messageService.add({ severity: 'success', summary: 'Başarılı', detail: 'Kullanıcı başarı ile silindi', life: 3000 });
+  
+        }
+      });
+    }
+  
+    delete(id: number) {
+      return this.apiService.deleteEntity(id, Category);
+      
+    }
+  
 
     isChecked(event: any, category: any) {
       this.selectedItems = event.checked ? [category] : [];
