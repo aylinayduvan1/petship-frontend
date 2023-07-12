@@ -23,6 +23,7 @@ export class  AdvertListesComponent implements OnInit{
 
     adverts:Advert[]=[];
 
+
     modalOpen: boolean = false; //sayfa ilk açıldığında modal'ın kapalı kalması için false değer verdik
 
     openModal() {
@@ -41,11 +42,19 @@ export class  AdvertListesComponent implements OnInit{
         private messageService: MessageService,
         private confirmationService: ConfirmationService) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
+        this.refresh();
+
+
+        throw new Error('Method not implemented.');
         //service yazarken apiServiceden çek
-       this.refresh();
-       
+
     }
+
+    
+   
+
+    
     refresh() {
         this.apiService.getAllEntities(Advert).subscribe((response) => {
           this.adverts = response.data;
@@ -55,6 +64,7 @@ export class  AdvertListesComponent implements OnInit{
     
       }
 
+   
     openNew() {
         this.submitted = false;
         this.productDialog = true;
