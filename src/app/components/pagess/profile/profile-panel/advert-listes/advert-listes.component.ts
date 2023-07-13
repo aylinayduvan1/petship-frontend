@@ -5,6 +5,7 @@ import {Advert} from 'src/app/models/advert.model'
 import { Router } from '@angular/router';
 import { ResponseStatus } from 'src/app/models/response/base-response.model';
 import { AdvertRequest} from 'src/app/models/request/advert-request.model';
+import { Category } from 'src/app/models/categories.model';
 
 
 @Component({
@@ -27,6 +28,7 @@ export class  AdvertListesComponent implements OnInit{
 
    modalOpenAdd: boolean = false;
     modalOpen: boolean = false; //sayfa ilk açıldığında modal'ın kapalı kalması için false değer verdik
+    modalEdit: boolean = false ;
 
     openModal() {
       this.modalOpen = true;
@@ -42,6 +44,10 @@ export class  AdvertListesComponent implements OnInit{
     closeModalAdd() {
       this.modalOpenAdd = false;
     }
+    editModal(){
+      this.modalEdit = false;
+    }
+
 
     value: string | undefined;
 
