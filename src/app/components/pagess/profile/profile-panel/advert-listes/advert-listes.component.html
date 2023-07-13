@@ -1,7 +1,7 @@
 <!--TOOLBAR-->
-<div class="card">
+<div class="card" style="width: 100%;" >
   <p-toast></p-toast>
-  <p-toolbar styleClass="mb-4 gap-2">
+  <p-toolbar styleClass="">
     <ng-template pTemplate="left">
         <button  (click)="openModalAdd()" pButton pRipple label="İlan Ekle" icon="pi pi-plus" class="p-button-success mr-2 custom-button" (click)="openNew()"></button>
     </ng-template>
@@ -12,24 +12,22 @@
     #dt
     [value]="adverts"
     [globalFilterFields]="['name', 'country.name', 'representative.name']"
-    [tableStyle]="{ 'min-width': '65rem' }"
+    [tableStyle]="{ 'min-width': '55rem' }"
     [rowHover]="true"
     dataKey="id"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
     [showCurrentPageReport]="true"
 >
 
-    <ng-template pTemplate="header">
-      <tr>
-          <th style="width: 4rem">
-              <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-          </th>
-          <th pSortableColumn="name" style="min-width:15rem">Ad <p-sortIcon field="name"></p-sortIcon></th>
-          <th pSortableColumn="price" style="min-width:15rem">Görsel <p-sortIcon field="price"></p-sortIcon></th>
-          <th pSortableColumn="category" style="min-width:10rem">Açıklama <p-sortIcon field="category"></p-sortIcon></th>
-          <th pSortableColumn="rating"> İlan Tarihi <p-sortIcon field="rating"></p-sortIcon></th>
-          <!-- <th pSortableColumn="sutiton">Durum <p-sortIcon field="sutiton"></p-sortIcon></th> -->
-          <th pSortableColumn="inventoryStatus" style="min-width:10rem">Düzenle/Sil <p-sortIcon field="inventoryStatus"></p-sortIcon></th>
+<ng-template pTemplate="header" style="min-width: 50rem">
+  <tr class="header-custom">
+    <th pSortableColumn="advert_title" >Hayvan Adı <span field="advert_title"></span></th>
+    <th pSortableColumn="price" >Görsel</th>
+    <th pSortableColumn="advert_text" >Açıklama <span field="advert_text"></span></th>
+      <th pSortableColumn="advert_date" > İlan Tarihi <span field="advert_date"></span></th>
+      <th pSortableColumn="category" > Kategoriler <p-sortIcon field="category"></p-sortIcon></th>
+      <th pSortableColumn="situation">İlan Durumu<p-sortIcon field="situation"></p-sortIcon></th>
+      <th pSortableColumn="inventoryStatus" >Düzenle/Sil <span field="inventoryStatus"></span></th>
           <th></th>
       </tr>
   </ng-template>
@@ -37,12 +35,14 @@
 
   <ng-template pTemplate="body" let-advert>
       <tr>
-          <td>{{ advert.advert_no }}</td>  
           <td>{{ advert.advert_title }}</td>
           <td>
-              <!-- <img [src]="'assets/images/dog.png'" width="50" class="shadow-4" /> -->
-              <!--<img [src]="'assets/images/' + advert.file_name" width="50" class="shadow-4" />  -->
-         </td>
+             <!--     <img [src]="'assets/images/dog.png'" width="50" class="shadow-4" />
+              <img [src]="'assets/images/' + advert.file_name" width="50" class="shadow-4" />
+           </td> -->
+           <td>{{ advert.advert_date }}</td>
+
+           <td>{{ advert.advert_date }}</td>
           <td>{{ advert.advert_text }}</td>
           <td>{{ advert.advert_date }}</td>
           <!-- <td>{{ advert.situation }}</td> -->
