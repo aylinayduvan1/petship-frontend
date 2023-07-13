@@ -88,6 +88,8 @@ export class CategoriesListesComponent {
     }
     
 
+    
+
     getSeverity(status: string) : any {
         switch (status) {
             case 'unqualified':

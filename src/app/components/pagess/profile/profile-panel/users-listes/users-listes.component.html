@@ -1,65 +1,58 @@
-<div class="row" style="margin: 4px;">
-    <div class="card">
-        <p-table 
-            [paginator]="true"
-            [rows]="5"
-            [tableStyle]="{ 'min-width': '50rem' }"
-            [rowsPerPageOptions]="[5, 10]"
-            [value]="users" sortField="representative.name" sortMode="single" dataKey="representative.name" rowGroupMode="subheader" groupRowsBy="representative.name" [tableStyle]="{'min-width': '50rem'}">
-            <ng-template pTemplate="header">
-                <tr>
-                    <th style="width:15%">Kullanıcı</th>
-                    <th style="width:15%">İlan no</th>
-                    <th style="width:15%">Durum</th>
-                    <th style="width:15%">İlan tarihi</th>
-                </tr>
-            </ng-template>
-            <ng-template pTemplate="groupheader"  let-rowIndex="rowIndex" let-expanded="expanded">
-                    <tr *ngFor="let user of users">
-                        <td colspan="5">
-                            <div  style="display: flex; justify-content: space-between;" >
-                                <div >
-                                    <button type="button" pButton pRipple [pRowToggler]="user.id" class="p-button-text p-button-rounded p-button-plain mr-2" [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
-                                    <img [src]="'assets/images/dog.png'"  width="32" style="vertical-align: middle; margin-right: 15px;"/>
-                                    <span class="font-bold ml-2">{{user.userName}}</span>
+<!--TOOLBAR-->
+<div class="card">
+    <p-toast></p-toast>
+    <p-toolbar styleClass="mb-4 gap-2">
+   
+    </p-toolbar>
+ 
+  <!--TABLE -->
+  <p-table
+      #dt
+      [value]="users"
+      [globalFilterFields]="['name', 'country.name', 'representative.name']"
+      [tableStyle]="{ 'min-width': '65rem' }"
+      [rowHover]="true"
+      dataKey="id"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [showCurrentPageReport]="true"
+  >
 
-                                </div>
-                                <div>
-                                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="onDelete(user.id)"></button>
-                                </div>
-                            </div>                
-                        </td>
-                    </tr>
-            </ng-template>
-            <ng-template pTemplate="rowexpansion" let-users>
-                <tr>
-                  <ng-container>
-                <!-- <tr *ngFor="let advert of user.adverts">
-                    <ng-container *ngIf="advert.userId === user.id"> -->
-                    <td>
-                      {{users.userName}}
-                    </td>
-                    <td>
-                        ilan durumu
-                    </td>
-                    <td>
-                      ilan durumu
-                    </td>
-                    <td>
-                      ilan tarihi
-                    </td>
-                  </ng-container>
-                </tr>
-              </ng-template>
-              
-        </p-table>
-    </div>
-</div>
-<p-toast></p-toast>
+      <ng-template pTemplate="header">
+        <tr>
+            <th style="width: 4rem">
+                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+            </th>
+            <th pSortableColumn="name" style="min-width:5rem">Ad <p-sortIcon field="name"></p-sortIcon></th>
+            <th pSortableColumn="price">Soyad <p-sortIcon field="price"></p-sortIcon></th>
+            <th pSortableColumn="mail">E-posta <p-sortIcon field="mail"></p-sortIcon></th>
+            <th pSortableColumn="category" style="min-width:8rem">Doğum Tarihi <p-sortIcon field="category"></p-sortIcon></th>
+            <th pSortableColumn="rating">Sahiplenme Geçmişi <p-sortIcon field="rating"></p-sortIcon></th>
+            <th pSortableColumn="sutiton">Aktif hayvan <p-sortIcon field="sutiton"></p-sortIcon></th>
+            <th pSortableColumn="inventoryStatus" style="min-width:10rem">Düzenle/Sil </th>
+            <th></th>
+        </tr>
+    </ng-template>
 
 
-<!-- <div *ngFor="let user of users">
-    <div>
-        {{user.userName}}
-    </div>
-</div> -->
+    <ng-template pTemplate="body" let-user>
+        <tr >
+            <td>{{ user.id }}</td>  
+            <td>{{ user.userName }}</td>  
+            <td>{{ user.user_surname }}</td>  
+            <td>{{ user.email }}</td>  
+            <td>{{ user.user_bdate }}</td>  
+            <td>{{ user.animal_history }}</td>  
+            <td>{{ user.animal_exist }}</td>  
+
+        <td>
+              <button  pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success"></button>
+              <span class="button-space"></span>
+
+              <button  (click)="onDelete(user.id)"  pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" style="margin-left: 15px;"></button>
+            </td>
+              <!-- 
+                backend'den id'yi çekemediğimiz için id'yi tespit edemedi frontend kısmında :) aklımızdao lsun. swaggerda getall'da id yi çekemedik :D
+              -->
+          </tr>
+    </ng-template>
+ 
