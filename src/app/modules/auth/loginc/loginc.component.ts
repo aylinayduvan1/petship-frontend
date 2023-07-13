@@ -2,10 +2,11 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { LoginRequest } from 'src/app/models/request/login-request.model';
-import { RegisterRequest} from 'src/app/models/request/register-request.model';
+import { RegisterRequest } from 'src/app/models/request/register-request.model';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ResponseStatus } from 'src/app/models/response/base-response.model';
 import { AnimationItem } from 'lottie-web';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 declare let lottie: any;
 
@@ -25,10 +26,10 @@ export class LogincComponent {
 
   toggleForm() {
     this.isLoginFormVisible = !this.isLoginFormVisible;
-    const cardElement:any = document.querySelector('.card');
+    const cardElement: any = document.querySelector('.card');
     cardElement.classList.toggle('flipped');
   }
-  
+
   ngOnDestroy() {
     if (this.animation) {
       this.animation.destroy();
@@ -39,7 +40,7 @@ export class LogincComponent {
     { label: 'Hayvan besledim', value: true },
     { label: 'Hayvan beslemedim', value: false }
   ];
-  
+
   animalExitsOptions = [
     { label: 'Hayvanım var', value: true },
     { label: 'Hayvanım yok', value: false }
@@ -66,7 +67,7 @@ export class LogincComponent {
       loop: false,
       autoplay: true,
       path: 'assets/animations/kus.json',
-      animationSpeed: 0.9, // Adjust the speed here   
+      animationSpeed: 0.9, // Adjust the speed here
     });
   }
 
@@ -76,49 +77,69 @@ export class LogincComponent {
   constructor(
     private readonly authService: AuthService,
     private readonly router: Router,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private formBuilder: FormBuilder
   ) {}
-
-  ngOnInit(): void {
-    this.initializeAnimation();
-
-  }
 
   async login() {
     let status = await this.authService.login(this.loginRequest);
 
-    if (status == ResponseStatus.Ok) {
+    if (status === ResponseStatus.Ok) {
       await this.router.navigate(['']);
       setTimeout(() => {
         this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Giriş yaptınız..' });
         this.router.navigate(['/profile']); // Giriş doğruysa /homepage'e yönlendir
       }, 2000); // 2 saniye (2000 milisaniye) beklet
-    } else if (status == ResponseStatus.Invalid)
+    } else if (status === ResponseStatus.Invalid) {
       this.loginRequest.Password = '';
       this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Kullanıcı adı veya şifre hatalı' });
+    }
   }
 
-  
   async register() {
     let status = await this.authService.register(this.registerRequest);
-  
-    if (status == ResponseStatus.Ok) {
+
+    if (status === ResponseStatus.Ok) {
       setTimeout(() => {
         this.messageService.add({ severity: 'success', summary: 'Başarılı', detail: 'Kaydınız başarıyla oluşturuldu.' });
-        window.location.reload(); // Refresh the page
+        window.location.reload(); // Sayfayı yenile
       }, 2000); // 2 saniye beklet
-    } else if (status == ResponseStatus.Invalid) {
+    } else if (status === ResponseStatus.Invalid) {
       this.messageService.add({ severity: 'error', summary: 'Hatalı', detail: 'Geçersiz kayıt bilgileri.' });
     }
   }
 
+  showLoginForm: boolean = true;
+
+  showRegisterForm() {
+    this.showLoginForm = false;
+  }
+
+  loginForm!: FormGroup;
+  registerForm!: FormGroup;
+  ngOnInit() {
+    this.initializeAnimation();
+  
+    this.loginForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+  
+    this.registerForm = this.formBuilder.group({
+      userName: ['', Validators.required],
+      user_surname: ['', Validators.required],
+      user_bdate: ['', Validators.required],
+      user_adress: ['', Validators.required],
+      user_sex: ['', Validators.required],
+      user_gsm: ['', Validators.required],
+      animal_exist: ['', Validators.required],
+      animal_history: ['', Validators.required],
+      Email: ['', [Validators.required, Validators.email]],
+      Password: ['', Validators.required]
+    });
+  }
+  
+
 
   
-showLoginForm: boolean = true;
-
-showRegisterForm() {
-  this.showLoginForm = false;
-}
-  
-
 }
