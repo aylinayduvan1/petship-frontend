@@ -142,6 +142,7 @@ export class  AdvertListesComponent implements OnInit{
         advert_date: '',
         advert_title: '',
         advert_text: '',
+        advert_img: '',
         situation: false
       };      return this.apiService.updateEntity(advertId, newAdvert, Advert );
     }

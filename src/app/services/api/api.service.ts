@@ -84,9 +84,9 @@ export class ApiService {
     return this.http.post<BaseDataResponse<TEntity[]>>(environment.api_url + "/" + entityType + "/Create", entity).pipe(share()).toPromise();
   }
   
-updateEntity<TEntity>(id: number, newEntity: TEntity, entityType: Type<TEntity>) {
-  return this.http.put<BaseDataResponse<TEntity[]>>(environment.api_url + "/" + entityType.name + "/Update?id=" + id, newEntity).pipe(share()).toPromise();
-}
+  updateEntity<TEntity>(id: number, newEntity: TEntity, entityType: Type<TEntity>) {
+    return this.http.put<BaseDataResponse<TEntity[]>>(environment.api_url + "/" + entityType.name + "/Update?id=" + id, newEntity).pipe(share()).toPromise();
+  }
 
 }   
 
