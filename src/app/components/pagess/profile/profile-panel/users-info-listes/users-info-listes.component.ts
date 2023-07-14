@@ -2,6 +2,7 @@ import { User } from './../../../../../models/user.model';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api/api.service';
 import { Component, EventEmitter, Output, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth/auth.service';
 @Component({
   selector: 'app-users-info-listes',
   templateUrl: './users-info-listes.component.html',
@@ -18,13 +19,19 @@ export class UsersInfoListesComponent implements OnInit {
   selectedOption1: string = '';
   selectedOption2: string = '';
   selectedGender: string = '';
-  constructor(private readonly apiService: ApiService, private router: Router) { }
+  constructor(private readonly apiService: ApiService, private router: Router,private authService: AuthService) { 
+    this.currentUser = null;
+  }
 
   users: User[] = [];
 
-  ngOnInit() {
+  currentUser: User | null;
+  
+  ngOnInit(): void {
     this.refresh();
-
+    this.authService.currentUser.subscribe(user => {
+      this.currentUser = user;
+    });
   }
 
   refresh() {

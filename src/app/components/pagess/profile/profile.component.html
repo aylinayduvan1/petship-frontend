@@ -8,12 +8,12 @@
 <div class="row">
   <div class="profile-nav col-md-3">
       <div class="panel">
-          <div class="user-heading round">
+          <div class="user-heading round" *ngIf="currentUser">
               <a href="#">
                   <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="">
               </a>
-              <h1>Çağla Özay</h1>
-              <p>çaça@theEmail.com</p>
+              <h2 > {{currentUser.userName}} </h2>
+              <p> {{currentUser.email}} </p>
           </div>
           <ul class="nav nav-pills nav-stacked" >
               <li class="active" ><a  (click)="changeContent('home')" > <i class="fa fa-user"></i> Kişisel Bilgiler</a></li>

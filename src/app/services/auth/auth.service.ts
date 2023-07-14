@@ -24,33 +24,35 @@ export class AuthService {
     return this.currentUserSubject.value;
   }
 
-  public async login(request: LoginRequest): Promise<ResponseStatus> {
-    const loginResponse = await this.apiService.login(request).toPromise();
+     //prettier-ignore
+     public async login(request: LoginRequest): Promise<ResponseStatus> {
+      const loginResponse = await this.apiService.login(request).toPromise();
 
-    let status = loginResponse!.status;
+      let status = loginResponse!.status;
 
-    if (status == ResponseStatus.Ok) {
-      this.setToken(loginResponse!.data);
-        //   const profileResponse = await this.apiService
-        //     .getProfileInfo()
-        //     .toPromise();
-    
-        //   status = profileResponse!.status;
-    
-        //   if (status == ResponseStatus.Ok) {
-        //     sessionStorage.setItem('current_user', JSON.stringify(profileResponse!.data));
-    
-        //     this.currentUserSubject.next(profileResponse!.data);
-        //   } else {
-        //     await this.logOut();
-        //   }
-        // }
-      sessionStorage.setItem('current_user', JSON.stringify({}));
-      this.currentUserSubject.next({} as User);
+      if (status == ResponseStatus.Ok) {
+        this.setToken(loginResponse!.data);
+
+        const profileResponse = await this.apiService
+          .getProfileInfo()
+          .toPromise();
+
+        status = profileResponse!.status;
+
+        if (status == ResponseStatus.Ok) {
+          sessionStorage.setItem('current_user', JSON.stringify(profileResponse!.data));
+
+          this.currentUserSubject.next(profileResponse!.data);
+        } else {
+          await this.logOut();
+        }
+      }
+      return status;
     }
 
-    return status;
-  }
+  
+  
+ 
 
 
   public async register(request: RegisterRequest): Promise<ResponseStatus> {

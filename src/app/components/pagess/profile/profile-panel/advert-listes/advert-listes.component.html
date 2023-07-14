@@ -25,8 +25,6 @@
     <th pSortableColumn="price" >Görsel</th>
     <th pSortableColumn="advert_text" >Açıklama <span field="advert_text"></span></th>
       <th pSortableColumn="advert_date" > İlan Tarihi <span field="advert_date"></span></th>
-      <th pSortableColumn="category" > Kategoriler <p-sortIcon field="category"></p-sortIcon></th>
-      <th pSortableColumn="situation">İlan Durumu<p-sortIcon field="situation"></p-sortIcon></th>
       <th pSortableColumn="inventoryStatus" >Düzenle/Sil <span field="inventoryStatus"></span></th>
           <th></th>
       </tr>
@@ -40,11 +38,9 @@
              <!--     <img [src]="'assets/images/dog.png'" width="50" class="shadow-4" />
               <img [src]="'assets/images/' + advert.file_name" width="50" class="shadow-4" />
            </td> -->
-           <td>{{ advert.advert_date }}</td>
 
            <td>{{ advert.advert_date }}</td>
           <td>{{ advert.advert_text }}</td>
-          <td>{{ advert.advert_date }}</td>
           <!-- <td>{{ advert.situation }}</td> -->
           <td>
             <button (click)="onUpdate(advert.id)" pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"></button>
