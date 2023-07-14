@@ -110,6 +110,7 @@ export class  AdvertListesComponent implements OnInit{
     onCreate(entity: AdvertRequest) {
       this.addEntity<AdvertRequest>(entity, 'Advert').then(response => {
         if (response?.status == ResponseStatus.Ok) {
+          this.modalOpenAdd = false;
           this.refresh();
         }
       });
