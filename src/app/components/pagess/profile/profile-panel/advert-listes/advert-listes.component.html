@@ -1,170 +1,145 @@
 <!--TOOLBAR-->
-<div class="card">
-    <p-toast></p-toast>
-    <p-toolbar styleClass="mb-4 gap-2">
-      <ng-template pTemplate="left">
-          <button pButton pRipple label="İlan Ekle" icon="pi pi-plus" class="p-button-success mr-2 custom-button" (click)="openNew()"></button>
-      </ng-template>
-    </p-toolbar>
- 
-  <!--TABLE -->
-  <p-table
-      #dt
-      [value]="adverts"
-      [globalFilterFields]="['name', 'country.name', 'representative.name']"
-      [tableStyle]="{ 'min-width': '65rem' }"
-      [(selection)]="selectedProducts"
-      [rowHover]="true"
-      dataKey="id"
-      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-      [showCurrentPageReport]="true"
-  >
-<!--
-    <ng-template pTemplate="header">
-          <tr>
-              <th pSortableColumn="name" style="width: 8%;" > Ad <p-sortIcon field="name"></p-sortIcon></th>
-              <th style="width: 8%;">Görsel</th>
-              <th pSortableColumn="category" style="width: 5%;"> Kategori <p-sortIcon field="category"></p-sortIcon></th>
-              <th pSortableColumn="date" style="width: 8%;" > İlan Tarihi <p-sortIcon field="advert-date"></p-sortIcon></th>
-              <th pSortableColumn="edit/delete" style="width: 3%;"> Düzenle/Sil</th>
-          </tr>
-      </ng-template>
--->
-      
-
-      <ng-template pTemplate="header">
-        <tr>
-            <th style="width: 4rem">
-                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-            </th>
-            <th pSortableColumn="name" style="min-width:15rem">Ad <p-sortIcon field="name"></p-sortIcon></th>
-            <th pSortableColumn="price">Görsel <p-sortIcon field="price"></p-sortIcon></th>
-            <th pSortableColumn="category" style="min-width:10rem">Kategori <p-sortIcon field="category"></p-sortIcon></th>
-            <th pSortableColumn="rating"> İlan Tarihi <p-sortIcon field="rating"></p-sortIcon></th>
-            <th pSortableColumn="sutiton">Durum <p-sortIcon field="sutiton"></p-sortIcon></th>
-            <th pSortableColumn="inventoryStatus" style="min-width:10rem">Düzenle/Sil <p-sortIcon field="inventoryStatus"></p-sortIcon></th>
-            <th></th>
-        </tr>
+<div class="card" style="width: 100%;" >
+  <p-toast></p-toast>
+  <p-toolbar styleClass="">
+    <ng-template pTemplate="left">
+        <button  (click)="openModalAdd()" pButton pRipple label="İlan Ekle" icon="pi pi-plus" class="p-button-success mr-2 custom-button" (click)="openNew()"></button>
     </ng-template>
+  </p-toolbar>
+
+<!--TABLE -->
+<p-table
+    #dt
+    [value]="adverts"
+    [globalFilterFields]="['name', 'country.name', 'representative.name']"
+    [tableStyle]="{ 'min-width': '55rem' }"
+    [rowHover]="true"
+    dataKey="id"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [showCurrentPageReport]="true"
+>
+
+<ng-template pTemplate="header" style="min-width: 50rem">
+  <tr class="header-custom">
+    <th pSortableColumn="advert_title" >Hayvan Adı <span field="advert_title"></span></th>
+    <th pSortableColumn="price" >Görsel</th>
+    <th pSortableColumn="advert_text" >Açıklama <span field="advert_text"></span></th>
+      <th pSortableColumn="advert_date" > İlan Tarihi <span field="advert_date"></span></th>
+      <th pSortableColumn="category" > Kategoriler <p-sortIcon field="category"></p-sortIcon></th>
+      <th pSortableColumn="situation">İlan Durumu<p-sortIcon field="situation"></p-sortIcon></th>
+      <th pSortableColumn="inventoryStatus" >Düzenle/Sil <span field="inventoryStatus"></span></th>
+          <th></th>
+      </tr>
+  </ng-template>
 
 
-    <ng-template pTemplate="body" let-advert>
-        <tr>
-            <td>{{ advert.advert_no }}</td>  
-            <td>{{ advert.advert_title }}</td>
-            <td>
-                <img [src]="'assets/images/dog.png'" width="50" class="shadow-4" />
-                <!--<img [src]="'assets/images/' + advert.file_name" width="50" class="shadow-4" />  -->
-           </td>
-            <td>{{ advert.advert_text }}</td>
-            <td>{{ advert.advert_date }}</td>
-            <td>{{ advert.situation }}</td>
-            <td>
-              <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"></button>
-              <span class="button-space"></span>
-              <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"></button>
-            </td>
-          </tr>
-    </ng-template>
-
-
-
-
-<!--
-      <ng-template pTemplate="body">
-        <div class="card" *ngFor="let advert of adverts">
-        <tr>
-          <td>{{ advert.advert_no }}</td>
-
-          </td>
-            <img [src]="'https://primefaces.org/cdn/primeng/images/demo/product/' + product.image" [alt]="product.name" width="50" class="shadow-4" />
-          </li>
-
+  <ng-template pTemplate="body" let-advert>
+      <tr>
           <td>{{ advert.advert_title }}</td>
+          <td>
+             <!--     <img [src]="'assets/images/dog.png'" width="50" class="shadow-4" />
+              <img [src]="'assets/images/' + advert.file_name" width="50" class="shadow-4" />
+           </td> -->
+           <td>{{ advert.advert_date }}</td>
+
+           <td>{{ advert.advert_date }}</td>
           <td>{{ advert.advert_text }}</td>
           <td>{{ advert.advert_date }}</td>
-          <td>{{ advert.situation }}</td>
+          <!-- <td>{{ advert.situation }}</td> -->
           <td>
-            <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"></button>
+            <button (click)="onUpdate(advert.id)" pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"></button>
             <span class="button-space"></span>
-            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"></button>
-          </td>
-        </tr>
-    </div>
-      </ng-template>
-    -->
-      
 
-      <ng-template pTemplate="summary">
-          <div class="flex align-items-center justify-content-between">In total there are {{ products ? products.length : 0 }} products.</div>
-      </ng-template>
-  </p-table>
+            <button  (click)="openModal()" pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"></button>
+
+            <div class="modal fade" tabindex="-1" [class.show]="modalOpen">
+              <!--CSS'i düzenlemezsem çalışmaz-->
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">{{advert.advert_title}} silinecek.</h5>
+                  </div>
+                  <div class="modal-body">
+                    <p>Silmek istediğinize emin misiniz?</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button (click)="onDelete(advert.id)" pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"> </button>
+                    <button type="button" class="btn " (click)="closeModal()">İptal</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="modal fade" tabindex="-1" [class.show]="modalOpenAdd">
+              <!--CSS'i düzenlemezsem çalışmaz-->
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">İlan Ekle</h5>
+                  </div>
+                  <div class="modal-body">
+                    <form  ngModelOptions="{standalone: true}">
+                      <div class="row" >
+                              <div class="col-6 mb-2 mt-3">
+                                  <span class="p-float-label">
+                                      <input name="advert_title" [(ngModel)]="advertRequest.advert_title" pInputText placeholder="Hayvan adı giriniz"  class="w-100"  style="border: solid 1px rgba(181, 181, 181, 0.267);"/>
+                                      <label htmlFor="advert_title">Hayvan Adı</label>
+                                  </span>   
+                              </div>
+                              <div class="col-6 mb-2 mt-3"  >   
+                                <span class="p-float-label">
+                                    <input name="advert_date" [(ngModel)]="advertRequest.advert_date" pInputText  class="w-100"  style="border: solid 1px rgba(181, 181, 181, 0.267);"/>
+                                    <label htmlFor="advert_date">İlan Tarihi</label>
+                                </span>  
+                            </div>
+                      </div>             
+                      <div class="row" >
+                          <div class="col-6 mb-2 mt-3" style="display: flex;" >
+                            <span class="p-float-label">
+                              <input name="advert_no" [(ngModel)]="advertRequest.advert_no" pInputText  class="w-100"  style="border: solid 1px rgba(181, 181, 181, 0.267);"/>
+                              <label htmlFor="advert_no">İlan No</label>
+                          </span>  
+                          </div>   
+                          <div class="col-6 mb-2 mt-3" style="display: flex;" >
+                            <span class="p-float-label">
+                              <input name="advert_img" [(ngModel)]="advertRequest.advert_img" pInputText  class="w-100"  style="border: solid 1px rgba(181, 181, 181, 0.267);"/>
+                              <label htmlFor="advert_img">Resim yolu</label>
+                          </span>  
+                          </div>  
+       
+                      </div>
+
+                        <div class="row" >
+                        <div class="col-12 mb-2 mt-3">
+                          <span class="p-float-label">
+                              <textarea name="advert_text" [(ngModel)]="advertRequest.advert_text" pInputTextarea placeholder="İlan Açıklama"  class="w-100"  style="border: solid 1px rgba(181, 181, 181, 0.267);"></textarea>
+                              <label htmlFor="advert_text">Açıklama</label>
+                          </span>                   
+                      </div>
+                      </div>             
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn" (click)="closeModalAdd()" style="width: 30%;">İptal</button>
+                    <button class="btn btn-primary" type="submit" style="width: 30%;" (click)="onCreate(advertRequest)">İlan Ekle</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+            <!-- 
+              backend'den id'yi çekemediğimiz için id'yi tespit edemedi frontend kısmında :) aklımızdao lsun. swaggerda getall'da id yi çekemedik :D
+            -->
+          </td> 
+        </tr>
+  </ng-template>
+
+</p-table>
 </div>
 
-<p-dialog [(visible)]="productDialog" [style]="{ width: '450px' }" header="Pet Details" [modal]="true" styleClass="p-fluid">
-    <ng-template pTemplate="content">
-      <div class="field">
-        <label for="name">Name</label>
-        <input type="text" pInputText id="name" [(ngModel)]="product.name" required autofocus />
-        <small class="p-error" *ngIf="submitted && !product.name">Name is required.</small>
-      </div>
-  <!--img ekleme-->
-      <div class="field">
-        <label for="image">Image</label>
-        <!-- Gerçek bir yükleme URL'siyle değiştirin -->
-        <p-fileUpload name="image" url="YOUR_UPLOAD_URL" mode="basic" accept="image/*" chooseLabel="Choose" (onUpload)="onImageUpload($event)" [showUploadButton]="false"></p-fileUpload>
-        <small class="p-error" *ngIf="submitted && !product.image">Image is required.</small>
-      </div>
 
-      <div class="field">
-          <label for="description">Description</label>
-          <textarea id="description" pInputTextarea [(ngModel)]="product.description" required rows="3" cols="20"></textarea>
-      </div>
-
-      <div class="field">
-              <ng-template pTemplate="selectedItem">
-              </ng-template>
-              <ng-template let-option pTemplate="item">
-                  <p-tag [value]="option.label" [severity]="getSeverity(option.label)"></p-tag>
-              </ng-template>
-      </div>
-
-      <div class="field">
-          <label class="mb-3">Category</label>
-
-          <div class="formgrid grid">
-              <div class="field-radiobutton col-6">
-                  <p-radioButton id="category1" name="category" value="Kedi" [(ngModel)]="product.category"></p-radioButton>
-                  <label for="category1">Kedi</label>
-              </div>
-
-              <div class="field-radiobutton col-6">
-                  <p-radioButton id="category2" name="category" value="Köpek" [(ngModel)]="product.category"></p-radioButton>
-                  <label for="category2">Köpek</label>
-              </div>
-
-              <div class="field-radiobutton col-6">
-                  <p-radioButton id="category3" name="category" value="Kuş" [(ngModel)]="product.category"></p-radioButton>
-                  <label for="category3">Kuş</label>
-              </div>
-          </div>
-      </div>
-
-      <div class="formgrid grid">
-      </div>
-      
-  </ng-template>
-
-  <ng-template pTemplate="footer">
-      <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
-      <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveProduct()"></button>
-  </ng-template>
-</p-dialog>
-
-<p-confirmDialog [style]="{ width: '450px' }"></p-confirmDialog>
-
-<!--<div *ngFor="let user of users">
-    <div>
-        {{user.userName}}
-    </div>
-</div> -->

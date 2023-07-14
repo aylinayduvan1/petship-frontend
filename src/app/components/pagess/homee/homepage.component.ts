@@ -1,6 +1,12 @@
 import { Component, Input} from '@angular/core';
 declare let lottie: any;
-
+import { Advert } from 'src/app/models/advert.model';
+import { Category } from 'src/app/models/categories.model';
+import { Router } from '@angular/router';
+import { ResponseStatus } from 'src/app/models/response/base-response.model';
+import {  MessageService } from 'primeng/api';
+import { ApiService } from 'src/app/services/api/api.service';
+ 
 
 @Component({
   selector: 'app-homepage',
@@ -8,7 +14,38 @@ declare let lottie: any;
   styleUrls: ['../homee/homepage.component.css']
 })
 export class HomepageComponent {
- 
+  constructor(
+
+    private readonly apiService: ApiService, 
+    private router: Router,
+    private messageService: MessageService) {}
+
+  adverts:Advert[]=[];
+  categories:Category[] = [];
+  selectedCategory: Category | null = null;
+  visible: boolean = false;
+
+  
+  selectCategory(category: Category): void {
+    this.selectedCategory = category;
+  }
+
+  ngOnInit(): void {
+    this.refresh();
+  
+  }
+  
+  
+  refresh() {
+    this.apiService.getAllEntities(Advert).subscribe((response) => {
+      this.adverts = response.data;
+      console.log(this.adverts)
+    });     
+    this.apiService.getAllEntities(Category).subscribe((response) => {
+      this.categories = response.data;
+    });
+    console.log(this.categories)
+  }
 
 
   @Input() kategoriAdi: string = '';

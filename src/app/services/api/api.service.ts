@@ -30,9 +30,7 @@ export class ApiService {
       );
   }
 
-  register(
-    request: RegisterRequest
-  ): Observable<BaseDataResponse<TokenResponse>> {
+  register(request: RegisterRequest): Observable<BaseDataResponse<TokenResponse>> {
     return this.http
       .post<BaseDataResponse<TokenResponse>>(
         this.endpoint + '/Auth/Register',
@@ -48,7 +46,9 @@ export class ApiService {
   refreshToken(token: string): Observable<BaseDataResponse<TokenResponse>> {
     return this.http
       .get<BaseDataResponse<TokenResponse>>(
+        //this.endpoint ifadesi, isteğin hedeflendiği API'nin temel URL'sini belirtir.
         this.endpoint + '/Auth/RefreshToken',
+        //params nesnesi kullanılarak bir parametre oluşturulur. eklenir
         { params: new HttpParams().append('token', token) }
       )
       .pipe(
@@ -69,16 +69,24 @@ export class ApiService {
   }
 
 
-
-  
   getAllEntities<TEntity>(entityType: Type<TEntity>) {
     return this.http.request<BaseDataResponse<TEntity[]>>
+   // environment.ts dosyasında) tanımlanır
       ("get", environment.api_url + "/" + entityType.name + "/GetAll").pipe(share());
-  } 
- 
+  }
+
 
  deleteEntity<TEntity>(id : number, entityType : Type<TEntity>) {
     return this.http.delete<BaseResponse>(environment.api_url + "/" + entityType.name + "/Delete?id=" + id).pipe(share()).toPromise();
   }
 
+  addEntity<TEntity>(entity: TEntity, entityType: string) {
+    return this.http.post<BaseDataResponse<TEntity[]>>(environment.api_url + "/" + entityType + "/Create", entity).pipe(share()).toPromise();
+  }
+  
+  updateEntity<TEntity>(id: number, newEntity: TEntity, entityType: Type<TEntity>) {
+    return this.http.put<BaseDataResponse<TEntity[]>>(environment.api_url + "/" + entityType.name + "/Update?id=" + id, newEntity).pipe(share()).toPromise();
+  }
+
 }   
+

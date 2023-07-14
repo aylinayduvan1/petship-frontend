@@ -7,6 +7,7 @@ import { Router } from "@angular/router";
 import { Category } from 'src/app/models/categories.model';
 import { ResponseStatus } from 'src/app/models/response/base-response.model';
 import { MessageService } from 'primeng/api';
+import { CategoryRequest } from 'src/app/models/request/category-request.model';
 
 @Component({
   selector: 'app-categories-listes',
@@ -28,8 +29,15 @@ export class CategoriesListesComponent {
     value: string | null = null;
 
     statuses: any[] | undefined = undefined;
-  messageService: any;
+    messageService: any;
 
+    valu: string | undefined;
+    visible: boolean = false;
+
+
+
+
+    public categoryRequest: CategoryRequest = <CategoryRequest>{};
     filter(value: any) {
       // Fonksiyonun içeriği
     }
@@ -88,6 +96,8 @@ export class CategoriesListesComponent {
     }
     
 
+    
+
     getSeverity(status: string) : any {
         switch (status) {
             case 'unqualified':
@@ -107,8 +117,26 @@ export class CategoriesListesComponent {
         }
     }
 
+
+
+    
+
+    showDialog() {
+        this.visible = true;
+    }
+
  
-    //push
+    onCreate(entity: CategoryRequest) {
+      this.addEntity<CategoryRequest>(entity, 'Category').then(response => {
+        if (response?.status == ResponseStatus.Ok) {
+          this.refresh();
+        }
+      });
+    }
+  
+    addEntity<TEntity>(entity: TEntity, entityType:  string) {
+      return this.apiService.addEntity<TEntity>(entity, entityType);
+    }
 
   }
 

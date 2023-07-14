@@ -11,6 +11,42 @@
 
 
 <app-kategori></app-kategori>
+ <!-- kategorielr -->
+ <div class=" container">
+    <div class="text-center " style=" margin-bottom: 40px;">
+      <h1 style="margin-bottom: 40px; font-style: italic;">Kategoriler </h1>
+      <i class="fas fa-heart fa-2x"></i>
+    </div>
+
+    <div class="row d-flex justify-content-center mb-3 kategori-butonlar">
+      <div class="col-3  " *ngFor="let category of categories">
+        <div class="rounded-left d-flex justify-content-center">
+          <img src={{category.category_img}} class="mr-2 btn-img rounded-circle bg-image hover-zoom">
+        </div>
+      </div>
+    </div>
+
+
+  <!-- kartlar -->
+
+  <div class="container d-flex align-items-center justify-content-center position-relative flex-wrap">
+    <div class="card  d-flex position-relative flex-column" *ngFor="let advert of adverts">
+        <div class='imgContainer'>
+            <img src={{advert.advert_img}}>
+        </div>
+        <div class="content">
+          <h2>İlan No: {{ advert.advert_no }}</h2>
+          <h4>{{ advert.advert_title }}</h4>
+          <p>{{ advert.advert_text }}</p>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
 
 
 

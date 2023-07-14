@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { Product } from './domain/product';
-import { ProductServiceService } from './service/productservice';
 import { ApiService } from 'src/app/services/api/api.service';
 import {Advert} from 'src/app/models/advert.model'
 import { Router } from '@angular/router';
+import { ResponseStatus } from 'src/app/models/response/base-response.model';
+import { AdvertRequest} from 'src/app/models/request/advert-request.model';
+import { Category } from 'src/app/models/categories.model';
 
 
 @Component({
@@ -12,15 +13,10 @@ import { Router } from '@angular/router';
   templateUrl: './advert-listes.component.html',
   styleUrls: ['./advert-listes.component.css'],
   providers: [MessageService, ConfirmationService]
+
 })
 export class  AdvertListesComponent implements OnInit{
     productDialog: boolean = false;
-
-    products!: Product[];
-
-    product!: Product;
-
-    selectedProducts!: Product[] | null;
 
     submitted: boolean = false;
 
@@ -30,144 +26,157 @@ export class  AdvertListesComponent implements OnInit{
 
     adverts:Advert[]=[];
 
+   modalOpenAdd: boolean = false;
+    modalOpen: boolean = false; //sayfa ilk açıldığında modal'ın kapalı kalması için false değer verdik
+    modalEdit: boolean = false ;
 
-    constructor( private messageService: MessageService, 
-        private readonly apiService: ApiService, 
-        private router: Router,
-        private productService: ProductServiceService,
-    private confirmationService: ConfirmationService) 
-    {}
-    ngOnInit(): void {
-        this.refresh();
-
-        throw new Error('Method not implemented.');
-        //service yazarken apiServiceden çek
-
+    openModal() {
+      this.modalOpen = true;
+    }
+  
+    closeModal() {
+      this.modalOpen = false;
+    }
+    openModalAdd() {
+      this.modalOpenAdd = true;
+    }
+    
+    closeModalAdd() {
+      this.modalOpenAdd = false;
+    }
+    editModal(){
+      this.modalEdit = false;
     }
 
-    
-   
 
-    
+    value: string | undefined;
+
+    situationOptions = [
+      { label: 'İlanda', value: true },
+      { label: 'İlanda değil', value: false }
+    ];
+
+    public advertRequest: AdvertRequest = <AdvertRequest>{};
+
+    constructor(
+
+        private readonly apiService: ApiService, 
+        private router: Router,
+        private messageService: MessageService,
+        private confirmationService: ConfirmationService) {}
+
+    ngOnInit(): void {
+        this.refresh();
+    }
+
     refresh() {
         this.apiService.getAllEntities(Advert).subscribe((response) => {
           this.adverts = response.data;
           console.log(this.adverts)
-        });
-        console.log(this.adverts)
-    
+        });    
       }
 
    
     openNew() {
-        this.product = {};
         this.submitted = false;
         this.productDialog = true;
     }
 
-   
-    deleteSelectedProducts() {
-        this.confirmationService.confirm({
-            message: 'Are you sure you want to delete the selected products?',
-            header: 'Confirm',
-            icon: 'pi pi-exclamation-triangle',
-            accept: () => {
-                this.products = this.products.filter((val) => !this.selectedProducts?.includes(val));
-                this.selectedProducts = null;
-                this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Products Deleted', life: 3000 });
-            }
-        });
-    }
-
-   /* editProduct(advert: Advert) {
-        this.product = { ...advert.product };
-        this.productDialog = true;
-      }
-    */
-
-    deleteProduct(product: Product) {
-        this.confirmationService.confirm({
-            message: 'Are you sure you want to delete ' + product.name + '?',
-            header: 'Confirm',
-            icon: 'pi pi-exclamation-triangle',
-            accept: () => {
-                this.products = this.products.filter((val) => val.id !== product.id);
-                this.product = {};
-                this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
-            }
-        });
-    }
-
-    hideDialog() {
-        this.productDialog = false;
-        this.submitted = false;
-    }
-
-    saveProduct() {
-            this.submitted = true;
+    onDelete(advertId: number) {
+      console.log("Silme işlemi için ID:", advertId);
+      
+      this.delete(advertId)
+        .then(response => {
+          console.log("Silme yanıtı:", response);
           
-            if (this.product.name?.trim()) {
-              if (this.product.id) {
-                const index = this.findIndexById(this.product.id);
-               // this.adverts[index].product = { ...this.product };
-                this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Updated', life: 3000 });
-              } else {
-                this.product.id = this.createId();
-                this.product.image = 'product-placeholder.svg';
-                const newAdvert: Advert = {
-                  id: 0,
-                  advert_no: 0,
-                  advert_date: '',
-                  advert_title: '',
-                  situation: true,
-                  advert_text: '',
-                 // product: { ...this.product }
-                };
-                this.adverts.push(newAdvert);
-                this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Created', life: 3000 });
-              }
-          
-              this.productDialog = false;
-              this.product = {};
-            }
+          if (response?.status == ResponseStatus.Ok) {
+            console.log("Silme işlemi başarılı, tablo yenileniyor.");
+            this.refresh();
+          } else {
+            console.log("Silme işlemi başarısız.");
           }
+        })
+        .catch(error => {
+          console.error("Silme işlemi sırasında bir hata oluştu:", error);
+        }); 
+    }
+   
+ 
+    delete(advertId: number) {
+      return this.apiService.deleteEntity(advertId, Advert);
+    }
+    
+    
+    onCreate(entity: AdvertRequest) {
+      this.addEntity<AdvertRequest>(entity, 'Advert').then(response => {
+        if (response?.status == ResponseStatus.Ok) {
+          this.refresh();
+        }
+      });
+    }
+  
+    addEntity<TEntity>(entity: TEntity, entityType:  string) {
+      return this.apiService.addEntity<TEntity>(entity, entityType);
+    }
+
+
+
+    onUpdate(advertId: number) {
+      console.log("ekle işlemi için ID:", advertId);
+      
+      this.update(advertId)
+        .then(response => {
+          console.log("ekleme yanıtı:", response);
           
-    findIndexById(id: string): number {
-        let index = -1;
-        for (let i = 0; i < this.products.length; i++) {
-            if (this.products[i].id === id) {
-                index = i;
-                break;
-            }
-        }
-
-        return index;
+          if (response?.status == ResponseStatus.Ok) {
+            console.log("ekleme işlemi başarılı, tablo yenileniyor.");
+            this.refresh();
+          } else {
+            console.log("ekleme işlemi başarısız.");
+          }
+        })
+        .catch(error => {
+          console.error("ekleme işlemi sırasında bir hata oluştu:", error);
+        }); 
     }
-
-    createId(): string {
-        let id = '';
-        var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        for (var i = 0; i < 5; i++) {
-            id += chars.charAt(Math.floor(Math.random() * chars.length));
-        }
-        return id;
+   
+ 
+    update(advertId: number) {
+      const newAdvert: Advert = {
+        id: advertId,
+        advert_no: 0,
+        advert_date: '',
+        advert_title: '',
+        advert_text: '',
+        advert_img: '',
+        situation: false
+      };      return this.apiService.updateEntity(advertId, newAdvert, Advert );
     }
-
-    getSeverity(status: string): string {
-      switch (status) {
-        case 'INSTOCK':
-          return 'success';
-        case 'LOWSTOCK':
-          return 'warning';
-        case 'OUTOFSTOCK':
-          return 'danger';
-        default:
-          return '';
-        }
-    }
+    
+      
+    
+   
+    // hideDialog() {
+    //     this.productDialog = false;
+    //     this.submitted = false;
+    // }
 
 
-    onImageUpload(event: any) {
-        const uploadedFiles = event.files;
-    }
+
+
+    // getSeverity(status: string): string {
+    //   switch (status) {
+    //     case 'INSTOCK':
+    //       return 'success';
+    //     case 'LOWSTOCK':
+    //       return 'warning';
+    //     case 'OUTOFSTOCK':
+    //       return 'danger';
+    //     default:
+    //       return '';
+    //     }
+    // }
+
+
+  
 }

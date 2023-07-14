@@ -25,7 +25,6 @@ import { ProfileComponent } from './components/pagess/profile/profile.component'
 import { UsersInfoListesComponent } from './components/pagess/profile/profile-panel/users-info-listes/users-info-listes.component';
 import { UsersListesComponent } from './components/pagess/profile/profile-panel/users-listes/users-listes.component';
 import { CategoriesListesComponent } from './components/pagess/profile/profile-panel/categories-listes/categories-listes.component';
-import { AdvertListesComponent } from './components/pagess/profile/profile-panel/advert-listes/advert-listes.component';
 import { RippleModule } from 'primeng/ripple';
 import { AccordionModule } from 'primeng/accordion';
 import { ButtonModule } from 'primeng/button';
@@ -37,7 +36,6 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { CustomerService } from './components/pagess/profile/profile-panel/categories-listes/type-service/customer_service';
 import { DropdownModule } from 'primeng/dropdown';
 import { ConfirmationService} from 'primeng/api';
-import { ProductServiceService } from './components/pagess/profile/profile-panel/advert-listes/service/productservice';
 import { Toolbar, ToolbarModule } from 'primeng/toolbar';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { FileUploadModule } from 'primeng/fileupload';
@@ -49,6 +47,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { PasswordModule } from 'primeng/password';
 import { CalendarModule } from 'primeng/calendar';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AdvertListesComponent } from './components/pagess/profile/profile-panel/advert-listes/advert-listes.component';
 
 
 @NgModule({
@@ -110,7 +109,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   providers: [AuthService,
     MessageService,
     CustomerService,
-    ProductServiceService,
+ 
     AuthModule],
   bootstrap: [AppComponent]
 

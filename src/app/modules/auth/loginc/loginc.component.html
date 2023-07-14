@@ -16,7 +16,7 @@
                                 <span class="p-inputgroup-addon">
                                     <i class="pi pi-user"></i>
                                 </span>
-                                <input name="username" pInputText placeholder="E-posta adresi" [(ngModel)]="loginRequest.Email" class="w-100"  style="border: solid 1px rgba(181, 181, 181, 0.267);"/>
+                                <input name="username" pInputText placeholder="E-posta adresi" [(ngModel)]="loginRequest.Email" class="w-100"  style="border: solid 1px rgba(181, 181, 181, 0.267);"required>
                             </div>
                         </div>
                     </div>
@@ -26,7 +26,7 @@
                                 <span class="p-inputgroup-addon">
                                     <i class="pi pi-lock"></i>
                                 </span>
-                                <input pInputText placeholder="Şİfre" name="password"  class="w-100" [(ngModel)]="loginRequest.Password" style="border: solid 1px  rgba(181, 181, 181, 0.267);"/>
+                                <input pInputText placeholder="Şİfre" name="password"  class="w-100" [(ngModel)]="loginRequest.Password" style="border: solid 1px  rgba(181, 181, 181, 0.267);"required>
                             </div>
                         </div>
                     </div>
@@ -43,14 +43,14 @@
                     <div class="row" >
                             <div class="col-5 mb-2 mt-3">
                                 <span class="p-float-label">
-                                    <input name="UserName" pInputText placeholder="Adınızı Giriniz" [(ngModel)]="registerRequest.UserName" class="w-100"  style="border: solid 1px rgba(181, 181, 181, 0.267);"/>
+                                    <input name="UserName" pInputText placeholder="Adınızı Giriniz" [(ngModel)]="registerRequest.UserName" class="w-100"  style="border: solid 1px rgba(181, 181, 181, 0.267);"required>
                                     <label htmlFor="username">Adınızı Giriniz</label>
                                 </span>
                                         
                             </div>
                             <div class="col-5 mb-2 mt-3">
                                 <span class="p-float-label">
-                                    <input name="user_surname" pInputText placeholder="Soyadınızı Giriniz" [(ngModel)]="registerRequest.user_surname" class="w-100"  style="border: solid 1px rgba(181, 181, 181, 0.267);"/>
+                                    <input name="user_surname" pInputText placeholder="Soyadınızı Giriniz" [(ngModel)]="registerRequest.user_surname" class="w-100"  style="border: solid 1px rgba(181, 181, 181, 0.267);"required>
                                     <label htmlFor="username">Soyadınızı giriniz</label>
                                 </span>                   
                             </div>
@@ -58,13 +58,13 @@
                     <div class="row" >
                         <div class="col-5 mb-2 mt-3"  >   
                             <span class="p-float-label">
-                                <input name="user_bdate" pInputText  [(ngModel)]="registerRequest.user_bdate" class="w-100"  style="border: solid 1px rgba(181, 181, 181, 0.267);"/>
+                                <input name="user_bdate" pInputText  [(ngModel)]="registerRequest.user_bdate" class="w-100"  style="border: solid 1px rgba(181, 181, 181, 0.267);"required>
                                 <label htmlFor="username">Doğum Tarihinizi Giriniz</label>
                             </span>  
                         </div>
                         <div class="col-5 mb-2 mt-3">
                                 <span class="p-float-label">
-                                    <input name="username" pInputText  [(ngModel)]="registerRequest.user_adress" class="w-100"  style="border: solid 1px rgba(181, 181, 181, 0.267);"/>
+                                    <input name="username" pInputText  [(ngModel)]="registerRequest.user_adress" class="w-100"  style="border: solid 1px rgba(181, 181, 181, 0.267);" required>
                                     <label htmlFor="username">İl/İlçe Giriniz</label>
                                 </span>
                             </div>                       
@@ -83,7 +83,7 @@
                     </div>
                     <div class="col-5 mb-2 mt-3">
                         <span class="p-float-label">
-                            <input name="user_gsm" pInputText [(ngModel)]="registerRequest.user_gsm" class="w-100"  style="border: solid 1px rgba(181, 181, 181, 0.267);"/>
+                            <input name="user_gsm" pInputText [(ngModel)]="registerRequest.user_gsm" class="w-100"  style="border: solid 1px rgba(181, 181, 181, 0.267);" required>
                             <label htmlFor="username">Telefon numaranızı giriniz</label>
                         </span>
                         <!-- <span class="p-float-label">
@@ -100,21 +100,21 @@
                 </div>
                 <div class="col-5 mb-2 mt-3" style="display: flex;" >
                     <div class="dropdown-container w-100">
-                        <p-dropdown class="w-100" name="animal_history" [(ngModel)]="registerRequest.animal_history" [options]="animalHistoryOptions" optionLabel="label" styleClass="w-100"></p-dropdown>
+                        <p-dropdown class="w-100" name="animal_history" [(ngModel)]="registerRequest.animal_history" [options]="animalHistoryOptions" optionLabel="label" styleClass="w-100" ></p-dropdown>
                     </div>   
                 </div>
         </div>
         <div class="row" >
             <div class="col-5 mb-2 mt-3">
                 <span class="p-float-label">
-                    <input name="Email" pInputText placeholder="E-posta adresi" [(ngModel)]="registerRequest.Email" class="w-100"  style="border: solid 1px rgba(181, 181, 181, 0.267);"/>
+                    <input name="Email" pInputText placeholder="E-posta adresi" [(ngModel)]="registerRequest.Email" class="w-100"  style="border: solid 1px rgba(181, 181, 181, 0.267);" required>
                     <label htmlFor="username">E-posta adresi</label>
                 </span>                   
             </div>
             <div class="col-5 mb-2 mt-3">
                 <span class="p-float-label">
-                    <input name="Password" pInputText placeholder="şifre giriniz" [(ngModel)]="registerRequest.Password" class="w-100"  style="border: solid 1px rgba(181, 181, 181, 0.267);"/>
-                    <label htmlFor="username">Şifre Giriniz</label>
+                    <input [type]="'password'" name="password" pInputText placeholder="şifre giriniz" [(ngModel)]="registerRequest.Password" class="w-100" style="border: solid 1px rgba(181, 181, 181, 0.267);" required>
+                    <label htmlFor="password">Şifre Giriniz</label>                  
                 </span>                     
             </div>
             </div>
