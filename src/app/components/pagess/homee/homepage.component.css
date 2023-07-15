@@ -7,7 +7,7 @@
     height: auto;
   }
   .btn-img {
-    transition: transform 0.3s;
+    transition: transform 1.3s;
   }
   
   .btn-img:hover {
