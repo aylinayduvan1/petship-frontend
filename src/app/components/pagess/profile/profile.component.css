@@ -1603,3 +1603,115 @@ ul.summary-list > li:last-child  {
 
 
 
+/* user */
+.user-panelbar{
+  background: linear-gradient(135deg,#68b997, #127f50);
+  background-color: #184e8e;  
+  padding: 20px 0;
+  border-radius: 12px;
+}
+
+.user-infos{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-top: 20px;
+  color: #fff;
+}
+
+.user-infos img{
+  width: 110px;
+
+  height: 110px;
+
+  border-radius: 50%;
+
+  display: center;
+}
+
+
+.panelink ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.panelink ul li {
+  --c: #d6bc54;
+  color: var(--c);
+  font-size: 14px;
+  border-radius: 0.9em;
+  height: 3em;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: sans-serif;
+  letter-spacing: 0.1em;
+  text-align: center;
+  line-height: 3em;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: 0.5s;
+  margin: 1em;
+}
+
+.panelink ul li span {
+  position: absolute;
+  width: 25%;
+  height: 100%;
+  background-color: var(--c);
+  transform: translateY(150%);
+  border-radius: 50%;
+  left: calc((var(--n) - 1) * 25%);
+  transition: 0.5s;
+  transition-delay: calc((var(--n) - 1) * 0.1s);
+  z-index: -1;
+}
+
+
+.panelink ul li:hover {
+  color: #eee;
+}
+
+.panelink ul li:hover span {
+  transform: translateY(0) scale(2);
+}
+
+.panelink ul li span:nth-child(1) {
+  --n: 1;
+}
+
+.panelink ul li span:nth-child(2) {
+  --n: 2;
+}
+
+.panelink ul li span:nth-child(3) {
+  --n: 3;
+}
+
+.panelink ul li span:nth-child(4) {
+  --n: 4;
+}
+
+
+.panelink ul li.active {
+  color: #eee;
+}
+
+.panelink ul li.active:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #d6bc54;
+  transform: translateY(0) scale(2);
+  border-radius: 50%;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
