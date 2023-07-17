@@ -5,5 +5,6 @@ export class AdvertRequest {
     advert_title : string = ''; 
     situation : boolean = false ;
     advert_text : string = '' ;
+    advert_img : string = '' ;
   }
   

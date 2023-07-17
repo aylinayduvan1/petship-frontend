@@ -1,7 +1,177 @@
 
 
 
+/* KATEGORİELR VE KARTLAR*/
+.btn-img{
+    max-width: 120px;
+    height: auto;
+  }
+  .btn-img {
+    transition: transform 1.3s;
+  }
+  
+  .btn-img:hover {
+    transform: scale(1.2);
+    /* transform: rotate(15deg); */
+    /* transform: translate(-5px, -10px); */
+  }
+  
+  .ikonlar {
+    display: flex;
+    justify-content: space-between;
+    
+  }
+  
+  
+  
+  
+  .hover-zoom {
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: background-size 1.0s;
+  }
+  
+  .hover-zoom:hover {
+    background-size: 110% 110%; /* Yakınlaşma efekti için */
+  }
+  .btn:focus {
+    outline: none;
+  }
+  
+  .kategori-kartlarm{
+    margin-top: 50px;
+  }
+  
+  
+  /* card hover için */
+  .card {
+    position: relative;
+  }
+  
+  .category-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 1;
+    transition: background-color 1s ease; /* Geçiş animasyonu için süre ve geçiş işlevini ayarlayın */
+  }
+  
+  .category-card:hover::before {
+    background-color: rgba(0, 0, 0, 0.5); /* Hovar durumunda arka plan rengini güncelleyin */
+  }
+  
+  .btn-warning{
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    opacity: 0; /* Butonu varsayılan olarak gizleyin */
+    transition: opacity 1s ease; /* Geçiş animasyonu için süre ve geçiş işlevini ayarlayın */
+  }
+  .btn-info {
+    position: absolute;
+    top: calc(50% + 20px); /* İlk butona göre 50 piksel aşağıda hizala */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    opacity: 0; /* Butonu varsayılan olarak gizleyin */
+    transition: opacity 1s ease; /* Geçiş animasyonu için süre ve geçiş işlevini ayarlayın */
+    background-color: #4BA47E ;
+    border: none;
+  }
+  
+  
+  
+  
+  .card:hover .btn {
+    opacity: 1; /* Hovar durumunda butonun görünürlüğünü ayarlayın */
+  }
+  .card .animation-container {
+    position: absolute;
+    top: 40%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 500px;
+  }
 
 
 
 
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+  .container .card {
+    max-width: 300px;
+    height: 215px;
+    margin: 70px 10px;
+    padding: 20px 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    transition: 0.7s ease-in-out;
+  }
+  
+  .container .card:hover {
+    height: 450px;
+  }
+  
+  .container .card .imgContainer {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    top: -40px;
+    left: 10px;
+    z-index: 1;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .container .card .imgContainer img {
+    max-width: 100%;
+    border-radius: 4px;
+  }
+  
+  .container .card .content {
+    position: relative;
+    margin-top: -140px;
+    padding: 10px 15px;
+    text-align: center;
+    color: #111;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .container .card:hover .content {
+    visibility: visible;
+    opacity: 1;
+    margin-top: -40px;
+    transition-delay: 0.3s;
+  }
+  
+  @media (max-width: 330px) {
+    .container .card .imgContainer {
+      left: -2px;
+    }
+  }
+  
+  .card {
+    width: 33.33%;
+  }
+  
+  @media (max-width: 992px) {
+    .card {
+      width: 50%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .card {
+      width: 100%;
+    }
+  }
+  

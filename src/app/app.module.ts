@@ -6,7 +6,7 @@ import { BannerComponent } from './components/banner/banner.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth/auth.service';
 import { AvatarModule } from 'primeng/avatar';
 import { AppRoutingModule } from './app-routing.module';
@@ -48,6 +48,7 @@ import { PasswordModule } from 'primeng/password';
 import { CalendarModule } from 'primeng/calendar';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AdvertListesComponent } from './components/pagess/profile/profile-panel/advert-listes/advert-listes.component';
+import { JwtInterceptor } from './interceptors/jwt.interceptor';
 
 
 @NgModule({
@@ -109,6 +110,7 @@ import { AdvertListesComponent } from './components/pagess/profile/profile-panel
   providers: [AuthService,
     MessageService,
     CustomerService,
+{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
  
     AuthModule],
   bootstrap: [AppComponent]

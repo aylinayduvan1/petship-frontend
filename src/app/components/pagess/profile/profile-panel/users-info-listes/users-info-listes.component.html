@@ -12,41 +12,29 @@
               </div>
             </div>
           </div>
-          <div class="card-body">
+          <div class="card-body" >
             <form>
               <h6 class="heading-small text-muted mb-4">Kullanıcı Bilgileri</h6>
-              <div class="pl-lg-4">
-                <div class="row">
-                  <div class="col-lg-6">
-                    <div class="form-group focused">
-                      <label class="form-control-label" for="input-username">Kullanıcı Adı</label>
-                      <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Kullanıcı Adın" value=""  [disabled]="!isEditing ">
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group focused">
-                      <label class="form-control-label" for="input-email">E-mail adresi</label>
-                      <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="petship@example.com" value=""  [disabled]="!isEditing">
-                    </div>
+              <div class="pl-lg-4" *ngIf="currentUser">
+                <div class="row"><div class="col-lg-6">
+                  <div class="form-group focused">
+                    <label class="form-control-label" for="input-first-name">Ad</label>
+                    <input [value]="currentUser.userName" type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="Adın" value="" [disabled]="!isEditing">
                   </div>
                 </div>
+                <div class="col-lg-6">
+                  <div class="form-group focused">
+                    <label class="form-control-label" for="input-last-name">Soyadı</label>
+                    <input   [value]="currentUser.user_surname"  type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Soyadın" value="" [disabled]="!isEditing">
+                  </div>
+                </div>
+                </div>
                 <div class="row">
-                  <div class="col-lg-6">
-                    <div class="form-group focused">
-                      <label class="form-control-label" for="input-first-name">Ad</label>
-                      <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="Adın" value="" [disabled]="!isEditing">
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="form-group focused">
-                      <label class="form-control-label" for="input-last-name">Soyadı</label>
-                      <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Soyadın" value="" [disabled]="!isEditing">
-                    </div>
-                  </div>
-                  <div  class="col-lg-3">
+
+                  <div  class="col-lg-6">
                     <div class="form-group focused">
                       <label class="form-control-label" for="input-last-name">Doğum Tarihiniz</label>
-                      <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Örnek giriş :''03.05.2000'' " value="" [disabled]="!isEditing">
+                      <input  [value]="currentUser.user_bdate"  type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Örnek giriş :''03.05.2000'' " value="" [disabled]="!isEditing">
                     </div>
                     </div>
                     <div id="gendersecim">
@@ -83,23 +71,22 @@
               <hr class="my-4">
               <!-- İletişim bilgileri -->
               <h6 class="heading-small text-muted mb-4">İletişim Bilgileri</h6>
-              <div class="pl-lg-4">
+              <div class="pl-lg-4" *ngIf="currentUser">
                 <div class="row">
                   <div class="col-md-4">
                     <div class="form-group focused">
                       <label class="form-control-label" for="input-address">Adres</label>
-                      <input id="input-address" class="form-control form-control-alternative" placeholder="Adresin(İl/İlçe)" value="" type="text" [disabled]="!isEditing">
+                      <input [value]="currentUser.user_adress" id="input-address" class="form-control form-control-alternative" placeholder="Adresin(İl/İlçe)" value="" type="text" [disabled]="!isEditing">
                     </div>
                   </div>
-
                   <div class="col-lg-4 form-group focused">
                     <label class="form-control-label" for="input-last-name">GSM</label>
-                    <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="GSM Numaranız" value="" [disabled]="!isEditing">
+                    <input  [value]="currentUser.user_gsm" type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="GSM Numaranız" value="" [disabled]="!isEditing">
                   </div>
 
                   <div class="col-lg-4 form-group focused">
                     <label class="form-control-label" for="input-last-name">E-mail Adresiniz</label>
-                    <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="E-mail Adresiniz" value="" [disabled]="!isEditing">
+                    <input [value]="currentUser.email" type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="E-mail Adresiniz" value="" [disabled]="!isEditing">
                   </div>
                   </div>
                 <hr class="my-4">

@@ -1,5 +1,7 @@
 import { Component, Input, ElementRef, OnInit, ViewChild, AfterViewInit , HostListener, EventEmitter, Output} from '@angular/core';
 import { AnimationItem } from 'lottie-web'; 
+import { User } from 'src/app/models/user.model';
+import { AuthService } from 'src/app/services/auth/auth.service';
 declare let lottie: any;
 
 
@@ -16,12 +18,19 @@ export class ProfileComponent implements OnInit {
     this.currentContent = content;
   }
 
+  currentUser: User | null;
+
+  constructor(private authService: AuthService) {
+    this.currentUser = null;
+  }
 
 
-  constructor() { }
 
   ngOnInit(): void {
     this.currentContent = 'home'; // Örnek olarak 'home' değerini ata (istediğiniz varsayılan içeriği belirleyin)
+    this.authService.currentUser.subscribe(user => {
+      this.currentUser = user;
+    });
 
   }
 

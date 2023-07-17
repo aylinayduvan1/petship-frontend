@@ -1,21 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { Customer } from '../users-listes/type-folder/customer';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Router } from "@angular/router";
 import { ApiService } from 'src/app/services/api/api.service';
 import { User } from 'src/app/models/user.model';
 import { ResponseStatus } from 'src/app/models/response/base-response.model';
+import { FilterPipe } from '../users-listes/filter.pipe';
 
 
 @Component({
   selector: 'app-users-listes',
   templateUrl: './users-listes.component.html',
   styleUrls: ['./users-listes.component.css'],
-  providers: [MessageService, ConfirmationService]
+  providers: [MessageService, ConfirmationService,FilterPipe],
+
 })
 export class UsersListesComponent implements OnInit {
   users:User[] = []
- 
+
+  searchName: string=''
 
   constructor(
     private readonly apiService: ApiService, 
@@ -72,5 +74,7 @@ export class UsersListesComponent implements OnInit {
         return null;
     }
   }
+
+     
 
 }

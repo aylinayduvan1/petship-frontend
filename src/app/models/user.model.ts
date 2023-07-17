@@ -2,13 +2,16 @@ import { Advert } from 'src/app/models/advert.model';
 
 export class User {
   id: number =0;
-  userName: string = '';
-  user_surname: string = '';
-  email: string = '';
-  user_sex: string = '';
-  user_bdate: string = '';
-  animal_history: boolean =  true;
-  animal_exist: boolean = true;
+  email: string ='';
+  user_surname: string ='';
+  Password: string ='';
+  userName: string='';
+  user_bdate:string ='';
+  user_adress:string =''
+  user_sex :string ='';
+  user_gsm :string ='';
+  animal_history: boolean = false;
+  animal_exist: boolean = false;
   userType: UserType = 0;
   adverts: Advert[]=[] // Kullanıcının ilanları
 }

@@ -1,11 +1,14 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { UserService } from './service/user.service';
+import { User } from './../../../../../models/user.model';
+import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api/api.service';
+import { Component, EventEmitter, Output, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth/auth.service';
 @Component({
   selector: 'app-users-info-listes',
   templateUrl: './users-info-listes.component.html',
   styleUrls: ['./users-info-listes.component.css']
 })
-export class UsersInfoListesComponent {
+export class UsersInfoListesComponent implements OnInit {
   @Output() contentChange: EventEmitter<string> = new EventEmitter<string>();
   currentContent: string = 'home';
 
@@ -16,17 +19,26 @@ export class UsersInfoListesComponent {
   selectedOption1: string = '';
   selectedOption2: string = '';
   selectedGender: string = '';
-  ad: string = '';
-  soyad: string = '';
-  email: string = '';
-  bdate: string = '';
-  gsm: string = '';
-  gender: string = '';
+  constructor(private readonly apiService: ApiService, private router: Router,private authService: AuthService) { 
+    this.currentUser = null;
+  }
 
-  constructor() { }
+  users: User[] = [];
 
+  currentUser: User | null;
+  
   ngOnInit(): void {
+    this.refresh();
+    this.authService.currentUser.subscribe(user => {
+      this.currentUser = user;
+    });
+  }
 
+  refresh() {
+    this.apiService.getAllEntities(User).subscribe((response) => {
+      this.users = response.data;
+      console.log(this.users)
+    });
   }
 
   scrollToSection(section: string) {
@@ -46,7 +58,6 @@ export class UsersInfoListesComponent {
 
   update() {
     // Güncelleme işlemleri
-
     console.log('Seçili cinsiyet:', this.selectedGender);
   }
   animalHistoryOptions = [
@@ -60,6 +71,3 @@ export class UsersInfoListesComponent {
   ];
 
 }
-
-
-

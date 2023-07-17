@@ -1,48 +1,68 @@
-
-  <!-- FOOTER -->
-  <div id="contact" class="container-fulid footer"  style="margin-top: 65px;">
-    <div class="row">
-      <div class="col-md-5">
-        <h4>Hakkımızda</h4>
-        <p>Petship Sitemiz, evsiz yavrularımızı sıcak bir yuvaya sahiplendirerek onlara yeni bir yuva bulma amacıyla kurulmuştur
-        evsiz yavrularımızı sıcak bir yuvaya sahiplendirerek onlara yeni bir yuva bulma amacıyla kurulmuştur.</p>
-        <div style="width: 100%; margin-top: 75px;" >
-          <h4>Sosyal Medya</h4>
-          <div class="social-media">
-            <li><a href="https://www.facebook.com" target="_blank"><img src="assets/social-svg/facebook.svg" alt="Facebook"></a></li>
-          <li><a href="https://www.instagram.com" target="_blank"><img src="assets/social-svg/instagram.svg" alt="Instagram"></a></li>
-          <li><a href="https://www.twitter.com" target="_blank"><img src="assets/social-svg/twitter.svg" alt="Twitter"></a></li>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <h4>İletişim</h4>
-        <p>Email: info@hayvansahiplendirme.com</p>
-        <p>Telefon: 123-456-7890</p>
-        <div style="width: 70%; margin-top: 100px;" >
-          <h4 >Hızlı Linkler</h4>
-          <div class="list">
-          <li><a class="nav-link active" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" (click)="scrollToSection('home')">Anasayfa</a></li>
-          <li><a class="nav-link active" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" (click)="scrollToSection('about')">Hakkımızda</a></li>
-          <li><a class="nav-link active" routerLink="/login" routerLinkActive="active" aria-current="page" href="#" >Profilim</a></li>
-          <li><a class="nav-link" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" href="#iletisim">İletişim</a></li>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3  ">
-        <img src="assets/images/transparent-logo.png" alt="Logo" width="300" height="300">
-      </div>
-    </div>
-    </div>
-    <div class="container-fulid" style="background-color: #f0f0f0; ">
-      <div class="col-md-12 text-center " style="height: 40px;">
-        <p>&copy; 2023 Petship. Tüm hakları saklıdır.</p>
-      </div>
-  </div>
-
-
-
-
   <div class="to-top" [ngClass]="{'show-scrolltop': isScrollingDown}" (click)="scrollToTop()">
     <div #animationContainer></div>
   </div>
+
+
+   <!-- footer -->
+   <div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-xs-12">
+                <div class="first">
+                    <h4>Özelliklerimiz</h4>
+                    <p> Güvenilirlik</p>
+                    <p> Süreklilik</p>
+                    <p> Sahiplendirme politikası</p>
+                    <p> Etkin çözümler</p>
+                    <p> Sürdürülebilirlik</p>
+
+
+                </div>
+            </div>
+
+            <div class="col-md-4 col-xs-12 " style=" display: flex; justify-content: center;">
+                <div class="second">
+                    <h4> Hızlı Linkler</h4>
+                    <ul style=" margin-right: 25px;">
+                      <li><a class="nav-link active" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" (click)="scrollToSection('home')">Anasayfa</a></li>
+                      <li><a class="nav-link active" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" (click)="scrollToSection('about')">Hakkımızda</a></li>
+                      <li><a class="nav-link active" routerLink="/login" routerLinkActive="active" aria-current="page" href="#" >Profilim</a></li>
+                      <li><a class="nav-link" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" href="#iletisim">İletişim</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-xs-12">
+                <div class="third">
+                    <h4> İletişim</h4>
+                    <ul>
+                      <li><i class="far fa-envelope"></i> info@hayvansahiplendirme.com</li>
+                        <li><i class="fa fa-phone"></i>  123-456-7890</li>
+                      <li><i class="fas fa-map-marker-alt"></i> İstanbul, TR </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="line"></div>
+                <div class="second2">
+                    <a href="" target="_blank"> <i class="fab fa-codepen fa-2x margin"></i></a>
+                    <a href="" target="_blank"> <i class="fab fa-github fa-2x margin"></i></a>
+                    <a href="" target="_blank"> <i class="fab fa-linkedin fa-2x margin"></i></a>
+                    <a href="" target="_blank"><i class="fab fa-youtube fa-2x margin" ></i></a>
+
+                </div>
+
+            </div>  
+        </div>
+        </div>
+        
+</div>
+    <!-- <div class="container-fulid" style="background-color: #f0f0f0; ">
+      <div class="col-md-12 text-center " style="height: 40px;">
+        <p>&copy; 2023 Petship. Tüm hakları saklıdır.</p>
+      </div>
+  </div> -->

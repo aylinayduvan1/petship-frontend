@@ -1,4 +1,4 @@
-// import {User} from "src\app\models\user.model.ts";
+// import { Category } from 'src/app/models/categories.model';
 
 export class Advert {
     //tablodaki veriler
@@ -8,5 +8,8 @@ export class Advert {
     advert_title : string = ''; 
     situation : boolean = false ;
     advert_text : string = '' ;
-  //  img-file-name: string='';
+    advert_img : string = '' ;
+
+    // categories: Category[]=[] // Kullanıcının ilanları
+
 }

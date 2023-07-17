@@ -8,6 +8,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputMaskModule } from 'primeng/inputmask';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { ToastModule } from 'primeng/toast';
+import { PasswordModule } from 'primeng/password';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -21,10 +23,12 @@ const routes: Routes = [
   imports: [
     FormsModule,
     CommonModule,
+    ReactiveFormsModule,
     DropdownModule,
     InputTextModule,
     InputMaskModule,
     RadioButtonModule,
+    PasswordModule,
     ToastModule,
     RouterModule.forChild(routes),
 

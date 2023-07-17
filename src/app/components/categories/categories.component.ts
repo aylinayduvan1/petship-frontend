@@ -1,8 +1,12 @@
-import { Component, Input , ElementRef , ViewChild} from '@angular/core';
+import { Component, Input , ElementRef , ViewChild, OnInit} from '@angular/core';
 declare let lottie: any;
 import { AnimationItem } from 'lottie-web';
-
-
+import { Advert } from 'src/app/models/advert.model';
+import { Router } from '@angular/router';
+import { ResponseStatus } from 'src/app/models/response/base-response.model';
+import {  MessageService } from 'primeng/api';
+import { ApiService } from 'src/app/services/api/api.service';
+ 
 interface Kedi {
   adi: string;
   yasi: number;
@@ -35,12 +39,36 @@ interface Kus {
   })
   
   
-export class CategoriesComponent {
+export class CategoriesComponent implements OnInit {
     @Input() kategoriAdi: string = '';
     seciliKategori: string = 'kedi'; // Başlangıçta seçili kategori 'kedi' olsun
     animationVisible: boolean = false;
     seciliKartIndex: number = -1; // Başlangıçta herhangi bir kart seçili değil
 
+  constructor(
+
+    private readonly apiService: ApiService, 
+    private router: Router,
+    private messageService: MessageService) {}
+
+
+    adverts:Advert[]=[];
+
+    ngOnInit(): void {
+      this.initializeAnimation();
+      this.refresh();
+    
+    }
+    
+    
+    refresh() {
+      this.apiService.getAllEntities(Advert).subscribe((response) => {
+        this.adverts = response.data;
+        console.log(this.adverts)
+      });     
+    }
+
+    
 
   playAnimation(index: number): void {
     this.seciliKartIndex = index;
@@ -60,7 +88,9 @@ export class CategoriesComponent {
     });
   }
   
-  
+
+
+
  
   kediKartlar: Kedi[] = [
     { adi: 'Kedi 1', yasi: 2, cinsiyeti: 'Erkek', gorseli: 'kedi-image.png' , showButton: false},
@@ -117,11 +147,7 @@ showDialog() {
 @ViewChild('lottieContainer', { static: true }) lottieContainer!: ElementRef;
 animation!: AnimationItem;
 
-ngOnInit() {
-  this.initializeAnimation();
-}
-
-ngOnDestroy() {
+OnDestroy() {
   if (this.animation) {
     this.animation.destroy();
   }

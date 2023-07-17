@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { ResponseStatus } from 'src/app/models/response/base-response.model';
 import { AdvertRequest} from 'src/app/models/request/advert-request.model';
 import { Category } from 'src/app/models/categories.model';
+import { FilterPipe } from '../users-listes/filter.pipe';
 
 
 @Component({
@@ -110,6 +111,7 @@ export class  AdvertListesComponent implements OnInit{
     onCreate(entity: AdvertRequest) {
       this.addEntity<AdvertRequest>(entity, 'Advert').then(response => {
         if (response?.status == ResponseStatus.Ok) {
+          this.modalOpenAdd = false;
           this.refresh();
         }
       });
@@ -148,34 +150,12 @@ export class  AdvertListesComponent implements OnInit{
         advert_date: '',
         advert_title: '',
         advert_text: '',
+        advert_img: '',
         situation: false
       };      return this.apiService.updateEntity(advertId, newAdvert, Advert );
     }
     
-      
-    
-   
-    // hideDialog() {
-    //     this.productDialog = false;
-    //     this.submitted = false;
-    // }
-
-
-
-
-    // getSeverity(status: string): string {
-    //   switch (status) {
-    //     case 'INSTOCK':
-    //       return 'success';
-    //     case 'LOWSTOCK':
-    //       return 'warning';
-    //     case 'OUTOFSTOCK':
-    //       return 'danger';
-    //     default:
-    //       return '';
-    //     }
-    // }
-
+ 
 
   
 }
