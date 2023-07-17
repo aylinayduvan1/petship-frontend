@@ -18,6 +18,8 @@ export class UsersListesComponent implements OnInit {
   users:User[] = []
 
   searchName: string=''
+  modalOpen: boolean = false; //sayfa ilk açıldığında modal'ın kapalı kalması için false değer verdik
+
 
   constructor(
     private readonly apiService: ApiService, 
@@ -35,6 +37,13 @@ export class UsersListesComponent implements OnInit {
 
   }
 
+  openModal() {
+    this.modalOpen = true;
+  }
+
+  closeModal() {
+    this.modalOpen = false;
+  }
 
   ngOnInit() {
     this.refresh();

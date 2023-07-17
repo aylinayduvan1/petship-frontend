@@ -36,7 +36,10 @@
                 <img src="assets/images/yılan1.png" alt="" >
               </a>
               <h3 > {{currentUser.userName}} </h3>
-              <p> {{currentUser.email}} </p>
+
+              <p *ngIf="currentUser.userType === 0">Admin</p>
+              <p *ngIf="currentUser.userType === 1">User</p>
+
              </div>
              <div style="display: flex; justify-content: space-between; color: #fff;">
               <hr style="width: 100px;">

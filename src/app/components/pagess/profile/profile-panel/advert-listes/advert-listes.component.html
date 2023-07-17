@@ -11,12 +11,14 @@
 <p-table
     #dt
     [value]="adverts"
-    [globalFilterFields]="['name', 'country.name', 'representative.name']"
+    [globalFilterFields]="['', 'userName', 'user_surname']"
     [tableStyle]="{ 'min-width': '55rem' }"
     [rowHover]="true"
     dataKey="id"
+    
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
     [showCurrentPageReport]="true"
+    
 >
 
 <ng-template pTemplate="header" style="min-width: 50rem">
@@ -34,14 +36,12 @@
   <ng-template pTemplate="body" let-advert >
       <tr>
           <td>{{ advert.advert_title }}</td>
-          <td>
-             <!--     <img [src]="'assets/images/dog.png'" width="50" class="shadow-4" />
-              <img [src]="'assets/images/' + advert.file_name" width="50" class="shadow-4" />
-           </td> -->
-
+    <td> <!--imgleri gorsel-->
+      <img src=" {{advert.advert_img}} " width="32" style="vertical-align: middle" />
+    </td>
            <td>{{ advert.advert_date }}</td>
           <td>{{ advert.advert_text }}</td>
-          <!-- <td>{{ advert.situation }}</td> -->
+         
           <td>
             <button (click)="onUpdate(advert.id)" pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"></button>
             <span class="button-space"></span>
