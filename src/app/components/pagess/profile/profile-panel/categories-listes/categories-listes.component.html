@@ -26,29 +26,35 @@
                     </span>
                 </ng-template>
                
-                    
-                                                
-                        <div>
+            <div style="display: flex;"> 
+                <div style="display: flex;  margin-bottom: 25px; flex-direction: column;">                     
+                        <div style="margin-top: 80px; ">
                             <span class="p-float-label">
                                 <input pInputText id="catid" [(ngModel)]="categoryRequest.id" />
-                                <label htmlFor="catid">id</label>
+                                <label htmlFor="catid">Id</label>
                             </span>
                         </div>
-                        <div>
+                        <div style="margin-top: 25px;">
                             <span class="p-float-label">
                                 <input pInputText id="catname" [(ngModel)]="categoryRequest.category_name">
-                                <label htmlFor="catname">Kategori</label>
+                                <label htmlFor="catname">İsim</label>
                             </span>
                         </div>
-                        <div>
+                        <div style="margin-top: 25px;">
                             <span class="p-float-label">
                                 <input pInputText id="catimg" [(ngModel)]="categoryRequest.category_img">
-                                <label htmlFor="catimg">resim</label>
+                                <label htmlFor="catimg">Resim</label>
                             </span>
                         </div>
-               
+               </div>  
+
+               <div style="margin: 30px;">
+                <img [src]="'assets/images/content_6.png'" width="300px" class="shadow-4" />
+               </div>
+            </div>  
                 <ng-template pTemplate="footer">
-                    <p-button icon="pi pi-check"  styleClass="p-button-text" (click)="onCreate(categoryRequest)"></p-button>
+                     <p-button   styleClass="p-button-text" (click)="onCreate(categoryRequest) ">Kaydet</p-button>
+                           
                 </ng-template>
             </p-dialog>
             </div>

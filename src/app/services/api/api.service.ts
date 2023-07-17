@@ -76,7 +76,7 @@ export class ApiService {
   }
 
 
- deleteEntity<TEntity>(id : number, entityType : Type<TEntity>) {
+  deleteEntity<TEntity>(id : number, entityType : Type<TEntity>) {
     return this.http.delete<BaseResponse>(environment.api_url + "/" + entityType.name + "/Delete?id=" + id).pipe(share()).toPromise();
   }
 

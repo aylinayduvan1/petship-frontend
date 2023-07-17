@@ -46,7 +46,6 @@ export class UsersListesComponent implements OnInit {
       if (response?.status == ResponseStatus.Ok) {
         this.refresh();
         this.messageService.add({ severity: 'success', summary: 'Başarılı', detail: 'Kullanıcı başarı ile silindi', life: 3000 });
-
       }
     });
   }
