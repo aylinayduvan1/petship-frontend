@@ -5,13 +5,6 @@
     <div class="row">
       <div class="col-xl-20 order-xl-1">
         <div class="card bg-secondary shadow">
-          <div class="card-header bg-white border-0">
-            <div class="row align-items-center">
-              <div class="col-8">
-                <h3 class="mb-0">Hesabım</h3>
-              </div>
-            </div>
-          </div>
           <div class="card-body">
             <form>
               <h6 class="heading-small text-muted mb-4">Kullanıcı Bilgileri</h6>
@@ -131,56 +124,54 @@
 
               <hr class="my-4" />
               <!-- İletişim bilgileri -->
-              <h6 class="heading-small text-muted mb-4">İletişim Bilgileri</h6>
+              <h6 class="heading-small text-muted mb-3">İletişim Bilgileri</h6>
               <div class="pl-lg-4" *ngIf="currentUser">
                 <div class="row">
-                  <div class="col-md-4">
-                    <div class="form-group focused">
-                      <label class="form-control-label" for="input-address"
-                        >Adres</label
+                      <div class=" col-md-4  col-lg-4 form-group focused">
+                        <label class="form-control-label" for="input-address"
+                          >Adres</label
+                        >
+                        <input
+                          [value]="currentUser.user_adress"
+                          id="input-address"
+                          class="form-control form-control-alternative"
+                          placeholder="Adresin(İl/İlçe)"
+                          value=""
+                          type="text"
+                          [disabled]="!isEditing"
+                        />
+                      </div>
+            
+                      <div class="col-lg-4 form-group focused">
+                        <label class="form-control-label" for="input-last-name"
+                          >GSM</label
+                        >
+                        <input
+                          [value]="currentUser.user_gsm"
+                          type="text"
+                          id="input-last-name"
+                          class="form-control form-control-alternative"
+                          placeholder="GSM Numaranız"
+                          value=""
+                          [disabled]="!isEditing"
+                        />
+                      </div>
+
+                    <div class="col-lg-4 form-group focused">
+                      <label class="form-control-label" for="input-last-name"
+                        >E-mail Adresiniz</label
                       >
                       <input
-                        [value]="currentUser.user_adress"
-                        id="input-address"
-                        class="form-control form-control-alternative"
-                        placeholder="Adresin(İl/İlçe)"
-                        value=""
+                        [value]="currentUser.email"
                         type="text"
+                        id="input-last-name"
+                        class="form-control form-control-alternative"
+                        placeholder="E-mail Adresiniz"
+                        value=""
                         [disabled]="!isEditing"
                       />
                     </div>
-                  </div>
-                  <div class="col-lg-4 form-group focused">
-                    <label class="form-control-label" for="input-last-name"
-                      >GSM</label
-                    >
-                    <input
-                      [value]="currentUser.user_gsm"
-                      type="text"
-                      id="input-last-name"
-                      class="form-control form-control-alternative"
-                      placeholder="GSM Numaranız"
-                      value=""
-                      [disabled]="!isEditing"
-                    />
-                  </div>
-
-                  <div class="col-lg-4 form-group focused">
-                    <label class="form-control-label" for="input-last-name"
-                      >E-mail Adresiniz</label
-                    >
-                    <input
-                      [value]="currentUser.email"
-                      type="text"
-                      id="input-last-name"
-                      class="form-control form-control-alternative"
-                      placeholder="E-mail Adresiniz"
-                      value=""
-                      [disabled]="!isEditing"
-                    />
-                  </div>
-                </div>
-                <hr class="my-4" />
+                <hr class="my-3" />
               </div>
               <span>
                 <button
@@ -199,6 +190,7 @@
                   Kaydet
                 </button>
               </span>
+              </div>
             </form>
           </div>
         </div>
