@@ -3,7 +3,7 @@
 
   <div class="container-fluid mt--7">
     <div class="row">
-      <div class="col-xl-8 order-xl-1">
+      <div class="col-xl-20 order-xl-1">
         <div class="card bg-secondary shadow">
           <div class="card-header bg-white border-0">
             <div class="row align-items-center">
@@ -12,88 +12,192 @@
               </div>
             </div>
           </div>
-          <div class="card-body" >
+          <div class="card-body">
             <form>
               <h6 class="heading-small text-muted mb-4">Kullanıcı Bilgileri</h6>
               <div class="pl-lg-4" *ngIf="currentUser">
-                <div class="row"><div class="col-lg-6">
-                  <div class="form-group focused">
-                    <label class="form-control-label" for="input-first-name">Ad</label>
-                    <input [value]="currentUser.userName" type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="Adın" value="" [disabled]="!isEditing">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group focused">
+                      <label class="form-control-label" for="input-first-name"
+                        >Ad</label
+                      >
+                      <input
+                        [value]="currentUser.userName"
+                        type="text"
+                        id="input-first-name"
+                        class="form-control form-control-alternative"
+                        placeholder="Adın"
+                        value=""
+                        [disabled]="!isEditing"
+                      />
+                    </div>
                   </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="form-group focused">
-                    <label class="form-control-label" for="input-last-name">Soyadı</label>
-                    <input   [value]="currentUser.user_surname"  type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Soyadın" value="" [disabled]="!isEditing">
+                  <div class="col-lg-6">
+                    <div class="form-group focused">
+                      <label class="form-control-label" for="input-last-name"
+                        >Soyadı</label
+                      >
+                      <input
+                        [value]="currentUser.user_surname"
+                        type="text"
+                        id="input-last-name"
+                        class="form-control form-control-alternative"
+                        placeholder="Soyadın"
+                        value=""
+                        [disabled]="!isEditing"
+                      />
+                    </div>
                   </div>
-                </div>
                 </div>
                 <div class="row">
-
-                  <div  class="col-lg-6">
+                  <div class="col-lg-6">
                     <div class="form-group focused">
-                      <label class="form-control-label" for="input-last-name">Doğum Tarihiniz</label>
-                      <input  [value]="currentUser.user_bdate"  type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Örnek giriş :''03.05.2000'' " value="" [disabled]="!isEditing">
+                      <label class="form-control-label" for="input-last-name"
+                        >Doğum Tarihiniz</label
+                      >
+                      <input
+                        [value]="currentUser.user_bdate"
+                        type="text"
+                        id="input-last-name"
+                        class="form-control form-control-alternative"
+                        placeholder="Örnek giriş :''03.05.2000'' "
+                        value=""
+                        [disabled]="!isEditing"
+                      />
                     </div>
-                    </div>
-                    <div id="gendersecim">
-                      <h6 class="heading-small text-muted mb-4">Cinsiyet</h6>
-                      <div class="pl-lg-4">
-                        <div class="col-5 mb-2 radio-container">
-                          <div class="flex align-items-center">
-                            <p-radioButton name="gender" [(ngModel)]="selectedGender" value="k" inputId="k" [disabled]="!isEditing"></p-radioButton>
-                            <label style="margin-left: 15px;" for="k">Kadın</label>
-                          </div>
-                          <div class="flex align-items-center" f>
-                            <p-radioButton st name="gender" [(ngModel)]="selectedGender" value="e" inputId="e" [disabled]="!isEditing" ></p-radioButton>
-                            <label style="margin-left: 15px;" for="e">Erkek</label>
-                          </div>
-                        </div>
-                        </div>
-                      </div>
                   </div>
-                  <div class="row">
-                    <div class="col-5 mb-2 mt-3" >
-                      <div class="dropdown-container w-100" >
-                          <p-dropdown class="w-100" name="animal_exist"  [options]="animalExitsOptions" optionLabel="label" styleClass="w-100" [disabled]="!isEditing"></p-dropdown>
-                      </div>
-                  </div>
-                  <div class="col-5 mb-2 mt-3">
-                      <div class="dropdown-container w-100">
-                          <p-dropdown class="w-100" name="animal_history" [options]="animalHistoryOptions" optionLabel="label" styleClass="w-100"[disabled]="!isEditing"></p-dropdown>
-                      </div>
 
-              </div>
+                  <div class="col-lg-6">
+                    <label class="form-control-label" for="input-gender">
+                      Cinsiyet
+                    </label>
+                    <div class="pl-lg-4">
+                      <div
+                        class="col-5 mb-2 radio-container"
+                        style="display: flex"
+                      >
+                        <div class="flex align-items-center">
+                          <p-radioButton
+                            name="gender"
+                            [(ngModel)]="selectedGender"
+                            value="k"
+                            inputId="k"
+                            [disabled]="!isEditing"
+                          ></p-radioButton>
+                          <label style="margin-left: 15px" for="k">Kadın</label>
+                          <p-radioButton
+                            st
+                            name="gender"
+                            [(ngModel)]="selectedGender"
+                            value="e"
+                            inputId="e"
+                            [disabled]="!isEditing"
+                          ></p-radioButton>
+                          <label style="margin-left: 15px" for="e">Erkek</label>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-              <hr class="my-4">
+                <div class="row">
+                  <div class="col-6 mb-2 mt-3">
+                    <div class="dropdown-container w-100">
+                      <p-dropdown
+                        class="w-100"
+                        name="animal_exist"
+                        [options]="animalExitsOptions"
+                        optionLabel="label"
+                        styleClass="w-100"
+                        [disabled]="!isEditing"
+                      ></p-dropdown>
+                    </div>
+                  </div>
+                  <div class="col-6 mb-2 mt-3">
+                    <div class="dropdown-container w-100">
+                      <p-dropdown
+                        class="w-100"
+                        name="animal_history"
+                        [options]="animalHistoryOptions"
+                        optionLabel="label"
+                        styleClass="w-100"
+                        [disabled]="!isEditing"
+                      ></p-dropdown>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <hr class="my-4" />
               <!-- İletişim bilgileri -->
               <h6 class="heading-small text-muted mb-4">İletişim Bilgileri</h6>
               <div class="pl-lg-4" *ngIf="currentUser">
                 <div class="row">
                   <div class="col-md-4">
                     <div class="form-group focused">
-                      <label class="form-control-label" for="input-address">Adres</label>
-                      <input [value]="currentUser.user_adress" id="input-address" class="form-control form-control-alternative" placeholder="Adresin(İl/İlçe)" value="" type="text" [disabled]="!isEditing">
+                      <label class="form-control-label" for="input-address"
+                        >Adres</label
+                      >
+                      <input
+                        [value]="currentUser.user_adress"
+                        id="input-address"
+                        class="form-control form-control-alternative"
+                        placeholder="Adresin(İl/İlçe)"
+                        value=""
+                        type="text"
+                        [disabled]="!isEditing"
+                      />
                     </div>
                   </div>
                   <div class="col-lg-4 form-group focused">
-                    <label class="form-control-label" for="input-last-name">GSM</label>
-                    <input  [value]="currentUser.user_gsm" type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="GSM Numaranız" value="" [disabled]="!isEditing">
+                    <label class="form-control-label" for="input-last-name"
+                      >GSM</label
+                    >
+                    <input
+                      [value]="currentUser.user_gsm"
+                      type="text"
+                      id="input-last-name"
+                      class="form-control form-control-alternative"
+                      placeholder="GSM Numaranız"
+                      value=""
+                      [disabled]="!isEditing"
+                    />
                   </div>
 
                   <div class="col-lg-4 form-group focused">
-                    <label class="form-control-label" for="input-last-name">E-mail Adresiniz</label>
-                    <input [value]="currentUser.email" type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="E-mail Adresiniz" value="" [disabled]="!isEditing">
+                    <label class="form-control-label" for="input-last-name"
+                      >E-mail Adresiniz</label
+                    >
+                    <input
+                      [value]="currentUser.email"
+                      type="text"
+                      id="input-last-name"
+                      class="form-control form-control-alternative"
+                      placeholder="E-mail Adresiniz"
+                      value=""
+                      [disabled]="!isEditing"
+                    />
                   </div>
-                  </div>
-                <hr class="my-4">
+                </div>
+                <hr class="my-4" />
               </div>
               <span>
-                <button (click)="toggleEditing()" class="p-button p-button-rounded" id="buton1">Düzenle</button>
-                <button *ngIf="isEditing" (click)="update(); toggleEditing()" class="p-button p-button-rounded p-button-success" id="kaydet">Kaydet</button>
+                <button
+                  (click)="toggleEditing()"
+                  class="p-button p-button-rounded"
+                  id="buton1"
+                >
+                  Düzenle
+                </button>
+                <button
+                  *ngIf="isEditing"
+                  (click)="update(); toggleEditing()"
+                  class="p-button p-button-rounded p-button-success"
+                  id="kaydet"
+                >
+                  Kaydet
+                </button>
               </span>
             </form>
           </div>
