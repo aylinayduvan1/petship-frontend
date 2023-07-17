@@ -130,6 +130,7 @@ export class CategoriesListesComponent {
       this.addEntity<CategoryRequest>(entity, 'Category').then(response => {
         if (response?.status == ResponseStatus.Ok) {
           this.refresh();
+          this.visible = false;
         }
       });
     }
