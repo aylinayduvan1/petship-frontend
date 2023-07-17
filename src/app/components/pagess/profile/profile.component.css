@@ -1715,3 +1715,49 @@ ul.summary-list > li:last-child  {
   top: 0;
   z-index: -1;
 }
+
+
+
+
+@import url('https://fonts.googleapis.com/css?family=Coiny');
+
+
+body {
+    background: #ffffff;
+}
+.cloud-text {
+	font-family: 'Coiny', cursive;
+	-webkit-background-clip: text;
+  	-webkit-text-fill-color: transparent;	
+	background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/769286/clouds.jpg);
+	background-size: auto;
+	background-attachment: unset;
+	background-position: 0%;
+	width: 90%;
+	margin:3%;
+	font-size: 35px;
+  padding: 4% 0;	
+  animation: clouds-moving infinite 220s;
+	animation-fill-mode: forwards;
+	animation-play-state: running;
+	animation-timing-function: linear;
+	text-align: center;
+}
+@keyframes clouds-moving {
+	0% {
+		background-position: 0%;	
+	}
+	50% {
+		background-position: 100%;	
+	}
+	100% {
+		background-position: 0%;
+	}
+}
+.attribute {
+	position: relative;
+	font-size: 26px;
+	text-align: center;
+}
+
+
