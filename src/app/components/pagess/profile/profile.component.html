@@ -32,11 +32,16 @@
       <div class="user-panelbar">
           <div *ngIf="currentUser">
              <div class="user-infos">
-                <a href="#" class="mb-2">
-                  <img src="assets/images/yılan1.png" alt="" >
-                </a>
-                <h3 class="cloud-text cloud-title"> {{currentUser.userName}} </h3>
-                <p> {{currentUser.email}} </p>
+
+              <a href="#" class="mb-2">
+                <img src="assets/images/yılan1.png" alt="" >
+              </a>
+              <h3 class="cloud-text cloud-title"> {{currentUser.userName}} </h3>
+
+              <p *ngIf="currentUser.userType === 0">Admin</p>
+              <p *ngIf="currentUser.userType === 1">User</p>
+
+
              </div>
              <div style="display: flex; justify-content: space-between; color: #fff;">
               <hr style="width: 100px;">
