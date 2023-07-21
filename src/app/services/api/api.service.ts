@@ -88,5 +88,13 @@ export class ApiService {
     return this.http.put<BaseDataResponse<TEntity[]>>(environment.api_url + "/" + entityType.name + "/Update?id=" + id, newEntity).pipe(share()).toPromise();
   }
 
+
+  //GetById kodları
+  getEntityById<TEntity>(id: number, entityType: Type<TEntity>) {
+    return this.http.get<BaseDataResponse<TEntity>>(`${environment.api_url}/${entityType.name}/GetById?id=${id}`).pipe(share()).toPromise();
+  }
+
+  
+
 }   
 
