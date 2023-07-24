@@ -7,9 +7,9 @@ export class User {
   Password: string ='';
   userName: string='';
   user_bdate:string ='';
-  user_adress:string =''
+  adress:string ='';
   user_sex :string ='';
-  user_gsm :string ='';
+  gsm :string ='';
   animal_history: boolean = false;
   animal_exist: boolean = false;
   userType: UserType = 0;

@@ -5,6 +5,13 @@
     <div class="row">
       <div class="col-xl-20 order-xl-1">
         <div class="card bg-secondary shadow">
+          <div class="card-header bg-white border-0">
+            <div class="row align-items-center">
+              <div class="col-8">
+                <h3 class="mb-0">Hesabım</h3>
+              </div>
+            </div>
+          </div>
           <div class="card-body">
             <form>
               <h6 class="heading-small text-muted mb-4">Kullanıcı Bilgileri</h6>
@@ -65,21 +72,21 @@
                     <label class="form-control-label" for="input-gender">
                       Cinsiyet
                     </label>
-                    <div class="pl-lg-12">
-                    
-                        <div class="w-100" style="display: flex; align-items: center; justify-content: center;" >
-                          <div class="col-6" style=" display: flex; align-items:center ;">
-                            <p-radioButton
+                    <div class="pl-lg-4">
+                      <div
+                        class="col-5 mb-2 radio-container"
+                        style="display: flex"
+                      >
+                        <div class="flex align-items-center">
+                          <p-radioButton
                             name="gender"
                             [(ngModel)]="selectedGender"
                             value="k"
                             inputId="k"
                             [disabled]="!isEditing"
                           ></p-radioButton>
-                          <label style="margin-left: 15px; display: flex; align-items: center;" for="k">Kadın</label>
-                          </div>
-                          <div class="col-6" style=" display: flex; align-items:center ;">
-                            <p-radioButton
+                          <label style="margin-left: 15px" for="k">Kadın</label>
+                          <p-radioButton
                             st
                             name="gender"
                             [(ngModel)]="selectedGender"
@@ -88,8 +95,8 @@
                             [disabled]="!isEditing"
                           ></p-radioButton>
                           <label style="margin-left: 15px" for="e">Erkek</label>
-                          </div>
                         </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -124,54 +131,56 @@
 
               <hr class="my-4" />
               <!-- İletişim bilgileri -->
-              <h6 class="heading-small text-muted mb-3">İletişim Bilgileri</h6>
+              <h6 class="heading-small text-muted mb-4">İletişim Bilgileri</h6>
               <div class="pl-lg-4" *ngIf="currentUser">
                 <div class="row">
-                      <div class=" col-md-4  col-lg-4 form-group focused">
-                        <label class="form-control-label" for="input-address"
-                          >Adres</label
-                        >
-                        <input
-                          [value]="currentUser.user_adress"
-                          id="input-address"
-                          class="form-control form-control-alternative"
-                          placeholder="Adresin(İl/İlçe)"
-                          value=""
-                          type="text"
-                          [disabled]="!isEditing"
-                        />
-                      </div>
-            
-                      <div class="col-lg-4 form-group focused">
-                        <label class="form-control-label" for="input-last-name"
-                          >GSM</label
-                        >
-                        <input
-                          [value]="currentUser.user_gsm"
-                          type="text"
-                          id="input-last-name"
-                          class="form-control form-control-alternative"
-                          placeholder="GSM Numaranız"
-                          value=""
-                          [disabled]="!isEditing"
-                        />
-                      </div>
-
-                    <div class="col-lg-4 form-group focused">
-                      <label class="form-control-label" for="input-last-name"
-                        >E-mail Adresiniz</label
+                  <div class="col-md-4">
+                    <div class="form-group focused">
+                      <label class="form-control-label" for="input-address"
+                        >Adres</label
                       >
                       <input
-                        [value]="currentUser.email"
-                        type="text"
-                        id="input-last-name"
+                        [value]="currentUser.adress"
+                        id="input-address"
                         class="form-control form-control-alternative"
-                        placeholder="E-mail Adresiniz"
+                        placeholder="Adresin(İl/İlçe)"
                         value=""
+                        type="text"
                         [disabled]="!isEditing"
                       />
                     </div>
-                <hr class="my-3" />
+                  </div>
+                  <div class="col-lg-4 form-group focused">
+                    <label class="form-control-label" for="input-last-name"
+                      >GSM</label
+                    >
+                    <input
+                      [value]="currentUser.gsm"
+                      type="text"
+                      id="input-last-name"
+                      class="form-control form-control-alternative"
+                      placeholder="GSM Numaranız"
+                      value=""
+                      [disabled]="!isEditing"
+                    />
+                  </div>
+
+                  <div class="col-lg-4 form-group focused">
+                    <label class="form-control-label" for="input-last-name"
+                      >E-mail Adresiniz</label
+                    >
+                    <input
+                      [value]="currentUser.email"
+                      type="text"
+                      id="input-last-name"
+                      class="form-control form-control-alternative"
+                      placeholder="E-mail Adresiniz"
+                      value=""
+                      [disabled]="!isEditing"
+                    />
+                  </div>
+                </div>
+                <hr class="my-4" />
               </div>
               <span>
                 <button
@@ -190,7 +199,6 @@
                   Kaydet
                 </button>
               </span>
-              </div>
             </form>
           </div>
         </div>
