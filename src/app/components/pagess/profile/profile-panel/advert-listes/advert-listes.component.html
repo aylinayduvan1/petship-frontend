@@ -125,7 +125,7 @@
             </div>
           </div>
 
-          <div class="modal fade" tabindex="-1" [class.show]="editDialog" *ngIf="advertsEdit">
+          <div class="modal fade" tabindex="-1" [class.show]="editDialog " *ngIf="advertsEdit">
             <!--CSS'i düzenlemezsem çalışmaz-->
             <div class="modal-dialog">
               <div class="modal-content">
@@ -181,7 +181,7 @@
                   </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn" (click)="closeModalAdd()" style="width: 30%;">İptal</button>
+                    <button type="button" class="btn" (click)="closeEditModal()" style="width: 30%;">İptal</button>
                     <button pButton pRipple icon="pi pi-check" class="p-button-text" *ngIf="advertsEdit" (click)="onUpdate(advertsEdit.id, advertsEdit)">Güncelle</button>
                   </div>
               </div>

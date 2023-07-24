@@ -31,7 +31,7 @@ export class  AdvertListesComponent implements OnInit{
    selectedAdvertIds: number[] = []; // Seçili ilanların ID'lerini saklayacağımız dizi
 
 
-   modalOpenAdd: boolean = false;
+    modalOpenAdd: boolean = false;
     modalOpen: boolean = false; //sayfa ilk açıldığında modal'ın kapalı kalması için false değer verdik
     modalEdit: boolean = false ;
 
@@ -143,6 +143,9 @@ export class  AdvertListesComponent implements OnInit{
       this.editDialog = false;
     }
   
+    closeEditModal() {
+      this.editDialog = false;
+    }
     openEditDialog(id: number) {
       this.apiService.getEntityById<Advert>(id, Advert).then((response) => {
         console.log(response?.data)
