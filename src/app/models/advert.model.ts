@@ -9,6 +9,7 @@ export class Advert {
     situation : boolean = false ;
     advert_text : string = '' ;
     advert_img : string = '' ;
+    adverts: Advert[] = []; // Kullanıcının ilanları
 
     // categories: Category[]=[] // Kullanıcının ilanları
 

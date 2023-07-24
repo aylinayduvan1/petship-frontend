@@ -27,6 +27,10 @@ export class  AdvertListesComponent implements OnInit{
 
     adverts:Advert[]=[];
 
+   selectedAdvert: Advert = new Advert();
+   selectedAdvertIds: number[] = []; // Seçili ilanların ID'lerini saklayacağımız dizi
+
+
    modalOpenAdd: boolean = false;
     modalOpen: boolean = false; //sayfa ilk açıldığında modal'ın kapalı kalması için false değer verdik
     modalEdit: boolean = false ;
@@ -83,6 +87,8 @@ export class  AdvertListesComponent implements OnInit{
         this.productDialog = true;
     }
 
+
+    //silme
     onDelete(advertId: number) {
       console.log("Silme işlemi için ID:", advertId);
       
@@ -108,6 +114,10 @@ export class  AdvertListesComponent implements OnInit{
     }
     
     
+
+
+
+    //ekleme
     onCreate(entity: AdvertRequest) {
       this.addEntity<AdvertRequest>(entity, 'Advert').then(response => {
         if (response?.status == ResponseStatus.Ok) {
@@ -123,39 +133,47 @@ export class  AdvertListesComponent implements OnInit{
 
 
 
-    onUpdate(advertId: number) {
-      console.log("ekle işlemi için ID:", advertId);
+
+    //güncelleme 
+    editDialog: boolean = false
+    advertsEdit: Advert | null = null;
+  
       
-      this.update(advertId)
-        .then(response => {
-          console.log("ekleme yanıtı:", response);
-          
-          if (response?.status == ResponseStatus.Ok) {
-            console.log("ekleme işlemi başarılı, tablo yenileniyor.");
-            this.refresh();
-          } else {
-            console.log("ekleme işlemi başarısız.");
-          }
-        })
-        .catch(error => {
-          console.error("ekleme işlemi sırasında bir hata oluştu:", error);
-        }); 
+    hideDialog() {
+      this.editDialog = false;
     }
-   
- 
-    update(advertId: number) {
-      const newAdvert: Advert = {
-        id: advertId,
-        advert_no: 0,
-        advert_date: '',
-        advert_title: '',
-        advert_text: '',
-        advert_img: '',
-        situation: false
-      };      return this.apiService.updateEntity(advertId, newAdvert, Advert );
+  
+    openEditDialog(id: number) {
+      this.apiService.getEntityById<Advert>(id, Advert).then((response) => {
+        console.log(response?.data)
+        if (response && response.data) {
+          this.editDialog = true;
+          this.advertsEdit = response.data; 
+        } else {
+          console.error('İlan bulunamadı veya alınırken bir hata oluştu.');
+        }
+      }).catch((error) => {
+        console.error('İlan alınırken bir hata oluştu:', error);
+      });
     }
-    
+
  
 
+    onUpdate(id: number, updatedAdvert: Advert) {
+      this.update(id, updatedAdvert).then(response => {
+        if (response?.status == ResponseStatus.Ok) {
+          this.refresh();
+          this.messageService.add({ severity: 'success', summary: 'Başarılı', detail: 'ilan güncelleme başarılı', life: 3000 });
+          this.hideDialog(); // Güncelleme işlemi tamamlandığında dialogu gizle
+        }
+      }).catch((error) => {
+        console.error('ilan güncellenirken bir hata oluştu:', error);
+      });
+    }
+  
+  
+    update(id: number, updatedAdvert: Advert) {
+      return this.apiService.updateEntity(id, updatedAdvert, Advert);
+    }
   
 }

@@ -1,141 +1,200 @@
 <!--TOOLBAR-->
-<div class="card" style="width: 100%;" >
+<div class="card" style="width: 100%;">
   <p-toast></p-toast>
   <p-toolbar styleClass="">
     <ng-template pTemplate="left">
-        <button  (click)="openModalAdd()" pButton pRipple label="İlan Ekle" icon="pi pi-plus" class="p-button-success mr-2 custom-button" (click)="openNew()"></button>
+      <button (click)="openModalAdd()" pButton pRipple label="İlan Ekle" icon="pi pi-plus"
+        class="p-button-success mr-2 custom-button" (click)="openNew()"></button>
     </ng-template>
   </p-toolbar>
 
-<!--TABLE -->
-<p-table
-    #dt
-    [value]="adverts"
-    [globalFilterFields]="['', 'userName', 'user_surname']"
-    [tableStyle]="{ 'min-width': '55rem' }"
-    [rowHover]="true"
-    dataKey="id"
-    
-    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-    [showCurrentPageReport]="true"
-    
->
+  <!--TABLE -->
+  <p-table #dt [value]="adverts" [globalFilterFields]="['', 'userName', 'user_surname']"
+    [tableStyle]="{ 'min-width': '55rem' }" [rowHover]="true" dataKey="id"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
 
-<ng-template pTemplate="header" style="min-width: 50rem">
-  <tr class="header-custom">
-    <th pSortableColumn="advert_title" >Hayvan Adı <span field="advert_title"></span></th>
-    <th pSortableColumn="price" >Görsel</th>
-    <th pSortableColumn="advert_text" >Açıklama <span field="advert_text"></span></th>
-      <th pSortableColumn="advert_date" > İlan Tarihi <span field="advert_date"></span></th>
-      <th pSortableColumn="inventoryStatus" >Düzenle/Sil <span field="inventoryStatus"></span></th>
-          <th></th>
+    <ng-template pTemplate="header" style="min-width: 50rem">
+      <tr class="header-custom">
+        <th pSortableColumn="advert_title">Hayvan Adı <span field="advert_title"></span></th>
+        <th pSortableColumn="price">Görsel</th>
+        <th pSortableColumn="advert_text">Açıklama <span field="advert_text"></span></th>
+        <th pSortableColumn="advert_date"> İlan Tarihi <span field="advert_date"></span></th>
+        <th pSortableColumn="inventoryStatus">Düzenle/Sil <span field="inventoryStatus"></span></th>
+        <th></th>
       </tr>
-  </ng-template>
+    </ng-template>
 
-
-  <ng-template pTemplate="body" let-advert >
+    <ng-template pTemplate="body" let-advert>
       <tr>
-          <td>{{ advert.advert_title }}</td>
-    <td> <!--imgleri gorsel-->
-      <img src=" {{advert.advert_img}} " width="32" style="vertical-align: middle" />
-    </td>
-           <td>{{ advert.advert_date }}</td>
-          <td>{{ advert.advert_text }}</td>
-         
-          <td>
-            <button (click)="onUpdate(advert.id)" pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"></button>
-            <span class="button-space"></span>
+        <td>{{ advert.advert_title }}</td>
+        <td>
+          <!--imgleri gorsel-->
+          <img src="{{ advert.advert_img }}" width="32" style="vertical-align: middle" />
+        </td>
+        <td>{{ advert.advert_date }}</td>
+        <td>{{ advert.advert_text }}</td>
 
-            <button  (click)="openModal()" pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"></button>
+        <td>
+          <button (click)="openEditDialog(advert.id)"  pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"></button>
 
-            <div class="modal fade" tabindex="-1" [class.show]="modalOpen">
-              <!--CSS'i düzenlemezsem çalışmaz-->
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title">{{advert.advert_title}} silinecek.</h5>
-                  </div>
-                  <div class="modal-body">
-                    <p>Silmek istediğinize emin misiniz?</p>
-                  </div>
-                  <div class="modal-footer">
-                    <button (click)="onDelete(advert.id)" pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"> </button>
-                    <button type="button" class="btn " (click)="closeModal()">İptal</button>
-                  </div>
+          <span class="button-space"></span>
+
+          <button (click)="openModal()" pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"></button>
+
+          <div class="modal fade" tabindex="-1" [class.show]="modalOpen">
+            <!--CSS'i düzenlemezsem çalışmaz-->
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">{{ advert.advert_title }} silinecek.</h5>
+                </div>
+                <div class="modal-body">
+                  <p>Silmek istediğinize emin misiniz?</p>
+                </div>
+                <div class="modal-footer">
+                  <button (click)="onDelete(advert.id)" pButton pRipple icon="pi pi-trash"
+                    class="p-button-rounded p-button-warning"> </button>
+                  <button type="button" class="btn " (click)="closeModal()">İptal</button>
                 </div>
               </div>
             </div>
+          </div>
 
 
 
-            <div class="modal fade" tabindex="-1" [class.show]="modalOpenAdd">
-              <!--CSS'i düzenlemezsem çalışmaz-->
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title">İlan Ekle</h5>
-                  </div>
-                  <div class="modal-body">
-                    <form  ngModelOptions="{standalone: true}">
-                      <div class="row" >
-                              <div class="col-6 mb-2 mt-3">
-                                  <span class="p-float-label">
-                                      <input name="advert_title" [(ngModel)]="advertRequest.advert_title" pInputText placeholder="Hayvan adı giriniz"  class="w-100"  style="border: solid 1px rgba(181, 181, 181, 0.267);" required>
-                                      <label htmlFor="advert_title">Hayvan Adı</label>
-                                  </span>   
-                              </div>
-                              <div class="col-6 mb-2 mt-3"  >   
-                                <span class="p-float-label">
-                                    <input name="advert_date" [(ngModel)]="advertRequest.advert_date" pInputText  class="w-100"  style="border: solid 1px rgba(181, 181, 181, 0.267);" required>
-                                    <label htmlFor="advert_date">İlan Tarihi</label>
-                                </span>  
-                            </div>
-                      </div>             
-                      <div class="row" >
-                          <div class="col-6 mb-2 mt-3" style="display: flex;" >
-                            <span class="p-float-label">
-                              <input name="advert_no" [(ngModel)]="advertRequest.advert_no" pInputText  class="w-100"  style="border: solid 1px rgba(181, 181, 181, 0.267);" required>
-                              <label htmlFor="advert_no">İlan No</label>
-                          </span>  
-                          </div>   
-                          <div class="col-6 mb-2 mt-3" style="display: flex;" >
-                            <span class="p-float-label">
-                              <input name="advert_img" [(ngModel)]="advertRequest.advert_img" pInputText  class="w-100"  style="border: solid 1px rgba(181, 181, 181, 0.267);" required>
-                              <label htmlFor="advert_img">Resim yolu</label>
-                          </span>  
-                          </div>  
-       
+          <div class="modal fade" tabindex="-1" [class.show]="modalOpenAdd ">
+            <!--CSS'i düzenlemezsem çalışmaz-->
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">İlan Ekle</h5>
+                </div>
+                <div class="modal-body">
+                  <form ngModelOptions="{standalone: true}">
+                    <div class="row">
+                      <div class="col-6 mb-2 mt-3">
+                        <span class="p-float-label">
+                          <input name="advert_title" [(ngModel)]="advertRequest.advert_title"  pInputText
+                            placeholder="Hayvan adı giriniz" class="w-100"
+                            style="border: solid 1px rgba(181, 181, 181, 0.267);" required>
+                          <label htmlFor="advert_title">Hayvan Adı</label>
+                        </span>
                       </div>
-
-                        <div class="row" >
-                        <div class="col-12 mb-2 mt-3">
-                          <span class="p-float-label">
-                              <textarea name="advert_text" [(ngModel)]="advertRequest.advert_text" pInputTextarea placeholder="İlan Açıklama"  class="w-100"  style="border: solid 1px rgba(181, 181, 181, 0.267);"></textarea>
-                              <label htmlFor="advert_text">Açıklama</label>
-                          </span>                   
+                      <div class="col-6 mb-2 mt-3">
+                        <span class="p-float-label">
+                          <input name="advert_date" [(ngModel)]="advertRequest.advert_date" pInputText class="w-100"
+                            style="border: solid 1px rgba(181, 181, 181, 0.267);" required>
+                          <label htmlFor="advert_date">İlan Tarihi</label>
+                        </span>
                       </div>
-                      </div>             
-                    </form>
-                  </div>
-                  <div class="modal-footer">
+                    </div>
+                    <div class="row">
+                      <div class="col-6 mb-2 mt-3" style="display: flex;">
+                        <span class="p-float-label">
+                          <input name="advert_no" [(ngModel)]="advertRequest.advert_no" pInputText class="w-100"
+                            style="border: solid 1px rgba(181, 181, 181, 0.267);" required>
+                          <label htmlFor="advert_no">İlan No</label>
+                        </span>
+                      </div>
+                      <div class="col-6 mb-2 mt-3" style="display: flex;">
+                        <span class="p-float-label">
+                          <input name="advert_img" [(ngModel)]="advertRequest.advert_img" pInputText class="w-100"
+                            style="border: solid 1px rgba(181, 181, 181, 0.267);" required>
+                          <label htmlFor="advert_img">Resim yolu</label>
+                        </span>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-12 mb-2 mt-3">
+                        <span class="p-float-label">
+                          <textarea name="advert_text" [(ngModel)]="advertRequest.advert_text" pInputTextarea
+                            placeholder="İlan Açıklama" class="w-100"
+                            style="border: solid 1px rgba(181, 181, 181, 0.267);"></textarea>
+                          <label htmlFor="advert_text">Açıklama</label>
+                        </span>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
                     <button type="button" class="btn" (click)="closeModalAdd()" style="width: 30%;">İptal</button>
                     <button class="btn btn-primary" type="submit" style="width: 30%;" (click)="onCreate(advertRequest)">İlan Ekle</button>
                   </div>
-                </div>
               </div>
             </div>
+          </div>
 
+          <div class="modal fade" tabindex="-1" [class.show]="editDialog" *ngIf="advertsEdit">
+            <!--CSS'i düzenlemezsem çalışmaz-->
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">İlan Ekle</h5>
+                </div>
+                <div class="modal-body">
+                  <form ngModelOptions="{standalone: true}">
+                    <div class="row">
+                      <div class="col-6 mb-2 mt-3">
+                        <span class="p-float-label">
+                          <input name="advert_title" [(ngModel)]="advertsEdit.advert_title"  pInputText
+                            placeholder="Hayvan adı giriniz" class="w-100"
+                            style="border: solid 1px rgba(181, 181, 181, 0.267);" required>
+                          <label htmlFor="advert_title">Hayvan Adı</label>
+                        </span>
+                      </div>
+                      <div class="col-6 mb-2 mt-3">
+                        <span class="p-float-label">
+                          <input name="advert_date" [(ngModel)]="advertsEdit.advert_date" pInputText class="w-100"
+                            style="border: solid 1px rgba(181, 181, 181, 0.267);" required>
+                          <label htmlFor="advert_date">İlan Tarihi</label>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-6 mb-2 mt-3" style="display: flex;">
+                        <span class="p-float-label">
+                          <input name="advert_no" [(ngModel)]="advertsEdit.advert_no" pInputText class="w-100"
+                            style="border: solid 1px rgba(181, 181, 181, 0.267);" required>
+                          <label htmlFor="advert_no">İlan No</label>
+                        </span>
+                      </div>
+                      <div class="col-6 mb-2 mt-3" style="display: flex;">
+                        <span class="p-float-label">
+                          <input name="advert_img" [(ngModel)]="advertsEdit.advert_img" pInputText class="w-100"
+                            style="border: solid 1px rgba(181, 181, 181, 0.267);" required>
+                          <label htmlFor="advert_img">Resim yolu</label>
+                        </span>
+                      </div>
+                    </div>
 
+                    <div class="row">
+                      <div class="col-12 mb-2 mt-3">
+                        <span class="p-float-label">
+                          <textarea name="advert_text" [(ngModel)]="advertsEdit.advert_text" pInputTextarea
+                            placeholder="İlan Açıklama" class="w-100"
+                            style="border: solid 1px rgba(181, 181, 181, 0.267);"></textarea>
+                          <label htmlFor="advert_text">Açıklama</label>
+                        </span>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" (click)="closeModalAdd()" style="width: 30%;">İptal</button>
+                    <button pButton pRipple icon="pi pi-check" class="p-button-text" *ngIf="advertsEdit" (click)="onUpdate(advertsEdit.id, advertsEdit)">Güncelle</button>
+                  </div>
+              </div>
+            </div>
+          </div>
+          
 
-
-            <!-- 
+          <!-- 
               backend'den id'yi çekemediğimiz için id'yi tespit edemedi frontend kısmında :) aklımızdao lsun. swaggerda getall'da id yi çekemedik :D
             -->
-          </td> 
-        </tr>
-  </ng-template>
+        </td>
+      </tr>
+    </ng-template>
 
-</p-table>
+  </p-table>
 </div>
-
-
