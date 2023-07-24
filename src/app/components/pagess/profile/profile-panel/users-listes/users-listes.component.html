@@ -27,7 +27,7 @@
             <th pSortableColumn="category" style="min-width:8rem">Doğum Tarihi </th>
             <th pSortableColumn="rating">Sahiplenme Geçmişi</th>
             <th pSortableColumn="sutiton">Aktif hayvan </th>
-            <th pSortableColumn="inventoryStatus" style="min-width:10rem">Düzenle/Sil </th>
+            <th pSortableColumn="inventoryStatus" style="min-width:5rem; text-align: center;">Sil </th>
             <th></th>
         </tr>
     </ng-template>
@@ -43,8 +43,7 @@
             <td>{{ user.animal_history }}</td>  
             <td>{{ user.animal_exist }}</td>  
         <td>
-              <button  pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success"></button>
-              <span class="button-space"></span>
+             
               <!--sil-- openwindow-->
               <button (click)="openModal()" pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" style="margin-left: 15px;"></button>
 
