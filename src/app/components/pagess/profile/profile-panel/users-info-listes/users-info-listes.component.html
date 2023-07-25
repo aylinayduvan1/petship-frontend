@@ -80,7 +80,7 @@
                         <div class="flex align-items-center">
                           <p-radioButton
                             name="gender"
-                            [(ngModel)]="selectedGender"
+                            [(ngModel)]="currentUser.user_sex"
                             value="k"
                             inputId="k"
                             [disabled]="!isEditing"
@@ -89,7 +89,7 @@
                           <p-radioButton
                             st
                             name="gender"
-                            [(ngModel)]="selectedGender"
+                            [(ngModel)]="currentUser.user_sex"
                             value="e"
                             inputId="e"
                             [disabled]="!isEditing"
