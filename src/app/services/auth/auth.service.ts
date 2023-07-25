@@ -96,4 +96,10 @@ export class AuthService {
     sessionStorage.clear();
     this.currentUserSubject.next(null);
   }
+
+
+  // AuthService içerisine eklenecek
+public isLoggedIn(): boolean {
+  return this.currentUserSubject.value !== null;
+}
 }

@@ -5,6 +5,7 @@ import { HomepageComponent } from './components/pagess/homee/homepage.component'
 import { AboutComponent } from './components/about/about.component';
 import { ProfileComponent } from './components/pagess/profile/profile.component';
 import { AuthGuard } from 'src/app/guards/auth.guard';
+import { AdvertListesComponent } from './components/pagess/profile/profile-panel/advert-listes/advert-listes.component';
 
 
 const routes: Routes = [

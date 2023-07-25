@@ -1,6 +1,5 @@
 <!-- <app-navbar></app-navbar> -->
 <div class="header-blue">
-
   <nav class="navbar navbar-expand-lg navbar navbar-light " style=" padding: 0px; height: 70px;">
     <div class="container">
       <a class="navbar-brand" routerLinkActive="/" href="/">
@@ -12,12 +11,11 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
         <ul class="navbar-nav" >
           <li class="nav-item">
-            <a class="nav-link active" routerLink="/login" routerLinkActive="active" aria-current="page" href="#" >Profilim</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" (click)="scrollToSection('contact')">İletişim</a>
           </li>
-          <p-avatar icon="pi pi-user" styleClass="mr-2" shape="circle"></p-avatar>
+          <div (click)="logOut()">
+            <p-avatar icon="pi pi-sign-out" styleClass="mr-2 " shape="circle" ></p-avatar>
+          </div>
         </ul>
       </div>
     </div>
@@ -48,22 +46,23 @@
               <i class="fas fa-heart fa-lg" style="display: flex; align-items: center;"></i>
               <hr style="width: 100px;"></div>
 
-             <div class="col-12 panelink mt-4">
-              <ul>
-                <li [ngClass]="{ 'active': currentContent === 'home' }" (click)="changeContent('home')">Kişisel Bilgiler
-                  <span></span><span></span><span></span><span></span>
-                </li>
-                <li [ngClass]="{ 'active': currentContent === 'advert' }" (click)="changeContent('advert')">İlanlar
-                  <span></span><span></span><span></span><span></span>
-                </li>
-                <li [ngClass]="{ 'active': currentContent === 'categories' }" (click)="changeContent('categories')">Kategoriler
-                  <span></span><span></span><span></span><span></span>
-                </li>
-                <li [ngClass]="{ 'active': currentContent === 'users' }" (click)="changeContent('users')">Kullanıcılar
-                  <span></span><span></span><span></span><span></span>
-                </li>
-              </ul>
-            </div>
+              <div class="col-12 panelink mt-4">
+                <ul>
+                  <li *ngIf="currentUser.userType === 0 || currentUser.userType === 1" [ngClass]="{ 'active': currentContent === 'home' }" (click)="changeContent('home')">Kişisel Bilgiler
+                    <span></span><span></span><span></span><span></span>
+                  </li>
+                  <li *ngIf="currentUser.userType === 0 || currentUser.userType === 1" [ngClass]="{ 'active': currentContent === 'advert' }" (click)="changeContent('advert')">İlanlar
+                    <span></span><span></span><span></span><span></span>
+                  </li>
+                  <li *ngIf="currentUser.userType === 0" [ngClass]="{ 'active': currentContent === 'categories' }" (click)="changeContent('categories')">Kategoriler
+                    <span></span><span></span><span></span><span></span>
+                  </li>
+                  <li *ngIf="currentUser.userType === 0" [ngClass]="{ 'active': currentContent === 'users' }" (click)="changeContent('users')">Kullanıcılar
+                    <span></span><span></span><span></span><span></span>
+                  </li>
+                </ul>
+              </div>
+              
             
           </div>
         
@@ -87,7 +86,7 @@
 
 
           <!-- ilanlar -->
-          <div  id="advert" *ngIf="currentContent === 'advert'">
+          <div  id="advert" *ngIf="currentContent === 'advert'" >
             <app-advert-listes></app-advert-listes>
           </div>
 

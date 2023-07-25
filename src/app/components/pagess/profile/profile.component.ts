@@ -1,4 +1,5 @@
 import { Component, Input, ElementRef, OnInit, ViewChild, AfterViewInit , HostListener, EventEmitter, Output} from '@angular/core';
+import { Router } from '@angular/router';
 import { AnimationItem } from 'lottie-web'; 
 import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -20,7 +21,9 @@ export class ProfileComponent implements OnInit {
 
   currentUser: User | null;
 
-  constructor(private authService: AuthService) {
+  constructor(
+    private authService: AuthService,
+    private router: Router) {
     this.currentUser = null;
   }
 
@@ -31,6 +34,15 @@ export class ProfileComponent implements OnInit {
     this.authService.currentUser.subscribe(user => {
       this.currentUser = user;
     });
+
+
+     // Profil sayfası açıldığında, kullanıcının giriş yapmış olup olmadığını kontrol ediyoruz.
+    if (!this.authService.isLoggedIn()) {
+      // Kullanıcı giriş yapmamışsa, başka bir sayfaya yönlendirilebilirsiniz.
+      // Örneğin:
+      this.router.navigate(['/login']);
+      console.log('Kullanıcı giriş yapmamış, profil sayfasına erişim engellendi.');
+  }
 
   }
 
@@ -77,4 +89,15 @@ scrollToTop(): void {
     behavior: 'smooth'
   });
 }
+
+
+  logOut(): void {
+    // AuthService içindeki logout() metodunu çağırarak çıkış işlemini gerçekleştirin
+    this.authService.logOut();
+    this.router.navigate(['/login']); 
+
+  }
+
+
+
 }

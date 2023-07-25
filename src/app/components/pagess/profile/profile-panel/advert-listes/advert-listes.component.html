@@ -19,6 +19,7 @@
         <th pSortableColumn="price">Görsel</th>
         <th pSortableColumn="advert_text">Açıklama <span field="advert_text"></span></th>
         <th pSortableColumn="advert_date"> İlan Tarihi <span field="advert_date"></span></th>
+        <th pSortableColumn="Animal_sex"> cinsiyet <span field="advert_date"></span></th>
         <th pSortableColumn="inventoryStatus">Düzenle/Sil <span field="inventoryStatus"></span></th>
         <th></th>
       </tr>
@@ -33,6 +34,7 @@
         </td>
         <td>{{ advert.advert_date }}</td>
         <td>{{ advert.advert_text }}</td>
+        <td>{{ advert.Animal_sex }}</td>
 
         <td>
           <button (click)="openEditDialog(advert.id)"  pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"></button>
@@ -104,6 +106,61 @@
                         </span>
                       </div>
                     </div>
+                    <div class="row">
+                      <div class="col-6 mb-2 mt-3" style="display: flex;">
+                        <span class="p-float-label">
+                          <input name="advert_no" [(ngModel)]="advertRequest.Animal_name" pInputText class="w-100"
+                            style="border: solid 1px rgba(181, 181, 181, 0.267);" required>
+                          <label htmlFor="advert_no">Hayvan Adı</label>
+                        </span>
+                      </div>
+                      <div class="col-6 mb-2 mt-3" style="display: flex;">
+                        <span class="p-float-label">
+                          <input name="advert_img" [(ngModel)]="advertRequest.Animal_year" pInputText class="w-100"
+                            style="border: solid 1px rgba(181, 181, 181, 0.267);" required>
+                          <label htmlFor="advert_img">Hayvan yaşı</label>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-6 mb-2 mt-3" style="display: flex;">
+                        <span class="p-float-label">
+                          <input name="advert_no" [(ngModel)]="advertRequest.Animal_sex" pInputText class="w-100"
+                            style="border: solid 1px rgba(181, 181, 181, 0.267);" required>
+                          <label htmlFor="advert_no">Hayvan cinsiyeti</label>
+                        </span>
+                      </div>
+                      <div class="col-6 mb-2 mt-3" style="display: flex;">
+                        <span class="p-float-label">
+                          <input name="advert_img" [(ngModel)]="advertRequest.Animal_type" pInputText class="w-100"
+                            style="border: solid 1px rgba(181, 181, 181, 0.267);" required>
+                          <label htmlFor="advert_img">Hayvan cinsi</label>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-6 mb-2 mt-3" style="display: flex;">
+                        <span class="p-float-label">
+                          <input name="advert_no" [(ngModel)]="advertRequest.Animal_vaccine" pInputText class="w-100"
+                            style="border: solid 1px rgba(181, 181, 181, 0.267);" required>
+                          <label htmlFor="advert_no">Aşısı  var mı</label>
+                        </span>
+                      </div>
+                      <div class="col-6 mb-2 mt-3" style="display: flex;">
+                        <span class="p-float-label">
+                          <input name="advert_img" [(ngModel)]="advertRequest.Animal_chip" pInputText class="w-100"
+                            style="border: solid 1px rgba(181, 181, 181, 0.267);" required>
+                          <label htmlFor="advert_img">Chip var mı?</label>
+                        </span>
+                      </div>
+                      <div class="col-6 mb-2 mt-3" style="display: flex;">
+                        <span class="p-float-label">
+                          <input name="advert_img" [(ngModel)]="advertRequest.Animal_passion" pInputText class="w-100"
+                            style="border: solid 1px rgba(181, 181, 181, 0.267);" required>
+                          <label htmlFor="advert_img">Hastalığı var mı ?</label>
+                        </span>
+                      </div>
+                    </div>
 
                     <div class="row">
                       <div class="col-12 mb-2 mt-3">
@@ -125,12 +182,15 @@
             </div>
           </div>
 
+
+
+
           <div class="modal fade" tabindex="-1" [class.show]="editDialog " *ngIf="advertsEdit">
             <!--CSS'i düzenlemezsem çalışmaz-->
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title">İlan Ekle</h5>
+                  <h5 class="modal-title">İlan Güncelle</h5>
                 </div>
                 <div class="modal-body">
                   <form ngModelOptions="{standalone: true}">
@@ -175,6 +235,56 @@
                             placeholder="İlan Açıklama" class="w-100"
                             style="border: solid 1px rgba(181, 181, 181, 0.267);"></textarea>
                           <label htmlFor="advert_text">Açıklama</label>
+                        </span>
+                      </div>
+                    </div>
+
+
+                    <div class="row">
+                      <div class="col-6 mb-2 mt-3" style="display: flex;">
+                        <span class="p-float-label">
+                          <input name="Animal_year" [(ngModel)]="advertsEdit.Animal_year" pInputText class="w-100"
+                            style="border: solid 1px rgba(181, 181, 181, 0.267);" required>
+                          <label htmlFor="advert_no">yaş</label>
+                        </span>
+                      </div>
+                      <div class="col-6 mb-2 mt-3" style="display: flex;">
+                        <span class="p-float-label">
+                          <input name="Animal_sex" [(ngModel)]="advertsEdit.Animal_sex" pInputText class="w-100"
+                            style="border: solid 1px rgba(181, 181, 181, 0.267);" required>
+                          <label htmlFor="advert_img">cinsiyet</label>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-6 mb-2 mt-3" style="display: flex;">
+                        <span class="p-float-label">
+                          <input name="Animal_type" [(ngModel)]="advertsEdit.Animal_type" pInputText class="w-100"
+                            style="border: solid 1px rgba(181, 181, 181, 0.267);" required>
+                          <label htmlFor="advert_no">cinsi</label>
+                        </span>
+                      </div>
+                      <div class="col-6 mb-2 mt-3" style="display: flex;">
+                        <span class="p-float-label">
+                          <input name="Animal_vaccine" [(ngModel)]="advertsEdit.Animal_vaccine" pInputText class="w-100"
+                            style="border: solid 1px rgba(181, 181, 181, 0.267);" required>
+                          <label htmlFor="advert_img">hastalığı var mı</label>
+                        </span>
+                      </div>
+                    </div>
+                       <div class="row">
+                      <div class="col-6 mb-2 mt-3" style="display: flex;">
+                        <span class="p-float-label">
+                          <input name="Animal_chip" [(ngModel)]="advertsEdit.Animal_chip" pInputText class="w-100"
+                            style="border: solid 1px rgba(181, 181, 181, 0.267);" required>
+                          <label htmlFor="advert_no">cip var mı</label>
+                        </span>
+                      </div>
+                      <div class="col-6 mb-2 mt-3" style="display: flex;">
+                        <span class="p-float-label">
+                          <input name="Animal_passion" [(ngModel)]="advertsEdit.Animal_passion" pInputText class="w-100"
+                            style="border: solid 1px rgba(181, 181, 181, 0.267);" required>
+                          <label htmlFor="advert_img">possis</label>
                         </span>
                       </div>
                     </div>

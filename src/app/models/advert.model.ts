@@ -1,4 +1,3 @@
-// import { Category } from 'src/app/models/categories.model';
 
 export class Advert {
     //tablodaki veriler
@@ -9,8 +8,17 @@ export class Advert {
     situation : boolean = false ;
     advert_text : string = '' ;
     advert_img : string = '' ;
-    adverts: Advert[] = []; // Kullanıcının ilanları
 
-    // categories: Category[]=[] // Kullanıcının ilanları
+    
+    Animal_name:string='';
+    Animal_year:string='';
+    Animal_sex:string='';
+    Animal_type:string='';
+
+    Animal_vaccine : boolean = false ;
+    Animal_chip : boolean = false ;
+    Animal_passion : boolean = false ;
+
+    category_id: number = 0;
 
 }

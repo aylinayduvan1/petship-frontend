@@ -3,7 +3,7 @@
     <nav class="navbar navbar-expand-lg navbar navbar-light " style=" padding: 0px; height: 70px;">
       <div class="container">
         <a class="navbar-brand" routerLinkActive="/" href="/">
-          PETSHİP
+          PETSHİP 
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -14,12 +14,17 @@
               <a class="nav-link active" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" (click)="scrollToSection('about')" >Hakkımızda</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" routerLink="/login" routerLinkActive="active" aria-current="page" href="#" >Profilim</a>
+        <!-- Eğer kullanıcı giriş yapmışsa /profile sayfasına yönlendir -->
+        <a *ngIf="isLoggedIn()" class="nav-link active" routerLink="/profile" routerLinkActive="active" aria-current="page" href="#">Profilim</a>
+
+        <!-- Eğer kullanıcı giriş yapmamışsa /login sayfasına yönlendir -->
+        <a *ngIf="!isLoggedIn()" class="nav-link active" routerLink="/login" routerLinkActive="active" aria-current="page" href="#">Giriş Yap</a>
+
             </li>
             <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show" (click)="scrollToSection('contact')">İletişim</a>
             </li>
-            <p-avatar icon="pi pi-user" styleClass="mr-2" shape="circle"></p-avatar>
+              <p-avatar icon="pi pi-home" styleClass="mr-2" shape="circle" ></p-avatar>
           </ul>
         </div>
       </div>
