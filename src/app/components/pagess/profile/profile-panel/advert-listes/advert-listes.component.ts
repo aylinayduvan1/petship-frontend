@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ApiService } from 'src/app/services/api/api.service';
 import {Advert} from 'src/app/models/advert.model'
@@ -7,6 +7,7 @@ import { ResponseStatus } from 'src/app/models/response/base-response.model';
 import { AdvertRequest} from 'src/app/models/request/advert-request.model';
 import { Category } from 'src/app/models/categories.model';
 import { FilterPipe } from '../users-listes/filter.pipe';
+import { AnimalRequest } from 'src/app/models/request/animal-request.model';
 
 
 @Component({
@@ -17,6 +18,9 @@ import { FilterPipe } from '../users-listes/filter.pipe';
 
 })
 export class  AdvertListesComponent implements OnInit{
+
+
+  
     productDialog: boolean = false;
 
     submitted: boolean = false;
@@ -61,19 +65,24 @@ export class  AdvertListesComponent implements OnInit{
       { label: 'İlanda değil', value: false }
     ];
 
-    public advertRequest: AdvertRequest = <AdvertRequest>{};
 
     constructor(
 
         private readonly apiService: ApiService, 
         private router: Router,
         private messageService: MessageService,
-        private confirmationService: ConfirmationService) {}
+        private confirmationService: ConfirmationService,
+        private renderer: Renderer2
+        ) {}
+        public advertRequest: AdvertRequest = <AdvertRequest>{};
+        public AnimalRequest: AnimalRequest = <AnimalRequest>{};
 
     ngOnInit(): void {
         this.refresh();
     }
 
+
+    //tüm verileri listeleme
     refresh() {
         this.apiService.getAllEntities(Advert).subscribe((response) => {
           this.adverts = response.data;
@@ -82,10 +91,6 @@ export class  AdvertListesComponent implements OnInit{
       }
 
    
-    openNew() {
-        this.submitted = false;
-        this.productDialog = true;
-    }
 
 
     //silme
@@ -117,7 +122,7 @@ export class  AdvertListesComponent implements OnInit{
 
 
 
-    //ekleme
+    // ilan ekleme
     onCreate(entity: AdvertRequest) {
       this.addEntity<AdvertRequest>(entity, 'Advert').then(response => {
         if (response?.status == ResponseStatus.Ok) {
@@ -127,6 +132,18 @@ export class  AdvertListesComponent implements OnInit{
       });
     }
   
+    
+    // hayvan ekleme
+    AnimalonCreate(entity: AnimalRequest) {
+      this.addEntity<AnimalRequest>(entity, 'Animal').then(response => {
+        if (response?.status == ResponseStatus.Ok) {
+          this.modalOpenAdd = false;
+          this.refresh();
+        }
+      });
+    } 
+
+
     addEntity<TEntity>(entity: TEntity, entityType:  string) {
       return this.apiService.addEntity<TEntity>(entity, entityType);
     }
@@ -146,6 +163,9 @@ export class  AdvertListesComponent implements OnInit{
     closeEditModal() {
       this.editDialog = false;
     }
+
+
+    
     openEditDialog(id: number) {
       this.apiService.getEntityById<Advert>(id, Advert).then((response) => {
         console.log(response?.data)
@@ -179,4 +199,26 @@ export class  AdvertListesComponent implements OnInit{
       return this.apiService.updateEntity(id, updatedAdvert, Advert);
     }
   
+    @ViewChild('modal') modal: ElementRef | undefined;
+  showSecondPage = false;
+
+  secondPage: boolean = false; // Şablonunuzda kullanılacak "secondPage" değişkenini ekleyin.
+
+  goToSecondPage() {
+    this.showSecondPage = true;
+  }
+
+  goToFirstPage() {
+    this.showSecondPage = false;
+  }
+
+  closeModall() {
+    this.showSecondPage = false;
+  }
+
+  openModall() {
+    if (this.modal) {
+      this.renderer.addClass(this.modal.nativeElement, 'show');
+    }
+}
 }

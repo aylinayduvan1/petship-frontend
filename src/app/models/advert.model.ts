@@ -1,3 +1,5 @@
+import { Animal } from "./animal.model";
+import { Category } from "./categories.model";
 
 export class Advert {
     //tablodaki veriler
@@ -8,17 +10,12 @@ export class Advert {
     situation : boolean = false ;
     advert_text : string = '' ;
     advert_img : string = '' ;
-
-    
-    Animal_name:string='';
-    Animal_year:string='';
-    Animal_sex:string='';
-    Animal_type:string='';
-
-    Animal_vaccine : boolean = false ;
-    Animal_chip : boolean = false ;
-    Animal_passion : boolean = false ;
-
+    animal:  Animal= new Animal;
+    categories:  Category= new Category;
+ 
     category_id: number = 0;
+    advert_id: number = 0;
+    user_id: number = 0;
+    
 
 }

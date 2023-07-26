@@ -13,7 +13,7 @@ export class User {
   animal_history: boolean = false;
   animal_exist: boolean = false;
   userType: UserType = 0;
-  adverts: Advert[]=[] // Kullanıcının ilanları
+  advert: Advert[]=[] // Kullanıcının ilanları
 }
 
 export enum UserType {

@@ -31,11 +31,13 @@
   <div class="container d-flex align-items-center justify-content-center position-relative flex-wrap">
     <div class="card  d-flex position-relative flex-column" *ngFor="let advert of adverts">
         <div class='imgContainer'>
-            <img src={{advert.advert_img}}>
+            <img src={{advert.animal.animal_img}}>
         </div>
         <div class="content">
-          <h2>İlan No: {{ advert.advert_no }}</h2>
-          <h4>{{ advert.advert_title }}</h4>
+          <!-- <h4>İlan No: {{ advert.advert_no }}</h4> -->
+          <h4>Yaş: {{ advert.animal.animal_year }}</h4>
+          <h4>Tür: {{ advert.animal.animal_type }}</h4>
+          <h4>{{ advert.animal.animal_name }}</h4>
           <p>{{ advert.advert_text }}</p>
         </div>
     </div>

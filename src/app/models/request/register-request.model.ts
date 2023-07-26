@@ -4,9 +4,9 @@ export class RegisterRequest {
   Password: string ='';
   UserName: string='';
   user_bdate:string ='';
-  user_adress:string =''
+  Adress:string =''
   user_sex :string ='';
-  user_gsm :string ='';
+  gsm :string ='';
   animal_history: boolean = false;
   animal_exist: boolean = false;
 }

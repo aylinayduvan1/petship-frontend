@@ -13,7 +13,7 @@
             </div>
           </div>
           <div class="card-body">
-            <form>
+            <form >
               <h6 class="heading-small text-muted mb-4">Kullanıcı Bilgileri</h6>
               <div class="pl-lg-4" *ngIf="currentUser">
                 <div class="row">
@@ -24,6 +24,7 @@
                       >
                       <input
                         [value]="currentUser.userName"
+                        
                         type="text"
                         id="input-first-name"
                         class="form-control form-control-alternative"
@@ -68,17 +69,18 @@
                     </div>
                   </div>
 
-                  <div class="col-lg-6">
+                  <div class="col-lg-6" >
                     <label class="form-control-label" for="input-gender">
                       Cinsiyet
                     </label>
-                    <div class="pl-lg-4">
+                    <div class="pl-lg-8">
                       <div
-                        class="col-5 mb-2 radio-container"
+                        class="col-8 mb-2 radio-container"
                         style="display: flex"
                       >
-                        <div class="flex align-items-center">
-                          <p-radioButton
+                        <div class="flex align-items-center  w-100" style=" display: flex; justify-content:space-between">
+                          <div>
+                            <p-radioButton
                             name="gender"
                             [(ngModel)]="currentUser.user_sex"
                             value="k"
@@ -86,15 +88,18 @@
                             [disabled]="!isEditing"
                           ></p-radioButton>
                           <label style="margin-left: 15px" for="k">Kadın</label>
+                          </div>
+                         <div>
                           <p-radioButton
-                            st
-                            name="gender"
-                            [(ngModel)]="currentUser.user_sex"
-                            value="e"
-                            inputId="e"
-                            [disabled]="!isEditing"
-                          ></p-radioButton>
-                          <label style="margin-left: 15px" for="e">Erkek</label>
+                          st
+                          name="gender"
+                          [(ngModel)]="currentUser.user_sex"
+                          value="e"
+                          inputId="e"
+                          [disabled]="!isEditing"
+                        ></p-radioButton>
+                        <label style="margin-left: 15px" for="e">Erkek</label>
+                         </div>
                         </div>
                       </div>
                     </div>
@@ -140,7 +145,7 @@
                         >Adres</label
                       >
                       <input
-                        [value]="currentUser.adress"
+                        [value]="currentUser.adress" 
                         id="input-address"
                         class="form-control form-control-alternative"
                         placeholder="Adresin(İl/İlçe)"
@@ -182,17 +187,19 @@
                 </div>
                 <hr class="my-4" />
               </div>
-              <span>
+
+
+
+              <span *ngIf="currentUser">
                 <button
-                  (click)="toggleEditing()"
+                  (click)="openEditDialog(currentUser.id)"
                   class="p-button p-button-rounded"
                   id="buton1"
                 >
                   Düzenle
                 </button>
                 <button
-                  *ngIf="isEditing"
-                  (click)="update(); toggleEditing()"
+                *ngIf="currentUser" (click)="onUpdate(currentUser.id, currentUser)"
                   class="p-button p-button-rounded p-button-success"
                   id="kaydet"
                 >
@@ -200,9 +207,13 @@
                 </button>
               </span>
             </form>
+            
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
+

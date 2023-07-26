@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api/api.service';
 import { Component, EventEmitter, Output, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { ResponseStatus } from 'src/app/models/response/base-response.model';
+import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-users-info-listes',
   templateUrl: './users-info-listes.component.html',
@@ -19,7 +21,12 @@ export class UsersInfoListesComponent implements OnInit {
   selectedOption1: string = '';
   selectedOption2: string = '';
   selectedGender: string = '';
-  constructor(private readonly apiService: ApiService, private router: Router,private authService: AuthService) { 
+  constructor(
+    private readonly apiService: ApiService,
+     private router: Router,
+     private authService: AuthService,
+     private messageService: MessageService,
+     ) { 
     this.currentUser = null;
   }
 
@@ -48,18 +55,63 @@ export class UsersInfoListesComponent implements OnInit {
     }
   }
 
+
+
+
+  //güncelleme
+
+  userEdit: User | null = null;
+  editDialog: boolean = false
   isEditing: boolean = false;
 
-  toggleEditing() {
-    this.isEditing = !this.isEditing;
-    this.changeContent('edit');
-
+    
+  hideDialog() {
+    this.editDialog = false;
   }
 
-  update() {
-    // Güncelleme işlemleri
-    console.log('Seçili cinsiyet:', this.selectedGender);
+  closeEditModal() {
+    this.editDialog = false;
   }
+
+  openEditDialog(id: number) {
+    this.apiService.getEntityById<User>(id, User).then((response) => {
+      console.log(response?.data)
+      if (response && response.data) {
+        this.currentUser = response.data; 
+        this.isEditing =true;
+        this.changeContent('edit');
+      } else {
+        console.error('İlan bulunamadı veya alınırken bir hata oluştu.');
+      }
+    }).catch((error) => {
+      console.error('İlan alınırken bir hata oluştu:', error);
+    });
+  }
+
+
+  onUpdate(id: number, updatedUser: User) {
+    this.update(id, updatedUser).then(response => {
+      if (response?.status == ResponseStatus.Ok) {
+        this.refresh();
+        this.messageService.add({ severity: 'success', summary: 'Başarılı', detail: 'ilan güncelleme başarılı', life: 3000 });
+        // this.hideDialog(); // Güncelleme işlemi tamamlandığında dialogu gizle
+      }
+    }).catch((error) => {
+      console.error('ilan güncellenirken bir hata oluştu:', error);
+    });
+  }
+
+
+  update(id: number, updatedUser: User) {
+    return this.apiService.updateEntity(id, updatedUser, User);
+  }
+
+
+ 
+
+
+
+
   animalHistoryOptions = [
     { label: 'Hayvan besledim', value: true },
     { label: 'Hayvan beslemedim', value: false }
