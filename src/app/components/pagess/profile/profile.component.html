@@ -36,9 +36,8 @@
               </a>
               <h3 class="cloud-text cloud-title"> {{currentUser.userName}} </h3>
 
-              <p *ngIf="currentUser.userType === 0">Admin</p>
-              <p *ngIf="currentUser.userType === 1">User</p>
-
+              <p *ngIf="currentUser.userType === 0">User</p>
+              <p *ngIf="currentUser.userType === 1">Admin</p>
 
              </div>
              <div style="display: flex; justify-content: space-between; color: #fff;">
@@ -48,16 +47,16 @@
 
               <div class="col-12 panelink mt-4">
                 <ul>
-                  <li *ngIf="currentUser.userType === 0 || currentUser.userType === 1" [ngClass]="{ 'active': currentContent === 'home' }" (click)="changeContent('home')">Kişisel Bilgiler
+                  <li *ngIf="currentUser.userType === 1 || currentUser.userType === 0" [ngClass]="{ 'active': currentContent === 'home' }" (click)="changeContent('home')">Kişisel Bilgiler
                     <span></span><span></span><span></span><span></span>
                   </li>
-                  <li *ngIf="currentUser.userType === 0 || currentUser.userType === 1" [ngClass]="{ 'active': currentContent === 'advert' }" (click)="changeContent('advert')">İlanlar
+                  <li *ngIf="currentUser.userType === 1 || currentUser.userType === 0" [ngClass]="{ 'active': currentContent === 'advert' }" (click)="changeContent('advert')">İlanlar
                     <span></span><span></span><span></span><span></span>
                   </li>
-                  <li *ngIf="currentUser.userType === 0" [ngClass]="{ 'active': currentContent === 'categories' }" (click)="changeContent('categories')">Kategoriler
+                  <li *ngIf="currentUser.userType === 1" [ngClass]="{ 'active': currentContent === 'categories' }" (click)="changeContent('categories')">Kategoriler
                     <span></span><span></span><span></span><span></span>
                   </li>
-                  <li *ngIf="currentUser.userType === 0" [ngClass]="{ 'active': currentContent === 'users' }" (click)="changeContent('users')">Kullanıcılar
+                  <li *ngIf="currentUser.userType === 1" [ngClass]="{ 'active': currentContent === 'users' }" (click)="changeContent('users')">Kullanıcılar
                     <span></span><span></span><span></span><span></span>
                   </li>
                 </ul>
