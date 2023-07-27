@@ -148,6 +148,23 @@ export class  AdvertListesComponent implements OnInit{
       return this.apiService.addEntity<TEntity>(entity, entityType);
     }
 
+  animalVaccineOptions = [
+    { label: 'Aşılı', value: 'true' },
+    { label: 'Aşısız', value: 'false' }
+  ];  
+  
+  animalPassionOptions = [
+    { label: 'Hastalığı var', value: 'true' },
+    { label: 'Hastalığı yok', value: 'false' }
+  ]; 
+  
+  
+  animalChipOptions = [
+    { label: 'Çipi var', value: 'true' },
+    { label: 'Çipi yok', value: 'false' }
+  ];
+  
+
 
 
 

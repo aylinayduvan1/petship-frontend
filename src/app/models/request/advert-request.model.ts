@@ -14,8 +14,9 @@ export class AdvertRequest {
     categories:  Category= new Category;
  
     category_id: number = 0;
-    advert_id: number = 0;
+    animal_id: number = 0;
     user_id: number = 0;
+
     
 
 }

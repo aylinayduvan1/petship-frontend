@@ -75,7 +75,7 @@
                       <div class="row">
                         <div class="col-6 mb-2 mt-3">
                           <span class="p-float-label">
-                            <input name="animal_name" [(ngModel)]="advertRequest.animal.animal_name"  pInputText
+                            <input name="animal_name" [(ngModel)]="AnimalRequest.animal_name"  pInputText
                               placeholder="Hayvan adı giriniz" class="w-100"
                               style="border: solid 1px rgba(181, 181, 181, 0.267);" required>
                             <label htmlFor="animal_name">Hayvan Adı</label>
@@ -83,23 +83,23 @@
                         </div>
                         <div class="col-6 mb-2 mt-3">
                           <span class="p-float-label">
-                            <input name="animal_year" [(ngModel)]="advertRequest.animal.animal_year" pInputText class="w-100"
+                            <input name="animal_year" [(ngModel)]="AnimalRequest.animal_year" pInputText class="w-100"
                               style="border: solid 1px rgba(181, 181, 181, 0.267);" required>
-                            <label htmlFor="animal_year">İlan Tarihi</label>
+                            <label htmlFor="animal_year">Yaş</label>
                           </span>
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-6 mb-2 mt-3" style="display: flex;">
                           <span class="p-float-label">
-                            <input name="animal_sex" [(ngModel)]="advertRequest.animal.animal_sex" pInputText class="w-100"
+                            <input name="animal_sex" [(ngModel)]="AnimalRequest.animal_sex" pInputText class="w-100"
                               style="border: solid 1px rgba(181, 181, 181, 0.267);" required>
                             <label htmlFor="animal_sex">Cinsiyet</label>
                           </span>
                         </div>
                         <div class="col-6 mb-2 mt-3" style="display: flex;">
                           <span class="p-float-label">
-                            <input name="animal_type" [(ngModel)]="advertRequest.animal.animal_type" pInputText class="w-100"
+                            <input name="animal_type" [(ngModel)]="AnimalRequest.animal_type" pInputText class="w-100"
                               style="border: solid 1px rgba(181, 181, 181, 0.267);" required>
                             <label htmlFor="animal_type">Tür</label>
                           </span>
@@ -108,31 +108,25 @@
                       </div>
                       <div class="row">
                         <div class="col-6 mb-2 mt-3" style="display: flex;">
-                          <span class="p-float-label">
-                            <input name="animal_vaccine" [(ngModel)]="advertRequest.animal.animal_vaccine" pInputText class="w-100"
-                              style="border: solid 1px rgba(181, 181, 181, 0.267);" required>
-                            <label htmlFor="animal_vaccine">vaccine</label>
-                          </span>
+                            <div class="dropdown-container w-100">
+                              <p-dropdown  class="w-100" [options]="animalVaccineOptions" optionLabel="label" optionValue="value" [(ngModel)]="AnimalRequest.animal_vaccine"></p-dropdown>
+                            </div>             
                         </div>
                         <div class="col-6 mb-2 mt-3" style="display: flex;">
-                          <span class="p-float-label">
-                            <input name="animal_chip" [(ngModel)]="advertRequest.animal.animal_chip" pInputText class="w-100"
-                              style="border: solid 1px rgba(181, 181, 181, 0.267);" required>
-                            <label htmlFor="animal_chip">Chip</label>
-                          </span>
+                            <div class="dropdown-container w-100">
+                              <p-dropdown class="w-100" [options]="animalChipOptions" optionLabel="label" optionValue="value" [(ngModel)]="AnimalRequest.animal_chip"></p-dropdown>
+                            </div>   
+                          </div>
                         </div>
-                      </div>
                       <div class="row">
                         <div class="col-6 mb-2 mt-3" style="display: flex;">
-                          <span class="p-float-label">
-                            <input name="animal_passion" [(ngModel)]="advertRequest.animal.animal_passion"  pInputText class="w-100"
-                              style="border: solid 1px rgba(181, 181, 181, 0.267);" required>
-                            <label htmlFor="animal_passion">possion</label>
-                          </span>
-                        </div>
+                            <div class="dropdown-container w-100">
+                              <p-dropdown  class="w-100" [options]="animalPassionOptions" optionLabel="label" optionValue="value" [(ngModel)]="AnimalRequest.animal_passion"></p-dropdown>
+                            </div>   
+                          </div>
                         <div class="col-6 mb-2 mt-3" style="display: flex;">
                           <span class="p-float-label">
-                            <input name="animal_img" [(ngModel)]="advertRequest.animal.animal_img"  pInputText class="w-100"
+                            <input name="animal_img" [(ngModel)]="AnimalRequest.animal_img"  pInputText class="w-100"
                               style="border: solid 1px rgba(181, 181, 181, 0.267);" required>
                             <label htmlFor="animal_img">resim</label>
                           </span>
@@ -141,7 +135,7 @@
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn" (click)="closeModalAdd()" style="width: 30%;">İptal</button>
-                        <button  class="btn btn-primary" type="submit" style="width: 30%;" (click)="onCreate(advertRequest)">Hayvan Ekle</button>
+                        <button  class="btn btn-primary" type="submit" style="width: 30%;" (click)="AnimalonCreate(AnimalRequest)">Hayvan Ekle</button>
                         <button (click)="goToSecondPage()" class="btn btn-primary" type="submit" style="width: 30%;" >İleri</button>
                       </div> 
                     </form>               
@@ -187,9 +181,9 @@
                       <div class="row">
                         <div class="col-6 mb-2 mt-3" style="display: flex;">
                           <span class="p-float-label">
-                            <input name="advert_id" [(ngModel)]="advertRequest.advert_id" pInputText class="w-100"
+                            <input name="animal_id" [(ngModel)]="advertRequest.animal_id" pInputText class="w-100"
                               style="border: solid 1px rgba(181, 181, 181, 0.267);" required>
-                            <label htmlFor="advert_no">ilan id</label>
+                            <label htmlFor="advert_no">Animal id</label>
                           </span>
                         </div>
                         <div class="col-6 mb-2 mt-3" style="display: flex;">
